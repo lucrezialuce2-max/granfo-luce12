@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRANFO | Light Design Verona</title>
+    <meta name="description" content="GRANFO Illuminazione: Lampade di lusso, design su misura e collezione Domus in vetro di Murano. Scopri i nostri progetti tailor-made a Verona.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <meta property="og:title" content="GRANFO | Light Design Verona">
+<meta property="og:description" content="Artigiani della luce dal 1970. Scopri le nostre collezioni in vetro di Murano e design su misura.">
+<meta property="og:image" content="https://tuosito.com/images/hero/hero-main-graphic.webp"> <meta property="og:url" content="https://tuosito.com">
+<meta property="og:type" content="website">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Preloader critico per evitare flash iniziale */
+        #preloader { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #0e1713; z-index: 99999; opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
+        .preloader-icon { width: 120px; height: auto; animation: breathe 2s infinite ease-in-out; }
+        @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.7; } }
+    </style>
+</head>
+<body>
+    <script>document.documentElement.style.visibility='hidden';</script>
+    <div id="preloader">
+        <img src="./images/brand/granfoluce-logo.png" alt="GRANFOLUCE" class="preloader-icon">
+    </div>
+    <script>
+        const hidePreloader = () => {
+            document.documentElement.style.visibility = 'visible';
+            const preloader = document.getElementById('preloader');
+            if (preloader && !preloader.classList.contains('loaded')) {
+                preloader.classList.add('loaded');
+            }
+        };
+        window.addEventListener('load', () => {
+            requestAnimationFrame(() => {
+                setTimeout(hidePreloader, 80);
+            });
+        });
+        setTimeout(hidePreloader, 3000);
+    </script>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="./images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 50px;"></a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="cataloghi.html">Cataloghi</a></li>
+                <li><a href="prodotti.html">Prodotti</a></li>
+                <li><a href="aurum.html">Domus</a></li>
+                <li><a href="progetti.html">Progetti</a></li>
+                <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="icon-btn" onclick="toggleSearch()"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                <div class="lang-selector"><a href="#" class="lang-item active">IT</a><a href="en/index.html" class="lang-item">EN</a></div>
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="cataloghi.html">Cataloghi</a>
+            <a href="prodotti.html">Prodotti</a>
+            <a href="aurum.html">Domus</a>
+            <a href="progetti.html">Progetti</a>
+            <a href="chi-siamo.html">Chi Siamo</a>
+            <a href="contatti.html">Contatti</a>
+        </div>
+    </nav>
+
+    <div id="search-overlay" class="search-overlay">
+        <button class="close-search" onclick="toggleSearch()">✕</button>
+        <div class="search-container">
+            <input type="text" placeholder="Cerca" autofocus>
+        </div>
+    </div>
+
+    <header class="hero-slider">
+        <div class="slide active">
+            <div class="slide-bg"><img src="images/hero/hero-main-graphic.webp" alt="Granfo Luce Design" width="1920" height="1080" loading="lazy"><div class="overlay"></div></div>
+            <div class="hero-content">
+                <p class="subtitle">Design & Illuminazione</p>
+                <h1> Artigiani della luce dal <br><i>1970</i></h1>
+                <p class="description">Progettiamo e realizziamo soluzioni luminose uniche, unendo maestria artigiana e tecnologia contemporanea.</p>
+                <div class="hero-buttons">
+                    <a href="progetti.html" class="btn btn-gold">Scopri i Progetti</a>
+                    <a href="chi-siamo.html" class="btn btn-outline">Vieni a Trovarci</a>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="slide-bg"><img src="images/hero/fungonero.webp" alt="Progetti Custom" width="1920" height="1080" loading="lazy"><div class="overlay"></div></div>
+            <div class="hero-content">
+                <p class="subtitle">Comfort Visivo</p>
+                <h1>Luce  <i><br>Architetturale.</i></h1>
+                <p class="description">Sistemi integrati e soluzioni minimali. Quando la tecnologia scompare per dare spazio solo alla bellezza del tuo ambiente.</p>
+                <div class="hero-buttons"><a href="contatti.html" class="btn btn-gold">Richiedi Consulenza</a></div>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="slide-bg"><img src="images/hero/hero-novità.webp" alt="Nuova Collezione" width="1920" height="1080" loading="lazy"><div class="overlay"></div></div>
+            <div class="hero-content">
+                <p class="subtitle">Novità 2025</p>
+                <h1>Collezione <br><i>Domus.</i></h1>
+                <p class="description">Vetro di Murano e design contemporaneo. Ogni lampada è un pezzo unico, irripetibile come la tua casa.</p>
+                <div class="hero-buttons"><a href="cataloghi.html" class="btn btn-gold">Scopri la collezione</a></div>
+            </div>
+        </div>
+        <!-- Video Slide (wait until end) -->
+        <div class="slide">
+            <div class="slide-bg">
+                <video src="./images/videos/luna.mp4" autoplay muted playsinline></video>
+                <div class="overlay"></div>
+            </div>
+            <div class="hero-content"></div>
+        </div>
+        <button class="slider-btn prev" onclick="changeSlide(-1)">❮</button>
+        <button class="slider-btn next" onclick="changeSlide(1)">❯</button>
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+        </div>
+    </header>
+
+    <section class="categories-scroller">
+        <div class="scroller-track">
+            <a href="aurum.html" class="chip">Novità 2025</a>
+            <a href="prodotti.html#catalogo" class="chip">Tecnico</a>
+            <a href="prodotti.html?categoria=I Murani#catalogo" class="chip">I Murani</a>
+            <a href="prodotti.html?categoria=tavolo#catalogo" class="chip">Lampade da Tavolo</a>
+            <a href="prodotti.html?categoria=parete#catalogo" class="chip">Applique</a>
+            <a href="prodotti.html?categoria=outdoor#catalogo" class="chip">Outdoor</a>
+        </div>
+    </section>
+
+    <script>
+    // Gestione Transizione Pagina
+    document.addEventListener("DOMContentLoaded", () => {
+        // 1. Fade In all'apertura
+        document.body.classList.add("loaded");
+
+        // 2. Intercetta i click sui link
+        const links = document.querySelectorAll('a[href]');
+        
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                
+                // Se è un link interno e non un'ancora (#) o mailto/tel
+                if (href.startsWith(window.location.origin) || (href.indexOf(':') === -1 && !href.startsWith('#'))) {
+                    e.preventDefault();
+                    document.body.classList.add('fade-out'); // Avvia Fade Out
+                    
+                    // Aspetta la fine dell'animazione poi cambia pagina
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 800); // 800ms deve coincidere con il CSS transition
+                }
+            });
+        });
+    });
+</script>
+
+    <section id="prodotti" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <div><span class="eyebrow">Collezioni</span><h2>Esplora le Categorie</h2></div>
+                <a href="prodotti.html#catalogo" class="link-arrow">Vedi tutto →</a>
+            </div>
+            <div class="products-slider reveal">
+                <a href="prodotti.html?categoria=sospensione#catalogo" class="product-item"><img src="images/prodotti/Sospensione/fungonero.webp" alt="Sospensione" width="300" height="300" loading="lazy"><h3>Sospensione</h3></a>
+                <a href="prodotti.html?categoria=tavolo#catalogo" class="product-item"><img src="images/prodotti/Tavolo/tavolocubo.webp" alt="Tavolo" width="300" height="300" loading="lazy"><h3>Tavolo</h3></a>
+                <a href="prodotti.html?categoria=terra#catalogo" class="product-item"><img src="images/prodotti/Terra/terralight.webp" alt="Terra" width="300" height="300" loading="lazy"><h3>Terra</h3></a>
+                <a href="prodotti.html?categoria=parete#catalogo" class="product-item"><img src="images/prodotti/Parete/applique.webp" alt="Parete" width="300" height="300" loading="lazy"><h3>Parete</h3></a>
+                <a href="prodotti.html?categoria=soffitto#catalogo" class="product-item"><img src="images/prodotti/Soffitto/soffittolight.webp" alt="Soffitto" width="300" height="300" loading="lazy"><h3>Soffitto</h3></a>
+                <a href="prodotti.html?categoria=outdoor#catalogo" class="product-item"><img src="images/prodotti/Outdoor/outdoorlight.webp" alt="Outdoor" width="300" height="300" loading="lazy"><h3>Outdoor</h3></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="progetti" class="projects-section">
+        <div class="container">
+            <div class="section-header">
+                <div><span class="eyebrow">Portfolio</span><h2>Oltre lo standard</h2><h5 class="portfolio-lede">Una selezione di realizzazioni complesse che raccontano la nostra capacità di trasformare la luce in scultura. La dimostrazione che, nel nostro laboratorio, nessuna sfida è impossibile.</h5></div>
+                <a href="progetti.html" class="link-arrow">Vedi tutti i progetti →</a>
+            </div>
+            <div class="projects-grid-scroll reveal">
+                <article class="project-card"><img src="images/progetti/progetto-2.webp" alt="2" width="400" height="500" loading="lazy"><div class="card-content"><span class="card-tag">Doha • Qatar</span><h3>Residenza Privata</h3></div></article>
+                <article class="project-card"><img src="images/progetti/progetto-3.webp" alt="3" width="400" height="500" loading="lazy"><div class="card-content"><span class="card-tag">Dubai • EAU</span><h3>Penthouse</h3></div></article>
+                <article class="project-card"><img src="images/progetti/progetto-4.webp" alt="4" width="400" height="500" loading="lazy"><div class="card-content"><span class="card-tag">Mosca • Russia</span><h3>Villa Privata</h3></div></article>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header center-text">
+                <span class="eyebrow">Workflow</span>
+            </div>
+            <div class="process-grid">
+                <div class="process-step reveal"><div class="step-number">01</div><h3>Ascolto e Consulenza</h3><p>Non analizziamo solo gli spazi, ascoltiamo le tue idee.</p></div>
+                <div class="process-step reveal"><div class="step-number">02</div><h3>Studio e Progettazione</h3><p>Sviluppiamo disegni tecnici e calcoli illuminotecnici precisi per definire dimensioni, materiali e resa luminosa prima di andare in produzione.</p></div>
+                <div class="process-step reveal"><div class="step-number">03</div><h3>Produzione Artigianale</h3><p>Diamo vita al progetto nel nostro laboratorio.</p></div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <section class="section-padding bg-dark">
+        <div class="container">
+            <div class="section-header"><div><span class="eyebrow">Recensioni</span><h2>Dicono di Noi</h2></div></div>
+            <div class="reviews-grid">
+                <div class="review-card reveal"><div class="stars">★★★★★</div><p class="review-text">"Abbiamo arredato la nostra casa con le lampade di Granfo Luce. Mi sono trovata benissimo. Ricevo moltissimi complimenti per i prodotti che ho acquistato."</p><h5>Cliente</h5></div>
+                <div class="review-card reveal"><div class="stars">★★★★★</div><p class="review-text">"È un posto magico: ogni lampadario ha una storia ed è un capolavoro!"</p><h5>Cliente</h5></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header center-text"><h2>Cosa devi sapere</h2></div>
+            <div class="faq-container reveal">
+                <div class="faq-item"><button class="faq-question">Realizzate lampade su misura? <span>+</span></button><div class="faq-answer"><p>Assolutamente sì. Uniamo la maestria artigiana alle tue esigenze: personalizziamo ogni dettaglio, dalla finitura alla dimensione, per offrirti non solo una lampada, ma un elemento di design unico e su misura.</p></div></div>
+                <div class="faq-item"><button class="faq-question">Operate solo a Verona? <span>+</span></button><div class="faq-answer"><p>La nostra sede è a Verona, ma operiamo ovunque. Seguiamo progetti in tutta Italia e all'estero, garantendo la stessa cura e competenza tecnica, sia per residenze private che per grandi spazi architettonici.</p></div></div>
+                <div class="faq-item"><button class="faq-question">Offrite consulenza illuminotecnica? <span>+</span></button><div class="faq-answer"><p>Certamente. Oltre alla creazione artigianale, offriamo un servizio tecnico completo: calcoli illuminotecnici e progettazione su misura per assicurare che ogni ambiente abbia la luce corretta, funzionale e performante.</p></div></div>
+                <div class="faq-item"><button class="faq-question">Che tipo di illuminazione trattate? <span>+</span></button><div class="faq-answer"><p>Viviamo di due anime complementari. Da noi trovi sia l'illuminazione decorativa, fatta di pezzi artigianali dal calore unico, sia l'illuminazione tecnica e architetturale, essenziale e invisibile. Il nostro obiettivo è far convivere questi due mondi nel tuo spazio.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-section">
+        <div class="container newsletter-content">
+            <h2>Diamo forma alla tua luce</h2>
+            <p>Hai un progetto in mente o cerchi un pezzo unico? Mettiamo 50 anni di esperienza al servizio delle tue idee.</p>
+                <form class="contact-form" action="https://formspree.io/f/mzzyojpq" method="POST" style="background: var(--color-bg-card); padding: 2.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                    <div style="margin-bottom: 1.5rem;">
+                        <input type="text" name="name" placeholder="Nome Cognome" required style="width: 100%; padding: 1rem 1.5rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; font-family: var(--font-sans); font-size: 1rem; outline: none; transition: all 0.3s;">
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <input type="email" name="email" placeholder="Email" required style="width: 100%; padding: 1rem 1.5rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; font-family: var(--font-sans); font-size: 1rem; outline: none; transition: all 0.3s;">
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <input type="tel" name="phone" placeholder="Telefono (Opzionale)" style="width: 100%; padding: 1rem 1.5rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; font-family: var(--font-sans); font-size: 1rem; outline: none; transition: all 0.3s;">
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <input type="text" name="subject" placeholder="Di cosa hai bisogno?" required style="width: 100%; padding: 1rem 1.5rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; font-family: var(--font-sans); font-size: 1rem; outline: none; transition: all 0.3s;">
+                    </div>
+                    <div style="margin-bottom: 2rem;">
+                        <textarea name="message" placeholder="Raccontaci la tua idea o descrivi il tuo spazio..." rows="6" required style="width: 100%; padding: 1rem 1.5rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; font-family: var(--font-sans); font-size: 1rem; outline: none; transition: all 0.3s; resize: vertical;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-gold w-full" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        Invia la tua richiesta
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+    </section>
+
+   <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <a href="index.html" class="footer-logo"><img src="/images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 60px;"></a>
+                <p class="copyright">© 2025 GRANFO ILLUMINAZIONE S.N.C.<br>All Rights Reserved.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/Granfoluce.lampadari/?locale=it_IT" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
+                    <a href="https://www.instagram.com/granfoluce/" aria-label="Instagram"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path></svg></a>
+                    <a href="https://it.pinterest.com/granfolucefb/" aria-label="Pinterest"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.487-.69-2.435-2.844-2.435-4.576 0-3.719 2.703-7.149 7.808-7.149 4.105 0 7.292 2.925 7.292 6.829 0 4.075-2.57 7.356-6.138 7.356-1.2 0-2.324-.623-2.707-1.36l-.738 2.803c-.266 1.015-.99 2.278-1.477 3.05 1.11.343 2.296.529 3.518.529 6.618 0 11.996-5.383 11.996-12.004C24.013 5.367 18.636 0 12.017 0z"/></svg></a>
+                    <a href="https://www.youtube.com/@granfoluce3774/shorts" aria-label="YouTube"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>MENU</h4>
+                <ul>
+                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                    <li><a href="prodotti.html">Prodotti</a></li>
+                    <li><a href="contatti.html">Contattaci</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>INFO</h4>
+                <div class="footer-text-group">
+                    <p>GRANFO ILLUMINAZIONE S.N.C.</p>
+                    <p>P.IVA 01410980237</p>
+                    <a href="privacy-policy.html" class="privacy-link">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>CONTATTI</h4>
+                <div class="contact-rows">
+                    <p><span class="label">Email:</span><br><a href="mailto:granfoluce@hotmail.it" class="highlight-link">granfoluce@hotmail.it</a></p>
+                    <p><span class="label">Telefono:</span><br><a href="tel:+39045528541" class="highlight-link">+39 045 528541</a></p>
+                    <p><span class="label">Indirizzo:</span><br><a href="https://maps.google.com" target="_blank" class="highlight-link underline">via Ponte S. Pancrazio 8 Verona</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/393385978768" class="whatsapp-float"><svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+    <button id="backToTop" class="back-to-top">↑</button>
+
+    <div id="cookie-banner" class="cookie-banner">
+        <p>Utilizziamo i cookie per migliorare la tua esperienza.</p>
+        <div class="cookie-buttons">
+            <button id="acceptCookies" class="btn btn-gold btn-small">Accetta</button>
+            <button onclick="document.getElementById('cookie-banner').style.display='none'" class="btn-text">Chiudi</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('active'); document.body.classList.toggle('no-scroll'); }
+        function toggleSearch() { 
+            const overlay = document.getElementById('search-overlay'); overlay.classList.toggle('active');
+            if(overlay.classList.contains('active')) setTimeout(() => overlay.querySelector('input').focus(), 100);
+        }
+        // Ricerca: invia alla pagina Prodotti con query
+        (function initSearchRedirect(){
+            const overlay = document.getElementById('search-overlay');
+            const input = overlay ? overlay.querySelector('input') : null;
+            if (!input) return;
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const q = input.value.trim();
+                    if (q.length > 0) {
+                        window.location.href = 'prodotti.html?q=' + encodeURIComponent(q);
+                    }
+                } else if (e.key === 'Escape') {
+                    toggleSearch();
+                }
+            });
+        })();
+        let slideIndex = 1;
+        let slideTimeout;
+        let activeVideo = null;
+        const DEFAULT_SLIDE_DURATION = 5000;
+        const slides = document.getElementsByClassName("slide");
+        const dots = document.getElementsByClassName("dot");
+        if(slides.length > 0) { showSlides(slideIndex); startAutoSlide(); }
+        function changeSlide(n) { showSlides(slideIndex += n); startAutoSlide(); }
+        function currentSlide(n) { showSlides(slideIndex = n); startAutoSlide(); }
+        function showSlides(n) {
+            if (n > slides.length) slideIndex = 1; if (n < 1) slideIndex = slides.length;
+            for (let i = 0; i < slides.length; i++) { slides[i].classList.remove("active"); dots[i].classList.remove("active"); }
+            slides[slideIndex-1].classList.add("active"); dots[slideIndex-1].classList.add("active");
+        }
+        function startAutoSlide() {
+            clearTimeout(slideTimeout);
+            if (activeVideo) { activeVideo.onended = null; }
+            const current = slides[slideIndex - 1];
+            const video = current.querySelector('video');
+            if (video) {
+                activeVideo = video;
+                const goNext = () => { clearTimeout(slideTimeout); showSlides(slideIndex += 1); startAutoSlide(); };
+                const schedule = () => {
+                    const durationMs = (!isNaN(video.duration) && video.duration > 0) ? video.duration * 1000 : DEFAULT_SLIDE_DURATION;
+                    slideTimeout = setTimeout(goNext, durationMs);
+                };
+                video.currentTime = 0;
+                video.play().catch(() => {});
+                if (video.readyState >= 1 && !isNaN(video.duration)) schedule();
+                else video.addEventListener('loadedmetadata', schedule, { once: true });
+                video.onended = goNext;
+            } else {
+                activeVideo = null;
+                slideTimeout = setTimeout(() => { showSlides(slideIndex += 1); startAutoSlide(); }, DEFAULT_SLIDE_DURATION);
+            }
+        }
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); revealObserver.unobserve(entry.target); } });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => revealObserver.observe(el));
+        // Force animations to start on initial load
+        window.addEventListener('DOMContentLoaded', () => {
+            revealElements.forEach((el, i) => setTimeout(() => el.classList.add('active'), i * 60));
+        });
+        const backToTopBtn = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => { if (window.scrollY > 500) backToTopBtn.classList.add("show"); else backToTopBtn.classList.remove("show"); });
+        backToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+        if (!localStorage.getItem('cookiesAccepted')) setTimeout(() => document.getElementById('cookie-banner').style.display = 'block', 2000);
+        document.getElementById('acceptCookies').addEventListener('click', () => { localStorage.setItem('cookiesAccepted', 'true'); document.getElementById('cookie-banner').style.display = 'none'; });
+        document.querySelectorAll('.faq-question').forEach(btn => { btn.addEventListener('click', () => btn.parentElement.classList.toggle('active')); });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const activeDesktop = document.querySelector('.nav-links a.active');
+            if (!activeDesktop) return;
+            const targetHref = activeDesktop.getAttribute('href');
+            document.querySelectorAll('.mobile-menu a').forEach(link => {
+                if (link.getAttribute('href') === targetHref) link.classList.add('active');
+            });
+        });
+
+        // Image error fallback handler
+        document.addEventListener('error', function(e) {
+            if (e.target.tagName && e.target.tagName.toLowerCase() === 'img') {
+                e.target.src = 'images/placeholder.png';
+                e.target.alt = 'Immagine non disponibile';
+            }
+        }, true);
+    </script>
+    <div class="store-bar">
+        <a href="index.html" class="store-btn">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            Home
+        </a>
+        <a href="prodotti.html" class="store-btn">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            Prodotti
+        </a>
+        <a href="prodotti.html#wishlist" class="store-btn highlight">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            Wishlist
+        </a>
+        <a href="https://wa.me/393385978768" class="store-btn">
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+            WhatsApp
+        </a>
+    </div>
+    <script src="nav-behavior.js"></script>
+    
+    <script>
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('.navbar');
+    
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // 1. LOGICA COLORE: Se scorri più di 50px, diventa VERDE. Altrimenti TRASPARENTE.
+        if (scrollTop > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        // 2. LOGICA NASCONDI/MOSTRA:
+        // Se scorri GIÙ e non sei in cima -> Nascondi la barra
+        if (scrollTop > lastScrollTop && scrollTop > navbar.offsetHeight) {
+            navbar.classList.add('nav-hidden');
+        } else {
+            // Se scorri SU -> Mostra la barra
+            navbar.classList.remove('nav-hidden');
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+    </script>
+    <script>
+    // Funzione per lo slider Prima/Dopo
+    function updateSlider(val) {
+        const fg = document.getElementById('img-foreground');
+        const handle = document.getElementById('slider-handle');
+        if (fg) fg.style.width = val + '%';
+        if (handle) handle.style.left = val + '%';
+    }
+   </script>
+   <div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
+
+    <script>
+    // Script Cursore Personalizzato
+    const cursorDot = document.querySelector('.cursor-dot');
+    const cursorOutline = document.querySelector('.cursor-outline');
+
+    if (window.matchMedia("(min-width: 900px)").matches) {
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            // Il punto segue istantaneamente
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            // Il cerchio segue con un leggero ritardo (effetto fluido)
+            cursorOutline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Effetto ingrandimento sui link
+        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .project-card, .product-item');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+        });
+    }
+    </script>
+    <script>
+        const hidePreloader = () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader && !preloader.classList.contains('loaded')) {
+                preloader.classList.add('loaded');
+            }
+        };
+        window.addEventListener('load', () => {
+            requestAnimationFrame(() => {
+                setTimeout(hidePreloader, 80);
+            });
+        });
+    </script>
+    <script src="luxury.js"></script>
+</body>
+</html>

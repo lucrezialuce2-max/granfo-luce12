@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina non trovata | GRANFO</title>
+    <meta name="description" content="Errore 404. La pagina che stavi cercando non è disponibile.">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Preloader critico per evitare flash iniziale */
+        #preloader { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #0e1713; z-index: 99999; opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
+        .preloader-icon { width: 120px; height: auto; animation: breathe 2s infinite ease-in-out; }
+        @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.7; } }
+    </style>
+    <style>
+        /* Stile specifico per la pagina 404 per centrarla perfettamente */
+        .error-section {
+            position: relative;
+            height: 80vh; /* Occupa quasi tutto lo schermo */
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+            margin-top: 80px; /* Compensa la navbar fissa */
+        }
+        
+        .error-bg {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+        }
+        
+        .error-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.4) blur(2px); /* Scuro e sfocato per far risaltare il testo */
+        }
+
+        .error-content h1 {
+            font-family: var(--font-serif);
+            font-size: 8rem;
+            color: var(--color-accent);
+            line-height: 1;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease forwards 0.2s;
+        }
+
+        .error-content h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease forwards 0.4s;
+        }
+
+        .error-content p {
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease forwards 0.6s;
+        }
+
+        .btn-home {
+            opacity: 0;
+            animation: fadeIn 1s ease forwards 0.8s;
+        }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        @media (max-width: 768px) {
+            .error-content h1 { font-size: 5rem; }
+            .error-content h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <script>document.documentElement.style.visibility='hidden';</script>
+    <div id="preloader">
+        <img src="./images/brand/granfoluce-logo.png" alt="GRANFOLUCE" class="preloader-icon">
+    </div>
+    <script>
+        const hidePreloader = () => {
+            document.documentElement.style.visibility = 'visible';
+            const preloader = document.getElementById('preloader');
+            if (preloader && !preloader.classList.contains('loaded')) {
+                preloader.classList.add('loaded');
+            }
+        };
+        window.addEventListener('load', () => {
+            requestAnimationFrame(() => {
+                setTimeout(hidePreloader, 80);
+            });
+        });
+        setTimeout(hidePreloader, 3000);
+    </script>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo"><img src="./images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 50px;"></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="cataloghi.html">Cataloghi</a></li>
+                <li><a href="prodotti.html">Prodotti</a></li>
+                <li><a href="aurum.html">Domus</a></li>
+                <li><a href="progetti.html">Progetti</a></li>
+                <li><a href="chi-siamo.html">Chi Siamo</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="icon-btn" onclick="toggleSearch()"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                <div class="lang-selector"><a href="#" class="lang-item active">IT</a><a href="en/index.html" class="lang-item">EN</a></div>
+                <button class="menu-toggle" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="mobile-menu">
+            <a href="index.html">Home</a>
+            <a href="cataloghi.html">Cataloghi</a>
+            <a href="prodotti.html">Prodotti</a>
+            <a href="aurum.html">Domus</a>
+            <a href="progetti.html">Progetti</a>
+            <a href="chi-siamo.html">Chi Siamo</a>
+            <a href="contatti.html">Contatti</a>
+        </div>
+    </nav>
+
+    <div id="search-overlay" class="search-overlay">
+        <button class="close-search" onclick="toggleSearch()">✕</button>
+        <div class="search-container"><input type="text" placeholder="Cerca..." autofocus></div>
+    </div>
+
+    <section class="error-section">
+        <div class="error-bg">
+            <img src="https://images.unsplash.com/photo-1550989460-0adf9ea622e2?q=80&w=2000" alt="Sfondo artistico">
+        </div>
+        <div class="container error-content">
+            <h1>404</h1>
+            <h2>Pagina non trovata</h2>
+            <p>Ci dispiace, la pagina che stai cercando non esiste o è stata spostata.</p>
+            <div class="btn-home">
+                <a href="index.html" class="btn btn-gold">Torna alla Home</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer" style="padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container" style="text-align: center;">
+            <p class="copyright" style="margin-bottom: 0;">© 2025 GRANFO ILLUMINAZIONE S.N.C.</p>
+        </div>
+    </footer>
+
+    <script src="nav-behavior.js"></script>
+    <script>
+        // Funzioni base per far funzionare il menu anche qui
+        function toggleMenu() { 
+            document.getElementById('mobile-menu').classList.toggle('active'); 
+            document.body.classList.toggle('no-scroll'); 
+        }
+        function toggleSearch() { 
+            const overlay = document.getElementById('search-overlay'); 
+            overlay.classList.toggle('active'); 
+            if(overlay.classList.contains('active')) setTimeout(() => overlay.querySelector('input').focus(), 100); 
+        }
+        
+        // Navbar behavior semplice per questa pagina
+        let lastScrollTop = 0;
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+            lastScrollTop = scrollTop;
+        });
+    </script>
+    <script>
+        const hidePreloader = () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader && !preloader.classList.contains('loaded')) {
+                preloader.classList.add('loaded');
+            }
+        };
+        window.addEventListener('load', () => {
+            requestAnimationFrame(() => {
+                setTimeout(hidePreloader, 250);
+            });
+        });
+    </script>
+    <script src="luxury.js"></script>
+</body>
+</html>
