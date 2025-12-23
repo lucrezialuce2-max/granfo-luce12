@@ -268,19 +268,6 @@
             WhatsApp
         </a>
     </div>
-    <script>
-        const hidePreloader = () => {
-            const preloader = document.getElementById('preloader');
-            if (preloader && !preloader.classList.contains('loaded')) {
-                preloader.classList.add('loaded');
-            }
-        };
-        window.addEventListener('load', () => {
-            requestAnimationFrame(() => {
-                setTimeout(hidePreloader, 80);
-            });
-        });
-    </script>
-    <script src="../nav-behavior.js"></script>
+    <script src="../nav-behavior.js"></script><script src="../luxury.js"></script>
 </body>
 </html>

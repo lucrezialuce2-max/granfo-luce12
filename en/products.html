@@ -3,10 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products | GRANFO</title>
+    <title>Collections and Products | GRANFO</title>
+    <meta name="description" content="Handcrafted custom lighting. Pendants, table lamps and architectural solutions made in Italy.">
     <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <meta property="og:description" content="Light artisans since 1970. Discover our Murano glass collections and custom design.">
+    <meta property="og:image" content="https://tuosito.com/images/hero/hero-main-graphic.webp"> <meta property="og:url" content="https://tuosito.com">
+    <meta property="og:type" content="website">
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Preloader critico per evitare flash iniziale */
+        /* Critical preloader to avoid initial flash */
         #preloader { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #0e1713; z-index: 99999; opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0.3s ease; }
         #preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
         .preloader-icon { width: 120px; height: auto; animation: breathe 2s infinite ease-in-out; }
@@ -69,80 +76,156 @@
     </div>
 
     <header class="page-header">
-        <div class="page-header-bg"><img src="../images/prodotti/copertina-prodotti.webp" alt="Products"></div>
-        <div class="container page-title"><p class="breadcrumb"><a href="index.html">Home</a> / <span>Products</span></p><h1>The Collections</h1></div>
+        <div class="page-header-bg"><img src="../images/prodotti/copertina-prodotti.webp" alt="Granfo Products"></div>
+        <div class="container page-title">
+            <p class="breadcrumb"><a href="index.html">Home</a> / <span>Products</span></p>
+            <h1>The Collections</h1>
+        </div>
     </header>
 
-   <section class="section-padding" id="catalog">
-    <div class="container">
-        
-        <div style="display:flex; justify-content:center; margin-bottom:0.75rem;">
-            <button id="wishlist-chip" class="chip" style="display:none;" onclick="document.getElementById('wishlist')?.scrollIntoView({ behavior: 'smooth' });">Go to Wishlist</button>
+    <section class="aurum-banner">
+    <div class="container aurum-banner-content" style="flex-direction: column; align-items: center; text-align: center; gap: 1rem;">
+        <div class="aurum-text">
+            <h2>Domus Collection</h2>
+            <p>A modular system of interlocking Murano glass. Infinite combinations to shape your perfect light.</p>
         </div>
+        <div style="display: flex; justify-content: center;">
+            <a href="aurum.html" class="btn btn-gold">View Details</a>
+        </div>
+    </div>
+</section>
 
-        <div class="filters-bar">
+   <section class="section-padding" id="catalogo" style="padding-top: 2rem;">
+    <div class="container">
+        <div style="display:flex; justify-content:center; margin-bottom:0.75rem;">
+            <button id="wishlist-chip" class="chip" style="display:none;" onclick="document.getElementById('wishlist')?.scrollIntoView({ behavior: 'smooth' });">View Wishlist</button>
+        </div>
+        <div class="filters-bar" style="margin-bottom: 1rem;">
             <div class="scroller-track">
                 <button class="chip active" onclick="filterProducts('all', this)">All</button>
-                <button class="chip" onclick="filterProducts('pendant', this)">Pendant</button>
-                <button class="chip" onclick="filterProducts('table', this)">Table</button>
-                <button class="chip" onclick="filterProducts('ceiling', this)">Ceiling</button>
-                <button class="chip" onclick="filterProducts('wall', this)">Wall</button>
-                <button class="chip" onclick="filterProducts('floor', this)">Floor</button>
-                <button class="chip" onclick="filterProducts('vases & objects', this)">Vases & Objects</button>
+                <button class="chip" onclick="filterProducts('sospensione', this)">Pendant</button>
+                <button class="chip" onclick="filterProducts('tavolo', this)">Table</button>
+                <button class="chip" onclick="filterProducts('soffitto', this)">Ceiling</button>
+                <button class="chip" onclick="filterProducts('parete', this)">Wall</button>
+                <button class="chip" onclick="filterProducts('terra', this)">Floor</button>
+                <button class="chip" onclick="filterProducts('vasi e oggettistica', this)">Vases & Objects</button>
                 <button class="chip" onclick="filterProducts('outdoor', this)">Outdoor</button>
             </div>
-            
         </div>
 
-        <p class="results-count" id="results-count"></p>
+        <div class="trust-icons-row">
+            <div class="trust-bar-scroll">
+            <div class="trust-item">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"></path></svg>
+            <span>Made in Italy</span>
+            </div>
+            <div class="trust-item">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
+            <span>Murano Glass</span>
+            </div>
+            <div class="trust-item">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            <span>5-Year Warranty</span>
+            </div>
+            <div class="trust-item">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span>Worldwide Shipping</span>
+            </div>
+            <div class="trust-item">
+            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span>Handcrafted</span>
+            </div>
+       </div>
+        
+
+        <p class="results-count" id="results-count" style="margin-top: 1rem;"></p>
 
         <div class="products-page-grid reveal" id="product-grid">
             
-            <div class="product-item" data-category="pendant" data-price="low" data-material="metal" data-product-id="fungo-black" data-note="Note: Contact us for more info and variants.">
-                <div class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+            <div class="product-item" data-category="sospensione" data-price="low" data-material="vetro" data-product-id="fungo-black" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img src="../images/prodotti/sospensione/fungonero.webp" alt="Fungo Black pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
                 <div class="p-3">
                     <h3>Fungo Black</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;">Metal pendant</p>
-                    <p style="color:var(--color-accent); font-weight:600; margin-top:0.5rem;">€ 240,00</p>
-                    <button class="btn-share-native" onclick="shareProduct('Fungo Black', 'Metal pendant - GRANFO', window.location.href)"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>Share</button>
                 </div>
             </div>
 
-            <div class="product-item" data-category="pendant" data-price="medium" data-material="gold" data-product-id="luxe-table" data-note="Note: Contact us for more info and variants.">
-                <div class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+            <div class="product-item" data-category="sospensione" data-price="medium" data-material="oro" data-product-id="luxe-table" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img src="../images/prodotti/Sospensione/barra.webp" alt="Barra pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
                 <div class="p-3">
                     <h3>Luxe Table</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;">Gold finish pendant</p>
-                    <p style="color:var(--color-accent); font-weight:600; margin-top:0.5rem;">€ 450,00</p>
-                    <button class="btn-share-native" onclick="shareProduct('Luxe Table', 'Gold finish pendant - GRANFO', window.location.href)"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>Share</button>
                 </div>
             </div>
 
-             <div class="product-item" data-category="pendant" data-price="high" data-material="glass" data-product-id="applique-modern" data-note="Note: Contact us for more info and variants.">
-                <div class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+             <div class="product-item" data-category="sospensione" data-price="high" data-material="metallo" data-product-id="applique-modern" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img src="../images/prodotti/sospensione/sospvetro.webp" alt="Glass pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
                 <div class="p-3">
                     <h3>Applique Modern</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;">Geometric glass design</p>
-                    <p style="color:var(--color-accent); font-weight:600; margin-top:0.5rem;">€ 180,00</p>
-                    <button class="btn-share-native" onclick="shareProduct('Applique Modern', 'Geometric glass design - GRANFO', window.location.href)"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>Share</button>
                 </div>
             </div>
 
-            <div class="product-item" data-category="pendant" data-price="medium" data-material="metal" data-product-id="garden-light" data-note="Note: Contact us for more info and variants.">
-                <div class="wishlist-btn"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
-                <img src="../images/prodotti/sospensione/tubo.webp" alt="Tubo pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
+            <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="garden-light-tube" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="../images/prodotti/sospensione/tubo.webp" alt="Tube pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
                 <div class="p-3">
                     <h3>Garden Light</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">Water-resistant pendant</p>
-                    <p style="color:var(--color-accent); font-weight:600; margin-top:0.5rem;">€ 320,00</p>
-                    <button class="btn-share-native" onclick="shareProduct('Garden Light', 'Water-resistant pendant - GRANFO', window.location.href)"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>Share</button>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;">Water-resistant</p>
                 </div>
             </div>
 
+            <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="garden-light-collar" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="../images/prodotti/sospensione/sospcoll.webp" alt="Pendant necklace" onclick="openLightbox(this.src)" style="cursor: pointer;">
+                <div class="p-3">
+                    <h3>Garden Light</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;">Water-resistant</p>
+                </div>
             </div>
+            
+             <div class="product-item" data-category="sospensione" data-price="high" data-material="metallo" data-line="aurum" data-product-id="sospensione-aurum" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Add to wishlist" title="Add to Wishlist">
+                    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </button>
+                <img src="../images/prodotti/Sospensione/sospensione-aurum.webp" alt="Domus pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
+                <div class="p-3">
+                    <h3>Domus Pendant</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;">Murano glass - Crystal</p>
+                </div>
+            </div>
+
+            <div class="product-item" data-category="tavolo" data-price="medium" data-material="metallo" data-product-id="garden-light-table" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="../images/prodotti/Tavolo/tavolocubo.webp" alt="Cubo table lamp" onclick="openLightbox(this.src)" style="cursor: pointer;">
+                <div class="p-3">
+                    <h3>Garden Light</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;">Water-resistant</p>
+                </div>
+            </div>
+
+            <div class="product-item" data-category="tavolo" data-price="medium" data-material="metallo" data-line="aurum" data-product-id="tavolo-lastra" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="../images/prodotti/Tavolo/vetri-lastra.webp" alt="Lastra table" onclick="openLightbox(this.src)" style="cursor: pointer;">
+                <div class="p-3">
+                    <h3>Lastra Table</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;">Brass finish</p>
+                </div>
+            </div>
+
+            <div class="product-item" data-category="terra" data-price="medium" data-material="metallo" data-product-id="garden-light-floor" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="../images/prodotti/Terra/terralight.webp" alt="Floor lamp" onclick="openLightbox(this.src)" style="cursor: pointer;">
+                <div class="p-3">
+                    <h3>Garden Light</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;">Water-resistant</p>
+                </div>
+            </div>
+
+        </div>
     </div>
 </section>
 
@@ -161,9 +244,9 @@
         </div>
         <div class="filter-group">
             <h4>Material</h4>
-            <label><input type="checkbox" value="glass" onchange="applyAdvancedFilters()"> Blown Glass</label>
-            <label><input type="checkbox" value="metal" onchange="applyAdvancedFilters()"> Metal</label>
-            <label><input type="checkbox" value="gold" onchange="applyAdvancedFilters()"> Gold Finish</label>
+            <label><input type="checkbox" value="vetro" onchange="applyAdvancedFilters()"> Blown Glass</label>
+            <label><input type="checkbox" value="metallo" onchange="applyAdvancedFilters()"> Metal</label>
+            <label><input type="checkbox" value="oro" onchange="applyAdvancedFilters()"> Gold Finish</label>
         </div>
     </div>
     <div class="filter-footer">
@@ -171,10 +254,14 @@
     </div>
 </div>
 
-    <section class="section-padding" id="wishlist" style="display:none;">
+    <section class="section-padding" id="wishlist" style="display:none; padding-top:2rem;">
         <div class="container">
             <div class="section-header">
                 <div><span class="eyebrow">Favorites</span><h2>Your Wishlist</h2></div>
+            </div>
+            <div class="wishlist-actions" style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:1rem;">
+                <button class="btn btn-gold" onclick="sendWishlist('whatsapp')" style="padding:0.8rem 1.4rem;">Share on WhatsApp</button>
+                <button class="btn btn-outline" onclick="sendWishlist('mail')" style="padding:0.8rem 1.4rem;">Send via Email</button>
             </div>
             <div class="products-page-grid reveal" id="wishlist-grid"></div>
             <p class="results-count" id="wishlist-empty" style="margin-top:1rem;">No products in wishlist.</p>
@@ -212,7 +299,7 @@
             <div class="footer-col">
                 <h4>CONTACTS</h4>
                 <div class="contact-rows">
-                    <p><span class="label">Email:</span><br><a href="mailto:granfoluce@hotmail.it" class="highlight-link">granfoluce@hotmail.it</a></p>
+                    <p><span class="label">Email:</span><br><a href="mailto:info@granfoluce.it" class="highlight-link">info@granfoluce.it</a></p>
                     <p><span class="label">Phone:</span><br><a href="tel:+39045528541" class="highlight-link">+39 045 528541</a></p>
                     <p><span class="label">Address:</span><br><a href="https://maps.google.com" target="_blank" class="highlight-link underline">via Ponte S. Pancrazio 8 Verona</a></p>
                 </div>
@@ -220,16 +307,6 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/393385978768" class="whatsapp-float"><svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
-    <button id="backToTop" class="back-to-top">↑</button>
-
-    <div id="cookie-banner" class="cookie-banner">
-        <p>We use cookies to improve your experience.</p>
-        <div class="cookie-buttons">
-            <button id="acceptCookies" class="btn btn-gold btn-small">Accept</button>
-            <button onclick="document.getElementById('cookie-banner').style.display='none'" class="btn-text">Close</button>
-        </div>
-    </div>
 
     <script>
         function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('active'); document.body.classList.toggle('no-scroll'); }
@@ -237,7 +314,7 @@
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } }); }, { threshold: 0.1 });
         revealElements.forEach(el => revealObserver.observe(el));
-        /* --- FILTER LOGIC (EN) --- */
+        /* --- FILTER LOGIC --- */
 let activeCategory = 'all';
 let activeSearchQuery = '';
 
@@ -254,16 +331,19 @@ function filterProducts(category, btnElement) {
     activeCategory = category;
     document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
     if (btnElement) btnElement.classList.add('active');
+
     applyAdvancedFilters();
 }
 
 window.addEventListener('load', () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const category = urlParams.get('category');
+    const categoria = urlParams.get('categoria');
     const q = urlParams.get('q');
-    if (category) {
-        const btn = Array.from(document.querySelectorAll('.chip')).find(c => c.textContent.toLowerCase().includes(category.toLowerCase()) || c.getAttribute('onclick')?.includes(category));
-        if (btn) filterProducts(category, btn);
+    if (categoria) {
+        const btn = Array.from(document.querySelectorAll('.chip')).find(c => c.textContent.toLowerCase().includes(categoria.toLowerCase()) || c.getAttribute('onclick')?.includes(categoria));
+        if (btn) {
+            filterProducts(categoria, btn);
+        }
     }
     if (q) {
         activeSearchQuery = q;
@@ -272,6 +352,22 @@ window.addEventListener('load', () => {
         if (input) input.value = q;
         applyAdvancedFilters();
     }
+
+    const hash = window.location.hash;
+    if (hash) {
+        setTimeout(() => {
+            const targetId = hash.replace('#','');
+            let target = document.getElementById(targetId);
+            if (!target && (hash === '#product-grid' || hash === '#catalogo')) {
+                target = document.getElementById('catalogo') || document.getElementById('product-grid');
+            }
+            if (target) {
+                const offset = 90;
+                const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top, behavior: 'smooth' });
+            }
+        }, 120);
+    }
 });
 
 function applyAdvancedFilters() {
@@ -279,7 +375,7 @@ function applyAdvancedFilters() {
     let visibleCount = 0;
 
     const priceFilters = Array.from(document.querySelectorAll('input[type="checkbox"][value="low"]:checked, input[type="checkbox"][value="medium"]:checked, input[type="checkbox"][value="high"]:checked')).map(cb => cb.value);
-    const materialFilters = Array.from(document.querySelectorAll('input[type="checkbox"][value="glass"]:checked, input[type="checkbox"][value="metal"]:checked, input[type="checkbox"][value="gold"]:checked')).map(cb => cb.value);
+    const materialFilters = Array.from(document.querySelectorAll('input[type="checkbox"][value="vetro"]:checked, input[type="checkbox"][value="metallo"]:checked, input[type="checkbox"][value="oro"]:checked')).map(cb => cb.value);
 
     const normalizedQuery = (activeSearchQuery || '').toLowerCase().trim();
 
@@ -323,20 +419,143 @@ function applyAdvancedFilters() {
         activeSearchQuery = e.target.value || '';
         applyAdvancedFilters();
     });
-    input.addEventListener('keydown', (e) => { if (e.key === 'Escape') toggleSearch(); });
+    input.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') toggleSearch();
+    });
 })();
 
-// === WISHLIST FUNCTIONALITY ===
 const productTemplateMap = {};
-function buildProductTemplateMap() { document.querySelectorAll('.product-item').forEach(item => { const id = item.getAttribute('data-product-id'); if (id && !productTemplateMap[id]) productTemplateMap[id] = item; }); }
-function getWishlist() { const wishlist = localStorage.getItem('granfoluce_wishlist'); return wishlist ? JSON.parse(wishlist) : []; }
-function saveWishlist(wishlist) { localStorage.setItem('granfoluce_wishlist', JSON.stringify(wishlist)); }
-function toggleWishlist(productId, btnElement) { let wishlist = getWishlist(); const index = wishlist.indexOf(productId); if (index > -1) { wishlist.splice(index, 1); btnElement.classList.remove('active'); } else { wishlist.push(productId); btnElement.classList.add('active'); } saveWishlist(wishlist); renderWishlist(); }
-function bindWishlistButton(btn) { if (btn.dataset.bound === 'true') return; const productItem = btn.closest('.product-item'); const productId = productItem.getAttribute('data-product-id'); const wishlist = getWishlist(); if (wishlist.includes(productId)) btn.classList.add('active'); btn.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); toggleWishlist(productId, btn); }); btn.dataset.bound = 'true'; }
-function initWishlist() { const wishlistBtns = document.querySelectorAll('.wishlist-btn'); wishlistBtns.forEach(bindWishlistButton); }
-function renderWishlist() { const section = document.getElementById('wishlist'); const grid = document.getElementById('wishlist-grid'); const empty = document.getElementById('wishlist-empty'); if (!section || !grid || !empty) return; const wishlist = getWishlist(); grid.innerHTML = ''; const wishlistChip = document.getElementById('wishlist-chip'); if (wishlist.length === 0) { section.style.display = 'none'; if (wishlistChip) wishlistChip.style.display = 'none'; return; } section.style.display = 'block'; empty.style.display = 'none'; if (wishlistChip) wishlistChip.style.display = 'inline-block'; wishlist.forEach(id => { const template = productTemplateMap[id]; if (!template) return; const clone = template.cloneNode(true); clone.style.display = 'block'; const btn = clone.querySelector('.wishlist-btn'); if (btn) { btn.classList.add('active'); bindWishlistButton(btn); } grid.appendChild(clone); }); }
 
-window.addEventListener('DOMContentLoaded', () => { buildProductTemplateMap(); initWishlist(); renderWishlist(); applyAdvancedFilters(); });
+function showToast(message) {
+    const toast = document.createElement('div');
+    toast.innerText = message;
+    toast.style.cssText = "position:fixed; bottom:20px; left:50%; transform:translateX(-50%); background:var(--color-accent); color:var(--color-bg-main); padding:12px 24px; border-radius:50px; z-index:999999; font-weight:bold; text-align:center; box-shadow:0 5px 15px rgba(0,0,0,0.3); animation: fadeInToast 0.3s ease-out, fadeOutToast 0.3s ease-in 2.7s forwards;";
+    document.body.appendChild(toast);
+    setTimeout(() => toast.remove(), 3000);
+}
+
+function buildProductTemplateMap() {
+    document.querySelectorAll('.product-item').forEach(item => {
+        const id = item.getAttribute('data-product-id');
+        if (id && !productTemplateMap[id]) productTemplateMap[id] = item;
+    });
+}
+
+function wishlistLines() {
+    const wishlist = getWishlist();
+    if (!wishlist.length) return '';
+    const names = wishlist
+        .map(id => {
+            const item = productTemplateMap[id];
+            if (!item) return null;
+            return item.querySelector('h3')?.textContent?.trim();
+        })
+        .filter(Boolean);
+    return names.map((name, i) => `${i + 1}. ${name}`).join('%0A');
+}
+
+function sendWishlist(channel) {
+    const lines = wishlistLines();
+    if (!lines) {
+        alert('The wishlist is empty.');
+        return;
+    }
+    if (channel === 'whatsapp') {
+        window.open(`https://wa.me/?text=Here%20is%20my%20wishlist%3A%0A${lines}`, '_blank');
+    } else if (channel === 'mail') {
+        window.location.href = `mailto:?subject=Wishlist%20Granfo&body=Here%20is%20my%20wishlist%3A%0A${lines}`;
+    }
+}
+
+function getWishlist() {
+    const wishlist = localStorage.getItem('granfoluce_wishlist');
+    return wishlist ? JSON.parse(wishlist) : [];
+}
+
+function saveWishlist(wishlist) {
+    localStorage.setItem('granfoluce_wishlist', JSON.stringify(wishlist));
+}
+
+function toggleWishlist(productId, btnElement) {
+    let wishlist = getWishlist();
+    const index = wishlist.indexOf(productId);
+    
+    if (index > -1) {
+        wishlist.splice(index, 1);
+        btnElement.classList.remove('active');
+        showToast("Removed from Wishlist");
+    } else {
+        wishlist.push(productId);
+        btnElement.classList.add('active');
+        showToast("Added to Wishlist!");
+        if (navigator.vibrate) { navigator.vibrate(50); }
+    }
+    
+    saveWishlist(wishlist);
+    renderWishlist();
+}
+
+function bindWishlistButton(btn) {
+    if (btn.dataset.bound === 'true') return;
+    const productItem = btn.closest('.product-item');
+    const productId = productItem.getAttribute('data-product-id');
+    const wishlist = getWishlist();
+    if (wishlist.includes(productId)) btn.classList.add('active');
+
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleWishlist(productId, btn);
+    });
+    btn.dataset.bound = 'true';
+}
+
+function initWishlist() {
+    const wishlistBtns = document.querySelectorAll('.wishlist-btn');
+    wishlistBtns.forEach(bindWishlistButton);
+}
+
+function renderWishlist() {
+    const section = document.getElementById('wishlist');
+    const grid = document.getElementById('wishlist-grid');
+    const empty = document.getElementById('wishlist-empty');
+    if (!section || !grid || !empty) return;
+
+    const wishlist = getWishlist();
+    grid.innerHTML = '';
+
+    const wishlistChip = document.getElementById('wishlist-chip');
+
+    if (wishlist.length === 0) {
+        section.style.display = 'none';
+        if (wishlistChip) wishlistChip.style.display = 'none';
+        return;
+    }
+
+    section.style.display = 'block';
+    empty.style.display = 'none';
+    if (wishlistChip) wishlistChip.style.display = 'inline-block';
+
+    wishlist.forEach(id => {
+        const template = productTemplateMap[id];
+        if (!template) return;
+        const clone = template.cloneNode(true);
+        clone.style.display = 'block';
+        const btn = clone.querySelector('.wishlist-btn');
+        if (btn) {
+            btn.classList.add('active');
+            bindWishlistButton(btn);
+        }
+        grid.appendChild(clone);
+    });
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+    buildProductTemplateMap();
+    initWishlist();
+    renderWishlist();
+    applyAdvancedFilters();
+});
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -348,118 +567,115 @@ window.addEventListener('DOMContentLoaded', () => { buildProductTemplateMap(); i
             });
         });
 
-        // Image error fallback handler
         document.addEventListener('error', function(e) {
             if (e.target.tagName && e.target.tagName.toLowerCase() === 'img') {
                 e.target.src = '../images/placeholder.png';
                 e.target.alt = 'Image not available';
             }
         }, true);
-    
-    // Native Share API function
-    async function shareProduct(title, text, url) {
-        if (navigator.share) {
-            try {
-                await navigator.share({ title: title, text: text, url: url });
-            } catch (err) {
-                if (err.name !== 'AbortError') {
-                    console.error('Share failed:', err);
-                }
+
+        function openLightbox(elOrSrc) {
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            const note = document.getElementById('lightbox-note');
+
+            let src = '', title = '', desc = '';
+            if (typeof elOrSrc === 'string') {
+                src = elOrSrc;
+                const imgEl = Array.from(document.querySelectorAll('img')).find(i => (i.currentSrc && i.currentSrc.includes(src)) || i.src.includes(src) || i.getAttribute('src') === src);
+                const item = imgEl ? imgEl.closest('.product-item') : null;
+                title = item?.querySelector('h3')?.textContent || '';
+                desc = item?.querySelector('.p-3 p')?.textContent || imgEl?.alt || '';
+            } else {
+                const imgEl = elOrSrc;
+                src = imgEl.src;
+                const item = imgEl.closest('.product-item');
+                title = item?.querySelector('h3')?.textContent || '';
+                const ps = item ? item.querySelectorAll('.p-3 p') : [];
+                desc = ps.length ? ps[0].textContent : imgEl.alt || '';
             }
-        } else {
-            // Fallback: copy to clipboard
-            try {
-                await navigator.clipboard.writeText(`${title} - ${text} - ${url}`);
-                alert('Link copied to clipboard!');
-            } catch (err) {
-                console.error('Clipboard failed:', err);
+
+            img.src = src;
+            if (caption) caption.innerHTML = (title ? `<strong>${title}</strong>` : '') + (desc ? `<br>${desc}` : '');
+            const item = (typeof elOrSrc === 'string')
+                ? Array.from(document.querySelectorAll('img')).find(i => (i.currentSrc && i.currentSrc.includes(src)) || i.src.includes(src) || i.getAttribute('src') === src)?.closest('.product-item')
+                : elOrSrc.closest('.product-item');
+            const noteText = item?.getAttribute('data-note') || '';
+            if (note) {
+                note.innerHTML = noteText;
+                note.style.display = noteText ? 'block' : 'none';
             }
+            document.body.style.overflow = 'hidden';
+            lb.style.display = 'flex';
         }
-    }
-
-    // Lightbox with caption
-    function openLightbox(elOrSrc) {
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const caption = document.getElementById('lightbox-caption');
-        const note = document.getElementById('lightbox-note');
-
-        let src = '', title = '', desc = '';
-        if (typeof elOrSrc === 'string') {
-            src = elOrSrc;
-            const imgEl = Array.from(document.querySelectorAll('img')).find(i => (i.currentSrc && i.currentSrc.includes(src)) || i.src.includes(src) || i.getAttribute('src') === src);
-            const item = imgEl ? imgEl.closest('.product-item') : null;
-            title = item?.querySelector('h3')?.textContent || '';
-            desc = item?.querySelector('.p-3 p')?.textContent || imgEl?.alt || '';
-        } else {
-            const imgEl = elOrSrc;
-            src = imgEl.src;
-            const item = imgEl.closest('.product-item');
-            title = item?.querySelector('h3')?.textContent || '';
-            const ps = item ? item.querySelectorAll('.p-3 p') : [];
-            desc = ps.length ? ps[0].textContent : imgEl.alt || '';
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            lb.style.display = 'none';
+            document.body.style.overflow = 'auto';
         }
-
-        lightboxImg.src = src;
-        if (caption) caption.innerHTML = (title ? `<strong>${title}</strong>` : '') + (desc ? `<br>${desc}` : '');
-        const item = (typeof elOrSrc === 'string')
-            ? Array.from(document.querySelectorAll('img')).find(i => (i.currentSrc && i.currentSrc.includes(src)) || i.src.includes(src) || i.getAttribute('src') === src)?.closest('.product-item')
-            : elOrSrc.closest('.product-item');
-        const noteText = item?.getAttribute('data-note') || '';
-        if (note) {
-            note.innerHTML = noteText;
-            note.style.display = noteText ? 'block' : 'none';
-        }
-        document.body.style.overflow = 'hidden';
-        lightbox.style.display = 'flex';
-    }
-    function closeLightbox() {
-        const lightbox = document.getElementById('lightbox');
-        lightbox.style.display = 'none';
-        document.body.style.overflow = 'auto';
-    }
     </script>
-
-    <!-- Lightbox Overlay -->
-    <div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:99999; justify-content:center; align-items:center;" onclick="closeLightbox()">
-        <div class="lightbox-inner" style="display:flex; flex-direction:column; align-items:center;" onclick="event.stopPropagation()">
-            <img id="lightbox-img" src="" style="max-width:90%; max-height:80%; object-fit:contain;">
+    <div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:99999; align-items:center; justify-content:center;" onclick="closeLightbox()">
+        <div class="lightbox-inner" style="display:flex; flex-direction:column; align-items:center; max-width:100%;" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" style="max-width:90%; max-height:80%; object-fit:contain; transition: transform 0.2s; cursor: zoom-out;">
             <div class="lightbox-caption" id="lightbox-caption" style="max-width:90%; margin:1rem auto 0; color:#fff; font-size:0.95rem; line-height:1.4; text-align:center;"></div>
             <div id="lightbox-note" class="lightbox-note" style="width:90%; margin:0.5rem auto 0; color:#fff; opacity:0.9; font-size:0.9rem; line-height:1.5; text-align:center; display:none;"></div>
         </div>
+        <span style="position:absolute; top:20px; right:20px; color:white; font-size:2rem; cursor:pointer;" onclick="closeLightbox()">×</span>
+        <span style="position:absolute; bottom:20px; width:100%; text-align:center; color:#888; font-size:0.8rem;">Tap to close</span>
     </div>
+            <div class="store-bar">
+                <a href="index.html" class="store-btn">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                    Home
+                </a>
+                <a href="products.html" class="store-btn">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                    Products
+                </a>
+                <a href="products.html#wishlist" class="store-btn highlight">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                    Wishlist
+                </a>
+                <a href="https://wa.me/393385978768" class="store-btn">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                    WhatsApp
+                </a>
+            </div>
 
-    <div class="store-bar">
-        <a href="index.html" class="store-btn">
-            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
-            Home
-        </a>
-        <a href="products.html" class="store-btn">
-            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            Products
-        </a>
-        <a href="products.html#wishlist" class="store-btn highlight">
-            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-            Wishlist
-        </a>
-        <a href="https://wa.me/393385978768" class="store-btn">
-            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-            WhatsApp
-        </a>
-    </div>
+            <a href="https://wa.me/393385978768" class="whatsapp-float" aria-label="WhatsApp"><svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+            <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
+            <div id="cookie-banner" class="cookie-banner">
+                <p>We use cookies to improve your experience.</p>
+                <div class="cookie-buttons">
+                    <button id="acceptCookies" class="btn btn-gold btn-small">Accept</button>
+                    <button onclick="document.getElementById('cookie-banner').style.display='none'" class="btn-text">Close</button>
+                </div>
+            </div>
+
+            <script src="../nav-behavior.js"></script>
     <script>
-        const hidePreloader = () => {
-            const preloader = document.getElementById('preloader');
-            if (preloader && !preloader.classList.contains('loaded')) {
-                preloader.classList.add('loaded');
-            }
-        };
-        window.addEventListener('load', () => {
-            requestAnimationFrame(() => {
-                setTimeout(hidePreloader, 80);
-            });
-        });
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('.navbar');
+    
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (scrollTop > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        if (scrollTop > lastScrollTop && scrollTop > navbar.offsetHeight) {
+            navbar.classList.add('nav-hidden');
+        } else {
+            navbar.classList.remove('nav-hidden');
+        }
+        
+        lastScrollTop = scrollTop;
+    });
     </script>
-    <script src="../nav-behavior.js"></script>
+    <script src="../luxury.js"></script>
 </body>
 </html>

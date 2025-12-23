@@ -8,16 +8,36 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
     <meta property="og:title" content="GRANFO | Light Design Verona">
-<meta property="og:description" content="Artigiani della luce dal 1970. Scopri le nostre collezioni in vetro di Murano e design su misura.">
-<meta property="og:image" content="https://tuosito.com/images/hero/hero-main-graphic.webp"> <meta property="og:url" content="https://tuosito.com">
-<meta property="og:type" content="website">
+    <meta property="og:description" content="Artigiani della luce dal 1970. Scopri le nostre collezioni in vetro di Murano e design su misura.">
+    <meta property="og:image" content="https://tuosito.com/images/hero/hero-main-graphic.webp"> 
+    <meta property="og:url" content="https://tuosito.com">
+    <meta property="og:type" content="website">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Preloader critico per evitare flash iniziale */
+        /* Preloader */
         #preloader { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #0e1713; z-index: 99999; opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0.3s ease; }
         #preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
         .preloader-icon { width: 120px; height: auto; animation: breathe 2s infinite ease-in-out; }
         @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.7; } }
+        
+        /* Stile per il filtro attivo */
+        .swatch-item { cursor: pointer; transition: transform 0.2s; }
+        .swatch-item:hover { transform: scale(1.05); }
+        .swatch-item.active-filter .swatch-img { border: 2px solid var(--color-accent); transform: scale(1.1); }
+        
+        /* Bottone reset filtro */
+        .reset-filter-btn {
+            display: none; /* Nascosto di default */
+            margin: 20px auto;
+            background: transparent;
+            border: 1px solid var(--color-text-muted);
+            color: var(--color-text-muted);
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .reset-filter-btn:hover { border-color: white; color: white; }
     </style>
 </head>
 <body>
@@ -34,9 +54,7 @@
             }
         };
         window.addEventListener('load', () => {
-            requestAnimationFrame(() => {
-                setTimeout(hidePreloader, 80);
-            });
+            requestAnimationFrame(() => { setTimeout(hidePreloader, 80); });
         });
         setTimeout(hidePreloader, 3000);
     </script>
@@ -84,57 +102,49 @@
     <div class="container">
         <div class="section-header">
             <div><span class="eyebrow">Esclusiva</span><h2>L'eleganza del vetro di Murano</h2></div>
+            <p style="margin-top: 10px; color: var(--color-text-muted);">Clicca su un colore per filtrare i prodotti.</p>
         </div>
 
-        <div class="color-swatches reveal" style="margin-bottom: 4rem;">
+        <div class="color-swatches reveal" style="margin-bottom: 2rem;">
             <div class="color-swatches-grid">
-                
-                <div class="swatch-item" onclick="filterAurumByColor('Cristallo')">
+                <div class="swatch-item" id="filter-Cristallo" onclick="filterAurumByColor('Cristallo')">
                     <div class="swatch-img"><img src="images/colori/cristallo.webp" alt="Cristallo" loading="lazy"></div>
                     <span class="swatch-label">Cristallo</span>
                 </div>
-
-                <div class="swatch-item" onclick="filterAurumByColor('Ambra')">
+                <div class="swatch-item" id="filter-Ambra" onclick="filterAurumByColor('Ambra')">
                     <div class="swatch-img"><img src="images/colori/ambra.webp" alt="Ambra" loading="lazy"></div>
                     <span class="swatch-label">Ambra</span>
                 </div>
-
-                <div class="swatch-item" onclick="filterAurumByColor('Ametista')">
+                <div class="swatch-item" id="filter-Ametista" onclick="filterAurumByColor('Ametista')">
                     <div class="swatch-img"><img src="images/colori/ametista.webp" alt="Ametista" loading="lazy"></div>
                     <span class="swatch-label">Ametista</span>
                 </div>
-
-                <div class="swatch-item" onclick="filterAurumByColor('Arancio')">
+                <div class="swatch-item" id="filter-Arancio" onclick="filterAurumByColor('Arancio')">
                     <div class="swatch-img"><img src="images/colori/arancio.webp" alt="Arancio" loading="lazy"></div>
                     <span class="swatch-label">Arancio</span>
                 </div>
-
-                <div class="swatch-item" onclick="filterAurumByColor('Ossidiana')">
+                <div class="swatch-item" id="filter-Ossidiana" onclick="filterAurumByColor('Ossidiana')">
                     <div class="swatch-img"><img src="images/colori/ossidiana.webp" alt="Ossidiana" loading="lazy"></div>
                     <span class="swatch-label">Ossidiana</span>
                 </div>
-
-                <div class="swatch-item" onclick="filterAurumByColor('Smeraldo')">
+                <div class="swatch-item" id="filter-Smeraldo" onclick="filterAurumByColor('Smeraldo')">
                     <div class="swatch-img"><img src="images/colori/smeraldo.webp" alt="Smeraldo" loading="lazy"></div>
                     <span class="swatch-label">Smeraldo</span>
                 </div>
-
-                <div class="swatch-item" onclick="filterAurumByColor('Opaline')">
+                <div class="swatch-item" id="filter-Opaline" onclick="filterAurumByColor('Opaline')">
                     <div class="swatch-img"><img src="images/colori/opalino.webp" alt="Opaline" loading="lazy"></div>
                     <span class="swatch-label">Opaline</span>
                 </div>
-
-                <div class="swatch-item" onclick="filterAurumByColor('Cioccolato')">
+                <div class="swatch-item" id="filter-Cioccolato" onclick="filterAurumByColor('Cioccolato')">
                     <div class="swatch-img"><img src="images/colori/cioccolato.webp" alt="Cioccolato" loading="lazy"></div>
                     <span class="swatch-label">Cioccolato</span>
                 </div>
-
-                <div class="swatch-item" onclick="filterAurumByColor('Antracite')">
+                <div class="swatch-item" id="filter-Antracite" onclick="filterAurumByColor('Antracite')">
                     <div class="swatch-img"><img src="images/colori/antracite.webp" alt="Antracite" loading="lazy"></div>
                     <span class="swatch-label">Antracite</span>
                 </div>
-
             </div>
+            <button id="reset-filter" class="reset-filter-btn" onclick="filterAurumByColor('All')">Mostra Tutti i Colori</button>
         </div>
 
         <div class="description-section reveal" style="margin-bottom: 4rem; max-width: 800px;">
@@ -143,9 +153,6 @@
             </p>
             <p style="line-height: 1.8; color: var(--color-text-muted); font-size: 1rem; margin-top: 1.25rem;">
                 Ogni lampada è fatta di formelle in vetro artistico, lavorate a mano per esaltare texture e imperfezioni che rendono ogni pezzo unico. La vera magia è la libertà: <strong>le lastre non sono fisse</strong>, puoi comporle e ricomporle per creare volumi e giochi di colore sempre nuovi.
-            </p>
-            <p style="line-height: 1.8; color: var(--color-text-muted); font-size: 1rem; margin-top: 1.25rem;">
-                Dalle trasparenze cristalline ai toni profondi di smeraldo e arancio, Domus ti permette di "costruire" la tua atmosfera. Che sia una sospensione scenografica, una lampada da tavolo scultorea o un'applique essenziale, <strong>la forma finale la decidi tu</strong>.
             </p>
         </div>
 
@@ -157,7 +164,7 @@
 
         <div class="products-page-grid-aurum reveal" id="product-grid">
             
-            <div class="product-item" data-category="tavolo" data-price="medium" data-material="metallo" data-line="aurum" data-product-id="tavolo-lastra" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
+            <div class="product-item" data-category="tavolo" data-colors="arancio,smeraldo" data-price="medium" data-material="metallo" data-line="aurum" data-product-id="tavolo-lastra">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist" title="Aggiungi alla Wishlist">
                     <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                 </button>
@@ -168,7 +175,7 @@
                 </div>
             </div>
 
-             <div class="product-item" data-category="sospensione" data-price="high" data-material="metallo" data-line="aurum" data-product-id="sospensione-aurum" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
+             <div class="product-item" data-category="sospensione" data-colors="cristallo,lapislazzulo" data-price="high" data-material="metallo" data-line="aurum" data-product-id="sospensione-aurum">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist" title="Aggiungi alla Wishlist">
                     <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                 </button>
@@ -179,6 +186,11 @@
                 </div>
             </div>
 
+        </div>
+        
+        <div id="no-results" style="display:none; text-align:center; padding: 2rem; color: var(--color-text-muted);">
+            <p>Nessun prodotto trovato con questo colore.</p>
+            <button onclick="filterAurumByColor('All')" style="background:none; border:none; color:var(--color-accent); text-decoration:underline; cursor:pointer;">Mostra tutti</button>
         </div>
     </div>
 </section>
@@ -201,77 +213,56 @@
             WhatsApp
         </a>
     </div>
-<footer class="footer">
+
+    <div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:99999; align-items:center; justify-content:center;" onclick="closeLightbox()">
+        <div class="lightbox-inner" style="display:flex; flex-direction:column; align-items:center; max-width:100%;" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" style="max-width:90%; max-height:80vh; object-fit:contain; border-radius:4px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+            <div id="lightbox-caption" style="margin-top:1rem; color:white; text-align:center; font-family:var(--font-sans);"></div>
+        </div>
+        <button style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:2.5rem; cursor:pointer;" onclick="closeLightbox()">×</button>
+    </div>
+
+    <footer class="footer">
         <div class="container footer-grid">
             <div class="footer-col brand-col">
-                <a href="index.html" class="footer-logo"><img src="/images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 60px;"></a>
+                <a href="index.html" class="footer-logo"><img src="./images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 60px;"></a>
                 <p class="copyright">© 2025 GRANFO ILLUMINAZIONE S.N.C.<br>All Rights Reserved.</p>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/Granfoluce.lampadari/?locale=it_IT" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
+                     <a href="https://www.facebook.com/Granfoluce.lampadari/?locale=it_IT" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
                     <a href="https://www.instagram.com/granfoluce/" aria-label="Instagram"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path></svg></a>
                     <a href="https://it.pinterest.com/granfolucefb/" aria-label="Pinterest"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.487-.69-2.435-2.844-2.435-4.576 0-3.719 2.703-7.149 7.808-7.149 4.105 0 7.292 2.925 7.292 6.829 0 4.075-2.57 7.356-6.138 7.356-1.2 0-2.324-.623-2.707-1.36l-.738 2.803c-.266 1.015-.99 2.278-1.477 3.05 1.11.343 2.296.529 3.518.529 6.618 0 11.996-5.383 11.996-12.004C24.013 5.367 18.636 0 12.017 0z"/></svg></a>
                     <a href="https://www.youtube.com/@granfoluce3774/shorts" aria-label="YouTube"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
                 </div>
             </div>
-            <div class="footer-col">
-                <h4>MENU</h4>
-                <ul>
-                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
-                    <li><a href="prodotti.html">Prodotti</a></li>
-                    <li><a href="contatti.html">Contattaci</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>INFO</h4>
-                <div class="footer-text-group">
-                    <p>GRANFO ILLUMINAZIONE S.N.C.</p>
-                    <p>P.IVA 01410980237</p>
-                    <a href="privacy-policy.html" class="privacy-link">Privacy Policy</a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>CONTATTI</h4>
-                <div class="contact-rows">
-                    <p><span class="label">Email:</span><br><a href="mailto:granfoluce@hotmail.it" class="highlight-link">granfoluce@hotmail.it</a></p>
-                    <p><span class="label">Telefono:</span><br><a href="tel:+39045528541" class="highlight-link">+39 045 528541</a></p>
-                    <p><span class="label">Indirizzo:</span><br><a href="https://maps.google.com" target="_blank" class="highlight-link underline">via Ponte S. Pancrazio 8 Verona</a></p>
-                </div>
-            </div>
+            <div class="footer-col"><h4>MENU</h4><ul><li><a href="chi-siamo.html">Chi Siamo</a></li><li><a href="prodotti.html">Prodotti</a></li><li><a href="contatti.html">Contattaci</a></li></ul></div>
+            <div class="footer-col"><h4>INFO</h4><div class="footer-text-group"><p>GRANFO ILLUMINAZIONE S.N.C.</p><p>P.IVA 01410980237</p><a href="privacy-policy.html" class="privacy-link">Privacy Policy</a></div></div>
+            <div class="footer-col"><h4>CONTATTI</h4><div class="contact-rows"><p><span class="label">Email:</span><br><a href="mailto:granfoluce@hotmail.it" class="highlight-link">granfoluce@hotmail.it</a></p><p><span class="label">Telefono:</span><br><a href="tel:+39045528541" class="highlight-link">+39 045 528541</a></p><p><span class="label">Indirizzo:</span><br><a href="https://maps.google.com" target="_blank" class="highlight-link underline">via Ponte S. Pancrazio 8 Verona</a></p></div></div>
         </div>
     </footer>
+
     <script>
-        // 1. NAV BAR SMART
+        // --- 1. FUNZIONALITÀ BASE (Navbar, Reveal, Menu) ---
         let lastScrollTop = 0;
         const navbar = document.querySelector('.navbar');
         window.addEventListener('scroll', function() {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-            if (scrollTop > lastScrollTop && scrollTop > navbar.offsetHeight) {
-                navbar.classList.add('nav-hidden');
-            } else {
-                navbar.classList.remove('nav-hidden');
-            }
+            if (scrollTop > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+            if (scrollTop > lastScrollTop && scrollTop > navbar.offsetHeight) navbar.classList.add('nav-hidden');
+            else navbar.classList.remove('nav-hidden');
             lastScrollTop = scrollTop;
         });
 
-        // 2. ANIMAZIONE REVEAL (FONDAMENTALE PER VEDERE IL CONTENUTO)
         document.addEventListener('DOMContentLoaded', () => {
             const revealElements = document.querySelectorAll('.reveal');
             const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('active');
-                    }
+                    if (entry.isIntersecting) entry.target.classList.add('active');
                 });
             }, { threshold: 0.1 });
             revealElements.forEach(el => revealObserver.observe(el));
         });
 
-        // 3. MENU MOBILE
         function toggleMenu() { 
             document.getElementById('mobile-menu').classList.toggle('active'); 
             document.body.classList.toggle('no-scroll'); 
@@ -282,29 +273,76 @@
             if(overlay.classList.contains('active')) setTimeout(() => overlay.querySelector('input').focus(), 100); 
         }
 
-        // 4. LIGHTBOX
+        // --- 2. LIGHTBOX (ZOOM) ---
         function openLightbox(src) {
-            // (Se vuoi usare la lightbox, altrimenti puoi toglierlo)
-            alert("Qui si aprirebbe l'immagine ingrandita: " + src);
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+
+            img.src = src;
+
+            // Trova didascalia (Title + Desc)
+            const pageImg = Array.from(document.querySelectorAll('img')).find(i => i.src === src || i.src.includes(src));
+            if (pageImg) {
+                const card = pageImg.closest('.product-item');
+                if (card) {
+                    const title = card.querySelector('h3')?.innerText || '';
+                    const desc = card.querySelector('p')?.innerText || '';
+                    caption.innerHTML = `<strong>${title}</strong><br>${desc}`;
+                }
+            }
+
+            lb.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         }
 
-        // 5. FILTRO COLORI (Placeholder)
-        function filterAurumByColor(color) {
-            alert("Hai selezionato il colore: " + color);
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            lb.style.display = 'none';
+            document.body.style.overflow = '';
         }
-    </script>
-    <script>
-        const hidePreloader = () => {
-            const preloader = document.getElementById('preloader');
-            if (preloader && !preloader.classList.contains('loaded')) {
-                preloader.classList.add('loaded');
+
+        // --- 3. FILTRO COLORI FUNZIONANTE ---
+        function filterAurumByColor(selectedColor) {
+            const products = document.querySelectorAll('.product-item');
+            const swatches = document.querySelectorAll('.swatch-item');
+            const resetBtn = document.getElementById('reset-filter');
+            const noResults = document.getElementById('no-results');
+            let visibleCount = 0;
+
+            // 1. Gestione stato visuale swatches (Active border)
+            swatches.forEach(s => s.classList.remove('active-filter'));
+            if (selectedColor !== 'All') {
+                const activeSwatch = document.getElementById('filter-' + selectedColor);
+                if(activeSwatch) activeSwatch.classList.add('active-filter');
+                if(resetBtn) resetBtn.style.display = 'block';
+            } else {
+                if(resetBtn) resetBtn.style.display = 'none';
             }
-        };
-        window.addEventListener('load', () => {
-            requestAnimationFrame(() => {
-                setTimeout(hidePreloader, 80);
+
+            // 2. Filtro logico
+            products.forEach(product => {
+                const productColors = product.getAttribute('data-colors') ? product.getAttribute('data-colors').toLowerCase() : '';
+                
+                // Se è "All" o se il colore selezionato è incluso nella lista colori del prodotto
+                if (selectedColor === 'All' || productColors.includes(selectedColor.toLowerCase())) {
+                    product.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    product.style.display = 'none';
+                }
             });
-        });
+
+            // 3. Gestione "Nessun risultato"
+            if (visibleCount === 0) {
+                if(noResults) noResults.style.display = 'block';
+            } else {
+                if(noResults) noResults.style.display = 'none';
+            }
+            
+            // Scroll alla griglia
+            document.getElementById('product-grid').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
     </script>
     <script src="luxury.js"></script>
 </body>
