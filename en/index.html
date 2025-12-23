@@ -437,32 +437,6 @@
         if (handle) handle.style.left = val + '%';
     }
    </script>
-   <div class="cursor-dot"></div>
-<div class="cursor-outline"></div>
-
-    <script>
-    const cursorDot = document.querySelector('.cursor-dot');
-    const cursorOutline = document.querySelector('.cursor-outline');
-
-    if (window.matchMedia("(min-width: 900px)").matches) {
-        window.addEventListener('mousemove', (e) => {
-            const posX = e.clientX;
-            const posY = e.clientY;
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
-        });
-
-        const interactiveElements = document.querySelectorAll('a, button, input, textarea, .project-card, .product-item');
-        interactiveElements.forEach(el => {
-            el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
-            el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
-        });
-    }
-    </script>
     <script src="../luxury.js"></script>
 </body>
 </html>

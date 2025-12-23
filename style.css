@@ -1476,42 +1476,9 @@ body::before {
     opacity: 0.07; /* Regola l'intensità (0.05 - 0.1) */
     mix-blend-mode: overlay;
 }
-/* --- CUSTOM CURSOR --- */
-/* Nascondiamo il cursore default solo su desktop */
+/* --- CUSTOM CURSOR DISABLED: keep native cursor on desktop --- */
 @media (min-width: 900px) {
-    body, a, button { cursor: none; }
-    
-    .cursor-dot,
-    .cursor-outline {
-        position: fixed;
-        top: 0;
-        left: 0;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        z-index: 9999;
-        pointer-events: none;
-    }
-
-    .cursor-dot {
-        width: 8px;
-        height: 8px;
-        background-color: var(--color-accent);
-    }
-
-    .cursor-outline {
-        width: 40px;
-        height: 40px;
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        transition: width 0.2s, height 0.2s, background-color 0.2s;
-    }
-
-    /* Effetto Hover sui link */
-    body.hovering .cursor-outline {
-        width: 60px;
-        height: 60px;
-        background-color: rgba(255, 140, 26, 0.1);
-        border-color: var(--color-accent);
-    }
+    body, a, button { cursor: auto; }
 }
 body {
     /* ...altri stili esistenti... */
@@ -1541,43 +1508,9 @@ body.loaded {
     opacity: 1;
 }
 
-/* 2. Cursore Personalizzato */
+/* 2. Cursor: native pointer retained */
 @media (min-width: 900px) {
-    body, a, button { cursor: none !important; }
-    
-    .cursor-dot {
-        width: 8px;
-        height: 8px;
-        background-color: var(--color-accent);
-        position: fixed;
-        top: 0; left: 0;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        z-index: 9999;
-        pointer-events: none;
-    }
-
-    .cursor-outline {
-        width: 40px;
-        height: 40px;
-        border: 1px solid rgba(255, 255, 255, 0.5);
-        position: fixed;
-        top: 0; left: 0;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        z-index: 9999;
-        pointer-events: none;
-        transition: width 0.2s, height 0.2s, background-color 0.2s;
-    }
-
-    /* Stato Hover (il cerchio si ingrandisce) */
-    body.hovering .cursor-outline {
-        width: 70px;
-        height: 70px;
-        background-color: rgba(255, 140, 26, 0.05);
-        border-color: var(--color-accent);
-        border-width: 2px;
-    }
+    body, a, button { cursor: auto !important; }
 }
 
 /* 3. Fluidità Bottoni Magnetici */
