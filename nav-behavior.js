@@ -130,7 +130,14 @@
             { title: 'Projects', url: 'projects.html', tags: 'case studies realizations hospitality' },
             { title: 'About', url: 'about.html', tags: 'story heritage murano craftsmanship' },
             { title: 'Contacts', url: 'contacts.html', tags: 'verona showroom email phone' },
-            { title: 'Privacy Policy', url: 'privacy-policy.html', tags: 'privacy cookies data policy' }
+            { title: 'Privacy Policy', url: 'privacy-policy.html', tags: 'privacy cookies data policy' },
+            { title: 'Pendant', url: 'products.html?categoria=sospensione', tags: 'pendant suspension hanging' },
+            { title: 'Table', url: 'products.html?categoria=tavolo', tags: 'table lamp desk' },
+            { title: 'Ceiling', url: 'products.html?categoria=soffitto', tags: 'ceiling flush mount' },
+            { title: 'Wall', url: 'products.html?categoria=parete', tags: 'wall sconce' },
+            { title: 'Floor', url: 'products.html?categoria=terra', tags: 'floor standing' },
+            { title: 'Objects', url: 'products.html?categoria=vasi%20e%20oggettistica', tags: 'vases objects tableware' },
+            { title: 'Outdoor', url: 'products.html?categoria=outdoor', tags: 'outdoor garden exterior' }
         ] : [
             { title: 'Home', url: 'index.html', tags: 'granfo granfoluce home hero' },
             { title: 'Prodotti', url: 'prodotti.html', tags: 'collezioni sospensione tavolo soffitto parete terra domus aurum' },
@@ -139,17 +146,28 @@
             { title: 'Progetti', url: 'progetti.html', tags: 'case study realizzazioni hospitality' },
             { title: 'Chi Siamo', url: 'chi-siamo.html', tags: 'storia heritage murano artigianato' },
             { title: 'Contatti', url: 'contatti.html', tags: 'verona showroom email telefono' },
-            { title: 'Privacy Policy', url: 'privacy-policy.html', tags: 'privacy cookies dati policy' }
+            { title: 'Privacy Policy', url: 'privacy-policy.html', tags: 'privacy cookies dati policy' },
+            { title: 'Sospensione', url: 'prodotti.html?categoria=sospensione', tags: 'pendant sospensione hanging lampada' },
+            { title: 'Tavolo', url: 'prodotti.html?categoria=tavolo', tags: 'table tavolo lamp desk lampada' },
+            { title: 'Soffitto', url: 'prodotti.html?categoria=soffitto', tags: 'ceiling soffitto flush mount lampada' },
+            { title: 'Parete', url: 'prodotti.html?categoria=parete', tags: 'wall parete sconce lampada' },
+            { title: 'Terra', url: 'prodotti.html?categoria=terra', tags: 'floor terra standing lampada' },
+            { title: 'Oggettistica', url: 'prodotti.html?categoria=vasi%20e%20oggettistica', tags: 'vasi objects tableware oggetti' },
         ];
 
         const renderSuggestions = (query) => {
             const q = (query || '').trim().toLowerCase();
-            const matches = q
-                ? suggestions.filter(item => `${item.title} ${item.tags}`.toLowerCase().includes(q)).slice(0, 6)
-                : suggestions.slice(0, 5);
+            
+            // Only show suggestions if user has typed something
+            if (!q) {
+                suggestionBox.innerHTML = '';
+                return;
+            }
+
+            const matches = suggestions.filter(item => `${item.title} ${item.tags}`.toLowerCase().includes(q)).slice(0, 6);
 
             if (!matches.length) {
-                suggestionBox.innerHTML = `<div class="empty">${isEnglish ? 'No matches yet. Try another keyword.' : 'Nessun risultato. Prova un’altra parola chiave.'}</div>`;
+                suggestionBox.innerHTML = `<div class="empty">${isEnglish ? 'No matches. Try another keyword.' : 'Nessun risultato. Prova un\'altra parola chiave.'}</div>`;
                 return;
             }
 
@@ -160,8 +178,6 @@
                 </a>
             `).join('');
         };
-
-        renderSuggestions('');
 
         input.addEventListener('input', () => renderSuggestions(input.value));
         input.addEventListener('keydown', (e) => {
@@ -179,13 +195,4 @@
     } else {
         initSearch();
     }
-})();
-
-// Fast preloader hide (single logo screen)
-(() => {
-    const preloader = document.getElementById('preloader');
-    if (!preloader) return;
-    const hide = () => { if (!preloader.classList.contains('loaded')) preloader.classList.add('loaded'); };
-    window.addEventListener('load', () => setTimeout(hide, 60));
-    setTimeout(hide, 1200); // safety timeout
 })();

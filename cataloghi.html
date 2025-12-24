@@ -21,29 +21,13 @@
     </style>
 </head>
 <body>
-    <script>document.documentElement.style.visibility='hidden';</script>
     <div id="preloader">
         <img src="./images/brand/granfoluce-logo.png" alt="GRANFOLUCE" class="preloader-icon">
     </div>
-    <script>
-        const hidePreloader = () => {
-            document.documentElement.style.visibility = 'visible';
-            const preloader = document.getElementById('preloader');
-            if (preloader && !preloader.classList.contains('loaded')) {
-                preloader.classList.add('loaded');
-            }
-        };
-        window.addEventListener('load', () => {
-            requestAnimationFrame(() => {
-                setTimeout(hidePreloader, 80);
-            });
-        });
-        setTimeout(hidePreloader, 3000);
-    </script>
 
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo"><img src="/images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 50px;"></a>
+            <a href="index.html" class="logo"><img src="./images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 50px;"></a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="cataloghi.html" class="active">Cataloghi</a></li>
@@ -170,7 +154,7 @@
 
     <script>
         function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('active'); document.body.classList.toggle('no-scroll'); }
-        function toggleSearch() { const overlay = document.getElementById('search-overlay'); overlay.classList.toggle('active'); if(overlay.classList.contains('active')) setTimeout(() => overlay.querySelector('input').focus(), 100); }
+        function toggleSearch() { const overlay = document.getElementById('search-overlay'); overlay.classList.toggle('active'); const input = overlay.querySelector('input'); if(overlay.classList.contains('active')) { input.value = ''; setTimeout(() => input.focus(), 100); } }
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } }); }, { threshold: 0.1 });
         revealElements.forEach(el => revealObserver.observe(el));

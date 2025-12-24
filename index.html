@@ -21,25 +21,9 @@
     </style>
 </head>
 <body>
-    <script>document.documentElement.style.visibility='hidden';</script>
     <div id="preloader">
         <img src="./images/brand/granfoluce-logo.png" alt="GRANFOLUCE" class="preloader-icon">
     </div>
-    <script>
-        const hidePreloader = () => {
-            document.documentElement.style.visibility = 'visible';
-            const preloader = document.getElementById('preloader');
-            if (preloader && !preloader.classList.contains('loaded')) {
-                preloader.classList.add('loaded');
-            }
-        };
-        window.addEventListener('load', () => {
-            requestAnimationFrame(() => {
-                setTimeout(hidePreloader, 80);
-            });
-        });
-        setTimeout(hidePreloader, 3000);
-    </script>
 
     <nav class="navbar">
         <div class="container nav-container">
@@ -186,7 +170,7 @@
         <div class="container">
             <div class="section-header">
                 <div><span class="eyebrow">Portfolio</span><h2>Oltre lo standard</h2><h5 class="portfolio-lede">Una selezione di realizzazioni complesse che raccontano la nostra capacità di trasformare la luce in scultura. La dimostrazione che, nel nostro laboratorio, nessuna sfida è impossibile.</h5></div>
-                <a href="progetti.html" class="link-arrow">Vedi tutti i progetti →</a>
+                <a href="progetti.html" class="link-arrow">Vedi tutti→</a>
             </div>
             <div class="projects-grid-scroll reveal">
                 <article class="project-card"><img src="images/progetti/progetto-2.webp" alt="2" width="400" height="500" loading="lazy"><div class="card-content"><span class="card-tag">Doha • Qatar</span><h3>Residenza Privata</h3></div></article>
@@ -317,8 +301,13 @@
     <script>
         function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('active'); document.body.classList.toggle('no-scroll'); }
         function toggleSearch() { 
-            const overlay = document.getElementById('search-overlay'); overlay.classList.toggle('active');
-            if(overlay.classList.contains('active')) setTimeout(() => overlay.querySelector('input').focus(), 100);
+            const overlay = document.getElementById('search-overlay');
+            overlay.classList.toggle('active');
+            const input = overlay.querySelector('input');
+            if(overlay.classList.contains('active')) {
+                input.value = '';
+                setTimeout(() => input.focus(), 100);
+            }
         }
         // Ricerca: invia alla pagina Prodotti con query
         (function initSearchRedirect(){

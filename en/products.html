@@ -21,25 +21,9 @@
     </style>
 </head>
 <body>
-    <script>document.documentElement.style.visibility='hidden';</script>
     <div id="preloader">
         <img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" class="preloader-icon">
     </div>
-    <script>
-        const hidePreloader = () => {
-            document.documentElement.style.visibility = 'visible';
-            const preloader = document.getElementById('preloader');
-            if (preloader && !preloader.classList.contains('loaded')) {
-                preloader.classList.add('loaded');
-            }
-        };
-        window.addEventListener('load', () => {
-            requestAnimationFrame(() => {
-                setTimeout(hidePreloader, 80);
-            });
-        });
-        setTimeout(hidePreloader, 3000);
-    </script>
 
     <nav class="navbar">
         <div class="container nav-container">
@@ -113,30 +97,7 @@
             </div>
         </div>
 
-        <div class="trust-icons-row">
-            <div class="trust-bar-scroll">
-            <div class="trust-item">
-            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"></path></svg>
-            <span>Made in Italy</span>
-            </div>
-            <div class="trust-item">
-            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-            <span>Murano Glass</span>
-            </div>
-            <div class="trust-item">
-            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-            <span>5-Year Warranty</span>
-            </div>
-            <div class="trust-item">
-            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            <span>Worldwide Shipping</span>
-            </div>
-            <div class="trust-item">
-            <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-            <span>Handcrafted</span>
-            </div>
-       </div>
-        
+     
 
         <p class="results-count" id="results-count" style="margin-top: 1rem;"></p>
 
@@ -310,7 +271,7 @@
 
     <script>
         function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('active'); document.body.classList.toggle('no-scroll'); }
-        function toggleSearch() { const overlay = document.getElementById('search-overlay'); overlay.classList.toggle('active'); if(overlay.classList.contains('active')) setTimeout(() => overlay.querySelector('input').focus(), 100); }
+        function toggleSearch() { const overlay = document.getElementById('search-overlay'); overlay.classList.toggle('active'); const input = overlay.querySelector('input'); if(overlay.classList.contains('active')) { input.value = ''; setTimeout(() => input.focus(), 100); } }
         const revealElements = document.querySelectorAll('.reveal');
         const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } }); }, { threshold: 0.1 });
         revealElements.forEach(el => revealObserver.observe(el));
@@ -335,12 +296,36 @@ function filterProducts(category, btnElement) {
     applyAdvancedFilters();
 }
 
-window.addEventListener('load', () => {
+function applyURLFilters() {
     const urlParams = new URLSearchParams(window.location.search);
-    const categoria = urlParams.get('categoria');
+    let categoria = urlParams.get('categoria');
     const q = urlParams.get('q');
+    
     if (categoria) {
-        const btn = Array.from(document.querySelectorAll('.chip')).find(c => c.textContent.toLowerCase().includes(categoria.toLowerCase()) || c.getAttribute('onclick')?.includes(categoria));
+        // Decodifica il parametro se è URL encoded
+        categoria = decodeURIComponent(categoria).toLowerCase().trim();
+        
+        // Trova il bottone della categoria
+        let btn = null;
+        const chips = document.querySelectorAll('.chip');
+        
+        for (let chip of chips) {
+            const chipText = chip.textContent.toLowerCase().trim();
+            const onclickAttr = chip.getAttribute('onclick') || '';
+            
+            // Matching con il testo del bottone (normalizzato)
+            if (chipText === categoria || chipText.includes(categoria) || categoria.includes(chipText)) {
+                btn = chip;
+                break;
+            }
+            
+            // Fallback: matching con onclick
+            if (onclickAttr.includes(`'${categoria}'`)) {
+                btn = chip;
+                break;
+            }
+        }
+        
         if (btn) {
             filterProducts(categoria, btn);
         }
@@ -368,7 +353,16 @@ window.addEventListener('load', () => {
             }
         }, 120);
     }
-});
+}
+
+// Esegui subito se il documento è già caricato, altrimenti aspetta
+if (document.readyState !== 'loading') {
+    // Document is interactive or complete, run immediately
+    setTimeout(applyURLFilters, 50);
+} else {
+    // Document is still loading
+    document.addEventListener('DOMContentLoaded', applyURLFilters, { once: true });
+}
 
 function applyAdvancedFilters() {
     const products = document.querySelectorAll('.product-item');

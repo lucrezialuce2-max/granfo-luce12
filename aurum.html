@@ -41,7 +41,6 @@
     </style>
 </head>
 <body>
-    <script>document.documentElement.style.visibility='hidden';</script>
     <div id="preloader">
         <img src="./images/brand/granfoluce-logo.png" alt="GRANFOLUCE" class="preloader-icon">
     </div>
@@ -269,8 +268,12 @@
         }
         function toggleSearch() { 
             const overlay = document.getElementById('search-overlay'); 
-            overlay.classList.toggle('active'); 
-            if(overlay.classList.contains('active')) setTimeout(() => overlay.querySelector('input').focus(), 100); 
+            overlay.classList.toggle('active');
+            const input = overlay.querySelector('input');
+            if(overlay.classList.contains('active')) {
+                input.value = '';
+                setTimeout(() => input.focus(), 100);
+            }
         }
 
         // --- 2. LIGHTBOX (ZOOM) ---

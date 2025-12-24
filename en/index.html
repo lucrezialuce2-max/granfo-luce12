@@ -12,34 +12,11 @@
     <meta property="og:image" content="https://tuosito.com/images/hero/hero-main-graphic.webp"> <meta property="og:url" content="https://tuosito.com">
     <meta property="og:type" content="website">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        /* Critical preloader to avoid initial flash */
-        #preloader { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #0e1713; z-index: 99999; opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0.3s ease; }
-        #preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
-        .preloader-icon { width: 120px; height: auto; animation: breathe 2s infinite ease-in-out; }
-        @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.7; } }
-    </style>
 </head>
 <body>
-    <script>document.documentElement.style.visibility='hidden';</script>
     <div id="preloader">
         <img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" class="preloader-icon">
     </div>
-    <script>
-        const hidePreloader = () => {
-            document.documentElement.style.visibility = 'visible';
-            const preloader = document.getElementById('preloader');
-            if (preloader && !preloader.classList.contains('loaded')) {
-                preloader.classList.add('loaded');
-            }
-        };
-        window.addEventListener('load', () => {
-            requestAnimationFrame(() => {
-                setTimeout(hidePreloader, 80);
-            });
-        });
-        setTimeout(hidePreloader, 3000);
-    </script>
 
     <nav class="navbar">
         <div class="container nav-container">
@@ -174,7 +151,7 @@
     <section id="progetti" class="projects-section">
         <div class="container">
             <div class="section-header">
-                <div><span class="eyebrow">Portfolio</span><h2>Bespoke Creations</h2><h5 class="portfolio-lede">A showcase of intricate designs where light becomes sculpture. Proof that in our atelier, no challenge is impossible.</h5></div>
+                <div><span class="eyebrow">Portfolio</span><h2>Lights become Sculptures</h2><h5 class="portfolio-lede">A showcase of intricate designs where light becomes sculpture. Proof that in our atelier, no challenge is impossible.</h5></div>
                 <a href="projects.html" class="link-arrow">See all projects →</a>
             </div>
             <div class="projects-grid-scroll reveal">
@@ -226,7 +203,7 @@
             <p>Have a project in mind or looking for a unique piece? We put 50 years of experience at the service of your ideas.</p>
                 <form class="contact-form" action="https://formspree.io/f/mzzyojpq" method="POST" style="background: var(--color-bg-card); padding: 2.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
                     <div style="margin-bottom: 1.5rem;">
-                        <input type="text" name="name" placeholder="Full Name" required style="width: 100%; padding: 1rem 1.5rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; font-family: var(--font-sans); font-size: 1rem; outline: none; transition: all 0.3s;">
+                        <input type="text" name="name" placeholder="Name and Surname" required style="width: 100%; padding: 1rem 1.5rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; font-family: var(--font-sans); font-size: 1rem; outline: none; transition: all 0.3s;">
                     </div>
                     <div style="margin-bottom: 1.5rem;">
                         <input type="email" name="email" placeholder="Email" required style="width: 100%; padding: 1rem 1.5rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; font-family: var(--font-sans); font-size: 1rem; outline: none; transition: all 0.3s;">
@@ -304,8 +281,13 @@
     <script>
         function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('active'); document.body.classList.toggle('no-scroll'); }
         function toggleSearch() { 
-            const overlay = document.getElementById('search-overlay'); overlay.classList.toggle('active');
-            if(overlay.classList.contains('active')) setTimeout(() => overlay.querySelector('input').focus(), 100);
+            const overlay = document.getElementById('search-overlay');
+            overlay.classList.toggle('active');
+            const input = overlay.querySelector('input');
+            if(overlay.classList.contains('active')) {
+                input.value = '';
+                setTimeout(() => input.focus(), 100);
+            }
         }
         (function initSearchRedirect(){
             const overlay = document.getElementById('search-overlay');
