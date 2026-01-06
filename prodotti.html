@@ -466,12 +466,11 @@
     <script>
         function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('active'); document.body.classList.toggle('no-scroll'); }
         function toggleSearch() { const overlay = document.getElementById('search-overlay'); overlay.classList.toggle('active'); const input = overlay.querySelector('input'); if(overlay.classList.contains('active')) { input.value = ''; setTimeout(() => input.focus(), 100); } }
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } }); }, { threshold: 0.1 });
-        revealElements.forEach(el => revealObserver.observe(el));
-        // Forza animazioni subito al caricamento pagina (senza attendere scroll)
-        window.addEventListener('load', () => {
-            revealElements.forEach(el => el.classList.add('active'));
+        // Rimuovi completamente le animazioni reveal - mostra tutto immediatamente
+        document.querySelectorAll('.reveal').forEach(el => {
+            el.classList.add('active');
+            el.style.opacity = '1';
+            el.style.transform = 'none';
         });
         /* --- LOGICA FILTRI --- */
 let activeCategory = 'all';

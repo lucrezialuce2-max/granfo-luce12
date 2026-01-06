@@ -1209,12 +1209,7 @@ body.no-scroll .back-to-top { opacity: 0; visibility: hidden; pointer-events: no
 
 /* Box "Due Anime" */
 .card-soul {
-    transition: transform 0.3s ease, background 0.3s ease;
-}
-.card-soul:hover {
-    transform: translateY(-5px);
-    background: rgba(255,255,255,0.05) !important;
-    border-color: var(--color-accent) !important;
+    /* Rimosso hover e transizioni */
 }
 /* GRIGLIA FLUIDA PER LAYOUT SPEZZATO */
 .split-layout {
