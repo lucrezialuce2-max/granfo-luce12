@@ -146,7 +146,9 @@ body.no-scroll .navbar {
 .mobile-menu.active { transform: translateX(0); }
 .mobile-menu a { font-family: var(--font-sans); font-size: 1.8rem; color: white; text-transform: uppercase; letter-spacing: 0.05em; }
 .mobile-menu a.active { color: var(--color-accent); font-weight: 700; }
-.mobile-menu a:hover { color: var(--color-accent); }
+@media (hover: hover) and (pointer: fine) {
+    .mobile-menu a:hover { color: var(--color-accent); }
+}
 
 /* --- 4. FEATURES MOBILE NATIVE --- */
 
@@ -674,6 +676,8 @@ body.no-scroll .back-to-top { opacity: 0; visibility: hidden; pointer-events: no
     /* Nascondi su desktop se vuoi, o lasciala */
 }
 @media (min-width: 900px) { .store-bar { display: none; } }
+/* Nascondi la barra inferiore su mobile per evitare conflitti browser */
+@media (max-width: 899px) { .store-bar { display: none !important; } }
 
 .store-btn {
     display: flex; flex-direction: column; align-items: center; justify-content: center;
