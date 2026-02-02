@@ -276,9 +276,14 @@
             });
         });
 
-        // Image error fallback handler
+        // Image error fallback handler - Previene loop infiniti
         document.addEventListener('error', function(e) {
             if (e.target.tagName && e.target.tagName.toLowerCase() === 'img') {
+                // Se l'immagine che ha dato errore è già il placeholder, fermati per evitare loop
+                if (e.target.src.includes('images/placeholder.png')) {
+                    e.target.style.display = 'none'; // Nascondi l'immagine rotta
+                    return;
+                }
                 e.target.src = 'images/placeholder.png';
                 e.target.alt = 'Immagine non disponibile';
             }

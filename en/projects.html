@@ -3,8 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | GRANFO</title>
+    <title>Light Design Realizations and Custom Lighting | Granfo Luce</title>
+    <meta name="description" content="Granfo Luce (Granfo Illuminazione S.N.C.) in Verona, Via Ponte S. Pancrazio 8. Experts in handcrafted lamps, architectural lighting and custom projects since 1970.">
     <link rel="stylesheet" href="../style.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Granfo Luce",
+      "legalName": "Granfo Illuminazione S.N.C.",
+      "url": "https://granfoluce.com",
+      "telephone": "+39 045 528541",
+      "email": "granfoluce@hotmail.it",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Ponte S. Pancrazio 8",
+        "addressLocality": "Verona",
+        "postalCode": "37133",
+        "addressCountry": "IT"
+      },
+      "image": "https://granfoluce.com/images/brand/granfoluce-logo.png",
+      "description": "Granfo Luce - Experts in handcrafted lamps, architectural lighting and custom projects since 1970 in Verona",
+      "sameAs": [
+        "https://www.facebook.com/Granfoluce.lampadari/",
+        "https://www.instagram.com/granfoluce/",
+        "https://it.pinterest.com/granfolucefb/"
+      ]
+    }
+    </script>
     <style>
         /* Preloader critico per evitare flash iniziale */
         #preloader { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #0e1713; z-index: 99999; opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0.3s ease; }
@@ -192,9 +218,14 @@
             });
         });
 
-        // Image error fallback handler
+        // Image error fallback handler - Previene loop infiniti
         document.addEventListener('error', function(e) {
             if (e.target.tagName && e.target.tagName.toLowerCase() === 'img') {
+                // Se l'immagine che ha dato errore è già il placeholder, fermati per evitare loop
+                if (e.target.src.includes('images/placeholder.png')) {
+                    e.target.style.display = 'none'; // Nascondi l'immagine rotta
+                    return;
+                }
                 e.target.src = '../images/placeholder.png';
                 e.target.alt = 'Image not available';
             }

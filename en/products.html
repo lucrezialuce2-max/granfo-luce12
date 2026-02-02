@@ -3,9 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Collections and Products | GRANFO</title>
-    <meta name="description" content="Handcrafted custom lighting. Pendants, table lamps and architectural solutions made in Italy.">
+    <title>Lighting Collections and Systems | Granfo Luce Verona</title>
+    <meta name="description" content="Granfo Luce (Granfo Illuminazione S.N.C.) in Verona, Via Ponte S. Pancrazio 8. Experts in handcrafted lamps, architectural lighting and custom projects since 1970.">
     <link rel="stylesheet" href="../style.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Granfo Luce",
+      "legalName": "Granfo Illuminazione S.N.C.",
+      "url": "https://granfoluce.com",
+      "telephone": "+39 045 528541",
+      "email": "granfoluce@hotmail.it",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Ponte S. Pancrazio 8",
+        "addressLocality": "Verona",
+        "postalCode": "37133",
+        "addressCountry": "IT"
+      },
+      "image": "https://granfoluce.com/images/brand/granfoluce-logo.png",
+      "description": "Granfo Luce - Experts in handcrafted lamps, architectural lighting and custom projects since 1970 in Verona",
+      "sameAs": [
+        "https://www.facebook.com/Granfoluce.lampadari/",
+        "https://www.instagram.com/granfoluce/",
+        "https://it.pinterest.com/granfolucefb/"
+      ]
+    }
+    </script>
     <link rel="icon" type="image/png" href="../images/favicon.png">
     <meta property="og:description" content="Light artisans since 1970. Discover our Murano glass collections and custom design.">
     <meta property="og:image" content="https://tuosito.com/images/hero/hero-main-graphic.webp"> <meta property="og:url" content="https://tuosito.com">
@@ -450,7 +475,7 @@
             <div class="footer-col">
                 <h4>CONTACTS</h4>
                 <div class="contact-rows">
-                    <p><span class="label">Email:</span><br><a href="mailto:info@granfoluce.it" class="highlight-link">info@granfoluce.it</a></p>
+                    <p><span class="label">Email:</span><br><a href="mailto:granfoluce@hotmail.it" class="highlight-link">granfoluce@hotmail.it</a></p>
                     <p><span class="label">Phone:</span><br><a href="tel:+39045528541" class="highlight-link">+39 045 528541</a></p>
                     <p><span class="label">Address:</span><br><a href="https://maps.google.com" target="_blank" class="highlight-link underline">via Ponte S. Pancrazio 8 Verona</a></p>
                 </div>
@@ -753,8 +778,14 @@ window.addEventListener('DOMContentLoaded', () => {
             });
         });
 
+        // Image error fallback handler - Previene loop infiniti
         document.addEventListener('error', function(e) {
             if (e.target.tagName && e.target.tagName.toLowerCase() === 'img') {
+                // Se l'immagine che ha dato errore è già il placeholder, fermati per evitare loop
+                if (e.target.src.includes('images/placeholder.png')) {
+                    e.target.style.display = 'none'; // Nascondi l'immagine rotta
+                    return;
+                }
                 e.target.src = '../images/placeholder.png';
                 e.target.alt = 'Image not available';
             }

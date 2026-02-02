@@ -3,11 +3,9 @@
 document.addEventListener("DOMContentLoaded", () => {
     const preloader = document.getElementById('preloader');
     
-    // 1. GESTIONE CARICAMENTO INIZIALE
-    // Aggiungiamo la classe al body per il fade-in del contenuto
-    setTimeout(() => {
-        document.body.classList.add('loaded'); // Gestito dal CSS body.loaded
-    }, 100);
+    // 1. GESTIONE CARICAMENTO INIZIALE - IMMEDIATO, SENZA RITARDI
+    // Aggiungiamo immediatamente la classe al body per evitare salti
+    document.body.classList.add('loaded');
 
     // Funzione per nascondere il preloader
     const hidePreloader = () => {
@@ -17,14 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // Nascondiamo il preloader appena il DOM è pronto (o puoi usare window.load per attendere le immagini)
-    // Usiamo un piccolo ritardo per assicurarci che l'utente veda il logo
-    window.addEventListener('load', () => {
-        setTimeout(hidePreloader, 500); 
-    });
-
-    // Fallback: se window.load non parte per qualche motivo, forza la chiusura dopo 3 secondi
-    setTimeout(hidePreloader, 3000);
+    // Nascondiamo il preloader immediatamente
+    hidePreloader();
 
     // Gestione tasto "Indietro" del browser (fix cache bfcache)
     window.addEventListener('pageshow', (event) => {
