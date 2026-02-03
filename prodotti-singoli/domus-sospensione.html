@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="it">
-<head>
+<html lang="it"><head><style>body {transition: opacity ease-in 0.2s; } 
+body[unresolved] {opacity: 0; display: block; overflow: hidden; position: relative; } 
+</style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DOMUS Sospensione Vetro Pasta Trasparente Murano | Granfo Luce Verona</title>
@@ -73,63 +74,137 @@
             .cta-group { grid-template-columns: 1fr; }
         }
     </style>
-</head>
+<style id="search-suggest-styles">
+                .search-suggestions { margin-top: 0.75rem; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 0.25rem; max-height: 260px; overflow-y: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
+                .search-suggestions a { display: block; padding: 0.65rem 0.85rem; color: white; text-decoration: none; border-radius: 10px; transition: background 0.2s ease; }
+                .search-suggestions a span { display: block; font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-top: 0.15rem; }
+                .search-suggestions a:hover { background: rgba(255,255,255,0.08); }
+                .search-suggestions .empty { padding: 0.65rem 0.85rem; color: rgba(255,255,255,0.7); }
+            </style><style>
+            #granfo-editor-toggle {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #FF8C1A, #E67A00);
+                color: white;
+                border: none;
+                padding: 1rem 1.5rem;
+                border-radius: 50px;
+                cursor: pointer;
+                font-weight: 700;
+                font-size: 1rem;
+                box-shadow: 0 6px 24px rgba(255, 140, 26, 0.5);
+                z-index: 999999;
+                transition: all 0.3s;
+            }
+            #granfo-editor-toggle:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 32px rgba(255, 140, 26, 0.6);
+            }
+            #granfo-editor-toggle.active {
+                background: linear-gradient(135deg, #28a745, #218838);
+            }
+            .granfo-editable {
+                outline: 2px dashed #FF8C1A;
+                outline-offset: 2px;
+                cursor: text;
+                padding: 2px;
+            }
+            .granfo-editable:hover {
+                background: rgba(255, 140, 26, 0.1);
+            }
+            .granfo-navigation-blocked {
+                pointer-events: none;
+                opacity: 0.6;
+            }
+            #granfo-editor-panel {
+                position: fixed;
+                top: 80px;
+                right: 20px;
+                background: rgba(11, 28, 24, 0.98);
+                border: 2px solid #FF8C1A;
+                border-radius: 16px;
+                padding: 2rem;
+                z-index: 999998;
+                width: 350px;
+                box-shadow: 0 12px 48px rgba(0,0,0,0.6);
+                display: none;
+                color: white;
+            }
+            #granfo-editor-panel.active {
+                display: block;
+            }
+            #granfo-editor-panel button {
+                background: #FF8C1A;
+                color: white;
+                border: none;
+                padding: 0.75rem 1.5rem;
+                border-radius: 8px;
+                cursor: pointer;
+                font-weight: 600;
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+            #granfo-editor-panel button:hover {
+                background: #E67A00;
+            }
+        </style></head>
 <body>
     <div id="preloader">
-        <img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" class="preloader-icon">
+        <img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" class="preloader-icon granfo-editable" style="cursor: pointer;">
     </div>
 
-    <nav class="navbar">
+    <nav class="navbar nav-transparent" style="background: transparent; backdrop-filter: none;">
         <div class="container nav-container">
-            <a href="../index.html" class="logo"><img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 50px;"></a>
+            <a href="../index.html" class="logo granfo-navigation-blocked"><img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 50px; cursor: pointer;" class="granfo-editable"></a>
             <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="../aurum.html">Domus</a></li>
-                <li><a href="../prodotti.html" class="active">Prodotti</a></li>
-                <li><a href="../cataloghi.html">Cataloghi</a></li>
-                <li><a href="../progetti.html">Progetti</a></li>
-                <li><a href="../chi-siamo.html">Chi Siamo</a></li>
-                <li><a href="../contatti.html">Contatti</a></li>
+                <li class=""><a href="../index.html" class="granfo-navigation-blocked">Home</a></li>
+                
+                <li class=""><a href="../prodotti.html" class="active granfo-navigation-blocked">Prodotti</a></li>
+                <li class=""><a href="../cataloghi.html" class="granfo-navigation-blocked">Cataloghi</a></li>
+                <li class=""><a href="../progetti.html" class="granfo-navigation-blocked">Progetti</a></li>
+                <li class=""><a href="../chi-siamo.html" class="granfo-navigation-blocked">Chi Siamo</a></li>
+                <li class=""><a href="../contatti.html" class="granfo-navigation-blocked">Contatti</a></li>
             </ul>
             <div class="nav-actions">
                 <button class="icon-btn" onclick="toggleSearch()" aria-label="Cerca"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
-                <div class="lang-selector"><a href="#" class="lang-item active">IT</a><a href="en/products-single/ofelia-suspension.html" class="lang-item">EN</a></div>
-                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+                <div class="lang-selector"><a href="#" class="lang-item active granfo-navigation-blocked">IT</a><a href="en/products-single/ofelia-suspension.html" class="lang-item granfo-navigation-blocked">EN</a></div>
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span class=""></span><span class=""></span><span class=""></span></button>
             </div>
         </div>
         <div id="mobile-menu" class="mobile-menu">
-            <a href="../index.html">Home</a>
-            <a href="../aurum.html">Domus</a>
-            <a href="../prodotti.html">Prodotti</a>
-            <a href="../cataloghi.html">Cataloghi</a>
-            <a href="../progetti.html">Progetti</a>
-            <a href="../chi-siamo.html">Chi Siamo</a>
-            <a href="../contatti.html">Contatti</a>
+            <a href="../index.html" class="granfo-navigation-blocked">Home</a>
+            
+            <a href="../prodotti.html" class="granfo-navigation-blocked">Prodotti</a>
+            <a href="../cataloghi.html" class="granfo-navigation-blocked">Cataloghi</a>
+            <a href="../progetti.html" class="granfo-navigation-blocked">Progetti</a>
+            <a href="../chi-siamo.html" class="granfo-navigation-blocked">Chi Siamo</a>
+            <a href="../contatti.html" class="granfo-navigation-blocked">Contatti</a>
         </div>
     </nav>
 
     <div id="search-overlay" class="search-overlay">
         <button class="close-search" onclick="toggleSearch()">✕</button>
-        <div class="search-container"><input type="text" placeholder="Cerca..."></div>
+        <div class="search-container"><input type="text" placeholder="Cerca..."><div class="search-suggestions"></div></div>
     </div>
 
     <section class="product-premium">
       <div class="product-container">
         <div class="product-gallery">
           <div class="product-main-image">
-            <img src="../images/prodotti/Sospensione/sospensione-aurum.webp" alt="DOMUS sospensione vetro Murano Granfo Luce Verona">
+            <img src="../images/prodotti/Sospensione/sospensione-aurum.webp" alt="DOMUS sospensione vetro Murano Granfo Luce Verona" class="granfo-editable" style="cursor: pointer;">
           </div>
           <div class="thumbs" aria-hidden="true">
-            <img src="../images/prodotti/Sospensione/sospensione-aurum.webp" alt="Dettaglio vetro DOMUS">
-            <img src="../images/prodotti/Sospensione/sospensione-aurum.webp" alt="Dettaglio finitura DOMUS">
-            <img src="../images/prodotti/Sospensione/sospensione-aurum.webp" alt="DOMUS in ambiente">
+            <img src="../images/prodotti/Sospensione/sospensione-aurum.webp" alt="Dettaglio vetro DOMUS" class="granfo-editable" style="cursor: pointer;">
+            <img src="../images/prodotti/Sospensione/sospensione-aurum.webp" alt="Dettaglio finitura DOMUS" class="granfo-editable" style="cursor: pointer;">
+            <img src="../images/prodotti/Sospensione/sospensione-aurum.webp" alt="DOMUS in ambiente" class="granfo-editable" style="cursor: pointer;">
           </div>
         </div>
 
         <div class="product-details">
           <div class="tagline">Sospensione Murano</div>
           <nav class="breadcrumb">Prodotti / Sospensioni / DOMUS</nav>
-          <h1>DOMUS <span class="subtitle">Sospensione vetro pasta trasparente</span></h1>
+          <h1 class="">DOMUS SOSPENSIONE<span class="subtitle">Sospensione vetro pasta trasparente</span></h1>
           <p class="price-on-request">Realizzazione Artigianale su Misura</p>
           <div class="badge-row">
             <span class="badge accent">Vetro Murano</span>
@@ -138,37 +213,37 @@
           </div>
 
           <div class="description-essence">
-            <p>DOMUS è una sospensione in vetro in pasta trasparente, lavorato da Maestri di Murano con tecniche tradizionali veneziane. Disponibile in vari colori, crea una diffusione luminosa cristallina e sofisticata, perfetta per ambienti contemporanei e classici.</p>
+            <p class="">DOMUS è una sospensione in vetro in pasta trasparente, lavorato da Maestri di Murano con tecniche tradizionali veneziane. Disponibile in vari colori, crea una diffusione luminosa cristallina e sofisticata, perfetta per ambienti contemporanei e classici.</p>
           </div>
 
           <div class="tech-specs">
-            <div class="spec-row"><span>Materiale</span><span>Vetro in pasta trasparente</span></div>
-            <div class="spec-row"><span>Attacco</span><span>1 x E27</span></div>
-            <div class="spec-row"><span>Colori</span><span>Vari colori disponibili</span></div>
-            <div class="spec-row"><span>Lavorazione</span><span>Maestri artigiani Murano</span></div>
+            <div class="spec-row"><span class="">Materiale</span><span class="">Vetro in pasta trasparente</span></div>
+            <div class="spec-row"><span class="">Attacco</span><span class="">1 x E27</span></div>
+            <div class="spec-row"><span class="">Colori</span><span class="">Vari colori disponibili</span></div>
+            <div class="spec-row"><span class="">Lavorazione</span><span class="">Maestri artigiani Murano</span></div>
           </div>
 
           <div class="cta-group">
-            <a href="../contatti.html" class="btn-cta">Richiedi Informazioni</a>
-            <a href="../contatti.html" class="btn-cta secondary">Parla con un esperto</a>
+            <a href="../contatti.html" class="btn-cta granfo-navigation-blocked">Richiedi Informazioni</a>
+            <a href="../contatti.html" class="btn-cta secondary granfo-navigation-blocked">Parla con un esperto</a>
           </div>
         </div>
       </div>
 
       <div class="detail-section">
-        <h2>Caratteristiche principali</h2>
+        <h2 class="">Caratteristiche principali</h2>
         <div class="detail-grid">
           <div class="detail-card">
-            <h3>Maestri di Murano</h3>
-            <p>Realizzata da artigiani veneziani con tecniche tradizionali tramandate da generazioni, ogni sospensione è un'opera unica in vetro in pasta trasparente.</p>
+            <h3 class="">Maestri di Murano</h3>
+            <p class="">Realizzata da artigiani veneziani con tecniche tradizionali tramandate da generazioni, ogni sospensione è un'opera unica in vetro in pasta trasparente.</p>
           </div>
           <div class="detail-card">
-            <h3>Vetro in pasta trasparente</h3>
-            <p>Il vetro trasparente crea una diffusione luminosa cristallina e sofisticata, permettendo una visione pura della fonte luminosa con eleganza minimalista.</p>
+            <h3 class="">Vetro in pasta trasparente</h3>
+            <p class="">Il vetro trasparente crea una diffusione luminosa cristallina e sofisticata, permettendo una visione pura della fonte luminosa con eleganza minimalista.</p>
           </div>
           <div class="detail-card">
-            <h3>Versatile</h3>
-            <p>Disponibile in vari colori per adattarsi a diversi stili d'arredamento, da ambienti contemporanei a interni classici e raffinati.</p>
+            <h3 class="">Versatile</h3>
+            <p class="">Disponibile in vari colori per adattarsi a diversi stili d'arredamento, da ambienti contemporanei a interni classici e raffinati.</p>
           </div>
         </div>
       </div>
@@ -176,7 +251,7 @@
       <div class="section-divider"></div>
 
       <div class="detail-section" style="margin-bottom: 1.5rem;">
-        <h2>Servizi inclusi</h2>
+        <h2 class="">Servizi inclusi</h2>
         <div class="service-badges">
           <div class="service-badge"><strong>Consulenza</strong>Progetto luce su misura</div>
           <div class="service-badge"><strong>Assistenza</strong>Supporto pre e post vendita</div>
@@ -189,33 +264,33 @@
     <footer class="footer">
         <div class="container footer-grid">
             <div class="footer-col brand-col">
-                <a href="../index.html" class="footer-logo"><img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 60px;"></a>
+                <a href="../index.html" class="footer-logo granfo-navigation-blocked"><img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 60px; cursor: pointer;" class="granfo-editable"></a>
                 <p class="copyright">© 2025 GRANFO ILLUMINAZIONE S.N.C.<br>All Rights Reserved.</p>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/Granfoluce.lampadari/" target="_blank" rel="noopener"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
-                    <a href="https://www.instagram.com/granfoluce/" target="_blank" rel="noopener"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path></svg></a>
+                    <a href="https://www.facebook.com/Granfoluce.lampadari/" target="_blank" rel="noopener" class="granfo-navigation-blocked"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
+                    <a href="https://www.instagram.com/granfoluce/" target="_blank" rel="noopener" class="granfo-navigation-blocked"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path></svg></a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>MENU</h4>
+                <h4 class="">MENU</h4>
                 <ul>
-                    <li><a href="../chi-siamo.html">Chi Siamo</a></li>
-                    <li><a href="../prodotti.html">Prodotti</a></li>
-                    <li><a href="../contatti.html">Contattaci</a></li>
+                    <li class=""><a href="../chi-siamo.html" class="granfo-navigation-blocked">Chi Siamo</a></li>
+                    <li class=""><a href="../prodotti.html" class="granfo-navigation-blocked">Prodotti</a></li>
+                    <li class=""><a href="../contatti.html" class="granfo-navigation-blocked">Contattaci</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>INFO</h4>
+                <h4 class="">INFO</h4>
                 <div class="footer-text-group">
-                    <p>GRANFO ILLUMINAZIONE S.N.C.</p>
-                    <p style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.75rem; opacity: 0.8;">Granfo Luce è il marchio commerciale di Granfo Illuminazione S.N.C., unica sede Via Ponte S. Pancrazio 8, Verona.</p>
+                    <p class="">GRANFO ILLUMINAZIONE S.N.C.</p>
+                    <p style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.75rem; opacity: 0.8;" class="">Granfo Luce è il marchio commerciale di Granfo Illuminazione S.N.C., unica sede Via Ponte S. Pancrazio 8, Verona.</p>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>CONTATTI</h4>
+                <h4 class="">CONTATTI</h4>
                 <div class="contact-rows">
-                    <p><span class="label">Email:</span><br><a href="mailto:granfoluce@hotmail.it" class="highlight-link">granfoluce@hotmail.it</a></p>
-                    <p><span class="label">Telefono:</span><br><a href="tel:+39045528541" class="highlight-link">+39 045 528541</a></p>
+                    <p class=""><span class="label">Email:</span><br><a href="mailto:granfoluce@hotmail.it" class="highlight-link granfo-navigation-blocked">granfoluce@hotmail.it</a></p>
+                    <p class=""><span class="label">Telefono:</span><br><a href="tel:+39045528541" class="highlight-link granfo-navigation-blocked">+39 045 528541</a></p>
                 </div>
             </div>
         </div>
@@ -247,6 +322,10 @@
         
         lastScrollTop = scrollTop;
     });
-    </script>
-</body>
-</html>
+        </script>
+    <script src="../granfo-visual-editor.js"></script>
+
+
+
+
+</body></html>

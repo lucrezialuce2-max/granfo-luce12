@@ -139,6 +139,11 @@ menu, nav, .nav-item {
     to { opacity: 0; transform: translateX(-50%) translateY(10px); }
 }
 
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 .section-padding { 
     padding: 4rem 0; 
     border-top: 1px solid var(--color-separator);
@@ -167,6 +172,22 @@ menu, nav, .nav-item {
     transition: transform 0.4s ease-in-out, background-color 0.3s ease, border-color 0.3s ease;
 }
 
+/* Stato TRANSPARENT (nav-behavior.js - in cima o in header): Trasparente */
+.navbar.nav-transparent {
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom-color: transparent;
+    box-shadow: none;
+}
+
+/* Stato BLUR (nav-behavior.js - dopo aver scrollato): Verde con blur */
+.navbar.nav-blur {
+    background: rgba(11, 28, 24, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-separator);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
 /* Stato SCROLLED (aggiunto via JS quando scendi): Diventa Verde */
 .navbar.scrolled {
     background: rgba(11, 28, 24, 0.95); /* Verde Notte semi-trasparente */
@@ -189,13 +210,25 @@ body.no-scroll .navbar {
     box-shadow: none;
 }
 
-.nav-container { height: 80px; display: flex; justify-content: space-between; align-items: center; }
+.nav-container { 
+    height: 80px; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
 .logo { font-family: var(--font-serif); font-size: 1.8rem; font-weight: 400; letter-spacing: 0.1em; color: var(--color-text-main); display: flex; align-items: center; }
 .logo img { height: 50px; width: auto; }
 .logo span { color: var(--color-accent); font-size: 0.6em; border: 1px solid var(--color-accent); border-radius: 50%; padding: 2px 4px; margin-left: 5px; vertical-align: middle; }
 .menu-toggle { background: none; border: none; cursor: pointer; display: flex; flex-direction: column; gap: 6px; padding: 10px; }
 .menu-toggle span { display: block; width: 24px; height: 2px; background-color: var(--color-text-main); }
-.nav-links { display: none; }
+
+/* Simplified nav-links */
+.nav-links { 
+    display: none;
+}
+
 .nav-actions { display: flex; align-items: center; gap: 0.8rem; }
 .icon-btn { background: none; border: none; color: var(--color-text-main); cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; }
 .icon-btn:hover { color: var(--color-accent); }
@@ -508,8 +541,8 @@ body.no-scroll .navbar {
 .products-page-grid { 
     display: grid; 
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 1fr; /* Tutte le righe avranno la stessa altezza */
-    gap: 2rem; 
+    grid-auto-rows: 400px; /* Altezza fissa per tutte le righe */
+    gap: 1.5rem; 
     min-height: 600px;
 }
 
@@ -521,14 +554,19 @@ body.no-scroll .navbar {
     grid-template-columns: repeat(2, 1fr);
     gap: 0;
     background: var(--accent-orange) !important;
-    height: 100%; /* Si adatta perfettamente all'altezza della riga */
+    height: 400px; /* Altezza fissa come i product-item */
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 0 30px rgba(255, 140, 26, 0.4), 0 0 60px rgba(255, 140, 26, 0.2), 0 0 90px rgba(255, 140, 26, 0.1);
 }
 
 /* Altre griglie mantengono il comportamento auto-fit */
-.projects-page-grid, .catalog-grid, .reviews-grid, .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+.projects-page-grid, .catalog-grid, .reviews-grid, .process-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+
+/* Forza border-radius su tutti i card nelle griglie */
+.projects-page-grid .project-card,
+.products-page-grid .product-item,
+.catalog-grid .catalog-card { border-radius: 12px !important; overflow: hidden; }
 
 /* Mobile: 2 colonne */
 @media (max-width: 768px) {
@@ -605,77 +643,69 @@ body.no-scroll .navbar {
     transition: all 0.3s ease;
 }
 
-/* Product item text alignment - push content to left */
-.product-item { 
-    text-align: left; 
-    padding: 0 !important; 
+/* Unified style for all card items (product-item, project-card, catalog-item) */
+.product-item, .project-card, .catalog-card { 
     position: relative;
-    background: var(--bg-dark);
+    padding: 0 !important;
     cursor: pointer;
-    transition: all 0.3s ease;
-    border-radius: 8px;
+    transition: all 0.4s ease;
+    border-radius: 12px !important;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
     height: 100%;
+    background-color: var(--color-bg-card);
 }
 
-.product-item:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent-orange-solid);
-    box-shadow: 0 0 20px rgba(255, 140, 26, 0.15), 0 8px 32px rgba(0, 0, 0, 0.5);
+.product-item, .project-card {
+    height: 400px;
 }
 
-/* Immagine come contenitore principale */
-.product-item img { 
+.product-item:hover, .project-card:hover, .catalog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
+}
+
+/* Immagine */
+.product-item img, .project-card img, .catalog-card img { 
     width: 100%;
     height: 100%;
-    aspect-ratio: 4/5; /* Mantieni questa proporzione per coerenza */
-    object-fit: cover; /* Riempie il riquadro senza distorsioni */
-    flex-shrink: 0;
+    object-fit: cover;
+    transition: transform 0.5s ease;
     display: block;
-    transition: transform 0.4s ease;
-    position: relative;
-    z-index: 1;
 }
 
-.product-item:hover img {
+.product-item:hover img, .project-card:hover img, .catalog-card:hover img {
     transform: scale(1.05);
 }
 
-/* Overlay blur sotto il titolo */
-.product-item .p-3 { 
+/* Unified overlay text container with gradient */
+.product-item .p-3, .product-item .card-content, .project-card .card-content, .catalog-card .card-content { 
     position: absolute;
     bottom: 0;
     left: 0;
-    right: 0;
-    padding: 2rem 1rem 1.5rem 1rem !important;
-    background: linear-gradient(to top, 
-        rgba(11, 28, 24, 0.95) 0%, 
-        rgba(11, 28, 24, 0.85) 15%, 
-        rgba(11, 28, 24, 0.6) 35%, 
-        rgba(11, 28, 24, 0.3) 60%, 
-        rgba(11, 28, 24, 0) 100%);
-    text-align: center !important;
+    width: 100%;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
     z-index: 3;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
 }
 
-.product-item h3 { 
-    text-align: center !important; 
-    margin: 0 !important;
-    color: var(--text-pearl);
-    font-family: var(--font-sans);
+.product-item h3, .project-card h3, .catalog-card h3 { 
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
     font-weight: 400;
-    font-size: 1rem;
+    margin: 0 !important;
+    color: white;
+}
+
+.product-item .card-tag, .project-card .card-tag, .catalog-card .card-tag { 
+    color: var(--color-accent);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 0.5rem;
 }
 
 .product-item p { 
-    text-align: center !important; 
-    margin: 0 !important;
-    color: var(--text-muted);
-    font-size: 0.85rem;
     display: none;
 }
 
@@ -698,35 +728,6 @@ body.no-scroll .navbar {
     color: #0b1914;
 }
 
-/* Enhanced styling for HOME category cards only */
-#prodotti .product-item { 
-    position: relative;
-    transition: all 0.4s ease;
-    cursor: pointer;
-}
-
-#prodotti .product-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
-}
-
-#prodotti .product-item h3 { 
-    font-family: var(--font-serif);
-    font-size: 1.2rem !important; 
-    font-weight: 400 !important; 
-    margin: 0 !important; 
-    letter-spacing: 0.05em;
-    color: white;
-    position: relative;
-    z-index: 1;
-    transition: all 0.3s ease;
-    text-align: center !important;
-}
-
-#prodotti .product-item:hover h3 {
-    color: var(--color-accent);
-}
-
 /* Review cards & process steps keep center alignment */
 .review-card, .process-step { text-align: center; padding: 2rem; }
 .review-card {
@@ -741,35 +742,25 @@ body.no-scroll .navbar {
 }
 
 /* Mobile responsive */
-    .product-item .p-3 { 
-        padding: 1rem 0.75rem !important;
-        min-height: auto !important;
+@media (max-width: 768px) {
+    .products-page-grid, .projects-page-grid {
+        column-gap: 0.5rem !important;
+        row-gap: 0.3rem !important;
     }
     
-    .product-item h3 { 
-        font-size: 1.1rem;
+    .product-item .card-content, .project-card .card-content { 
+        padding: 0.75rem 0.5rem !important;
     }
     
-    /* Mobile: square images instead of 4/5 aspect */
-    .product-item img {
-        aspect-ratio: 1;
+    .product-item h3, .project-card h3 { 
+        font-size: 0.85rem !important;
     }
     
     .catalog-item { padding: 2.5rem 1.5rem; min-height: 240px; }
     .catalog-item h3 { font-size: 1.1rem; }
-    
-    /* Home product items on mobile */
-    #prodotti .product-item { padding-bottom: 0.5rem; }
-    #prodotti .product-item h3 { 
-        font-size: 1.5rem !important; 
-        font-weight: 400 !important;
-        margin: 1rem 0 !important;
-    }
 }
 
-.project-card { position: relative; height: 400px; border-radius: 8px !important; overflow: hidden; background-color: var(--color-bg-card); cursor: pointer; }
-.project-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: transform 0.5s; }
-.project-card:hover img { transform: scale(1.05); opacity: 0.9; }
+/* Project card - inherits unified style from above */
 
 /* Project Modal */
 .project-modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.8); z-index: 2000; align-items: center; justify-content: center; padding: 1rem; overflow-y: auto; }
@@ -833,8 +824,9 @@ body.no-scroll .navbar {
         font-size: 0.9rem !important;
     }
 
-    .product-item img {
-        aspect-ratio: 1;
+    /* Mantieni stesse proporzioni del desktop ma ridotte per mobile */
+    .product-item, .project-card {
+        height: 240px !important;
     }
 }
 
@@ -1443,7 +1435,7 @@ body.no-scroll .back-to-top { opacity: 0; visibility: hidden; pointer-events: no
 
 /* Split Layout */
 .split-layout { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; }
-.image-block { width: 100%; height: 300px; overflow: hidden; border-radius: 8px; }
+.image-block { width: 100%; height: 300px; overflow: hidden; border-radius: 12px; }
 .image-block img { width: 100%; height: 100%; object-fit: cover; }
 .image-block iframe { width: 100%; height: 100%; border: 0; }
 
@@ -1506,9 +1498,30 @@ body.no-scroll .back-to-top { opacity: 0; visibility: hidden; pointer-events: no
 /* --- 9. MEDIA QUERIES (DESKTOP) --- */
 @media (min-width: 900px) {
     .menu-toggle { display: none; }
-    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
-    .nav-links a { text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.05em; font-weight: 600; color: white; padding-bottom: 4px; border-bottom: 2px solid transparent; }
-    .nav-links a:hover, .nav-links a.active { color: var(--color-accent); }
+    
+    /* Simplified nav-links with Flexbox */
+    .nav-links { 
+        display: flex; 
+        gap: 20px;
+    }
+    
+    .nav-links a { 
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.05em;
+        font-weight: 600;
+        padding-bottom: 4px;
+        transition: all 0.3s ease;
+        cursor: pointer !important;
+    }
+    
+    .nav-links a:hover,
+    .nav-links a.active { 
+        color: var(--color-accent);
+    }
+    
     .hero-content h1 { font-size: 4.5rem; }
     .hero-buttons { flex-direction: row; justify-content: center; }
     .slider-btn { display: block; }
@@ -1644,37 +1657,31 @@ body.no-scroll .back-to-top { opacity: 0; visibility: hidden; pointer-events: no
         min-width: 160px;
     }
 }
-/* Modifica per Mobile First */
+/* Mobile: mantieni proporzioni desktop */
 @media (max-width: 899px) {
     .products-page-grid, .projects-page-grid {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* 2 Colonne! */
-        gap: 10px; /* Spazio ridotto per massimizzare le immagini */
-        padding: 0 10px;
+        grid-template-columns: 1fr 1fr; /* 2 Colonne */
+        column-gap: 0.5rem;
+        row-gap: 0.3rem;
+        padding: 0 1rem;
     }
 
     .product-item, .project-card {
-        border-radius: 4px; /* Raggio meno accentuato su mobile */
-    }
-
-    .product-item img {
-        aspect-ratio: 4/5; /* Mantieni aspect ratio verticale */
-        height: auto;
+        border-radius: 12px;
+        height: 240px; /* Altezza ridotta per mobile */
     }
     
-    .product-item h3 {
-        font-size: 0.9rem; /* Testo più piccolo */
+    .domus-banner-grid {
+        margin-bottom: 1rem;
     }
-
-    /* Forza i progetti in rapporto 4:5 nella griglia progetti su mobile */
-    .projects-page-grid .project-card {
-        height: auto;            /* Annulla altezza fissa */
-        aspect-ratio: 4 / 5;     /* Impone 4:5 */
+    
+    .product-item h3, .project-card h3 {
+        font-size: 0.85rem;
     }
-    .projects-page-grid .project-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;       /* Ritaglia mantenendo riempimento */
+    
+    .product-item .card-content, .project-card .card-content {
+        padding: 0.75rem 0.5rem;
     }
 }
 /* Stile per i filtri attivi */
@@ -1749,26 +1756,25 @@ body.no-scroll .back-to-top { opacity: 0; visibility: hidden; pointer-events: no
 }
 
 .catalog-card {
-    background: var(--color-bg-main);
-    border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 8px;
+    background: var(--color-bg-card);
+    border-radius: 12px;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 .catalog-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border-color: var(--color-accent);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.2);
 }
 
 .catalog-cover-img {
     width: 100%;
-    height: 350px; /* Altezza fissa per uniformare */
+    height: 400px; /* Altezza simile ai project-card */
     overflow: hidden;
-    background-color: #000;
+    position: relative;
 }
 
 .catalog-cover-img img {
@@ -1776,12 +1782,10 @@ body.no-scroll .back-to-top { opacity: 0; visibility: hidden; pointer-events: no
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
-    opacity: 0.9;
 }
 
 .catalog-card:hover .catalog-cover-img img {
     transform: scale(1.05);
-    opacity: 1;
 }
 
 .catalog-content {
@@ -1791,12 +1795,14 @@ body.no-scroll .back-to-top { opacity: 0; visibility: hidden; pointer-events: no
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    background: var(--color-bg-card);
 }
 
 .catalog-content h3 {
     font-family: var(--font-serif);
     font-size: 1.5rem;
+    font-weight: 400;
     margin: 0.5rem 0 1rem 0;
     color: white;
 }
@@ -1813,6 +1819,37 @@ body.no-scroll .back-to-top { opacity: 0; visibility: hidden; pointer-events: no
     background: linear-gradient(to bottom, var(--color-bg-card), var(--color-bg-main));
     border-top: 1px solid rgba(255,255,255,0.05);
 }
+
+/* Catalog Card Large - New Design */
+.catalog-card-large {
+    background: var(--color-bg-card);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.catalog-card-large:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
+}
+
+.catalogs-grid-responsive {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+    .catalogs-grid-responsive {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .catalog-card-large img {
+        height: 300px !important;
+    }
+}
+
 /* --- OTTIMIZZAZIONE PAGINA PRODOTTI --- */
 
 /* 1. Aurum Banner: Meno invasivo */

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Realizzazioni Light Design e Illuminazione su Misura | Granfo Luce</title>
     <meta name="description" content="Granfo Luce (Granfo Illuminazione S.N.C.) a Verona in Via Ponte S. Pancrazio 8. Esperti in lampadari artigianali, luce architetturale e progetti su misura dal 1970.">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3.8">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -32,10 +32,10 @@
     }
     </script>
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <meta property="og:description" content="Artigiani della luce dal 1970. Scopri le nostre collezioni in vetro di Murano e design su misura.">
+    <meta property="og:title" content="GRANFO | Light Design Verona">
+<meta property="og:description" content="Artigiani della luce dal 1970. Scopri le nostre collezioni in vetro di Murano e design su misura.">
 <meta property="og:image" content="https://tuosito.com/images/hero/hero-main-graphic.webp"> <meta property="og:url" content="https://tuosito.com">
 <meta property="og:type" content="website">
-
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Preloader critico per evitare flash iniziale */
@@ -43,6 +43,10 @@
         #preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
         .preloader-icon { width: 120px; height: auto; animation: breathe 2s infinite ease-in-out; }
         @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.7; } }
+        
+        /* Prevent layout shift */
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', Georgia, serif; }
     </style>
 </head>
 <body>
@@ -53,24 +57,22 @@
     <nav class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo"><img src="./images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 50px;"></a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="aurum.html">Domus</a></li>
-                <li><a href="prodotti.html">Prodotti</a></li>
-                <li><a href="cataloghi.html">Cataloghi</a></li>
-                <li><a href="progetti.html" class="active">Progetti</a></li>
-                <li><a href="chi-siamo.html">Chi Siamo</a></li>
-                <li><a href="contatti.html">Contatti</a></li>
-            </ul>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="prodotti.html">Prodotti</a>
+                <a href="cataloghi.html">Cataloghi</a>
+                <a href="progetti.html" class="active">Progetti</a>
+                <a href="chi-siamo.html">Chi Siamo</a>
+                <a href="contatti.html">Contatti</a>
+            </div>
             <div class="nav-actions">
-                <button class="icon-btn" onclick="toggleSearch()" aria-label="Cerca"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                <button class="icon-btn" onclick="toggleSearch()"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
                 <div class="lang-selector"><a href="#" class="lang-item active">IT</a><a href="en/projects.html" class="lang-item">EN</a></div>
                 <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
             </div>
         </div>
         <div id="mobile-menu" class="mobile-menu">
             <a href="index.html">Home</a>
-            <a href="aurum.html">Domus</a>
             <a href="prodotti.html">Prodotti</a>
             <a href="cataloghi.html">Cataloghi</a>
             <a href="progetti.html">Progetti</a>
@@ -81,20 +83,19 @@
 
     <div id="search-overlay" class="search-overlay">
         <button class="close-search" onclick="toggleSearch()">✕</button>
-        <div class="search-container"><input type="text" placeholder="Cerca..."></div>
+        <div class="search-container">
+            <input type="text" placeholder="Cerca">
+        </div>
     </div>
 
     <header class="page-header">
         <div class="page-header-bg"><img src="images/hero/hero-progetti.webp" alt="Progetti" loading="lazy"></div>
-        <div class="container page-title"><p class="breadcrumb"><a href="index.html">Home</a> / <span>Portfolio</span></p><h1>I Nostri Progetti</h1></div>
+        <div class="container page-title"><p class="breadcrumb"><a href="index.html">Home</a> / <span>Progetti</span></p><h1>I Nostri Progetti</h1></div>
     </header>
 
-    <section class="section-padding">
+    <section class="section-padding" style="padding-top: 0.5rem;">
         <div class="container">
-            <div class="section-header" style="text-align: center; display: block; margin-bottom: 3rem;">
-                <span class="eyebrow">Portfolio</span>
-                <h2>Realizzazioni Tailor Made</h2>
-                <p style="color: var(--color-text-muted); margin-top: 0.5rem;">Ogni progetto è una storia di luce scritta su misura.</p>
+            <div class="section-header" style="text-align: center; display: block; margin-bottom: 0; padding-top: 0;">
             </div>
 
             <div class="projects-page-grid reveal">
@@ -151,20 +152,6 @@
         </div>
     </section>
 
-    <div id="project-modal" class="project-modal">
-        <div class="project-modal-content">
-            <button class="project-modal-close" onclick="closeProjectModal()">✕</button>
-            <div class="project-modal-image">
-                <img id="modal-project-image" src="" alt="Progetto">
-            </div>
-            <div class="project-modal-description">
-                <span id="modal-project-tag" class="card-tag"></span>
-                <h3 id="modal-project-title" style="font-family: var(--font-serif); font-size: 2rem; margin-bottom: 1rem; color: white;"></h3>
-                <p id="modal-project-desc" style="color: var(--color-text-muted); line-height: 1.6; margin-bottom: 2rem;"></p>
-                <a href="contatti.html" class="btn btn-outline btn-small">Chiedi info su questo progetto</a>
-            </div>
-        </div>
-    </div>
 
     <footer class="footer">
         <div class="container footer-grid">
@@ -191,6 +178,9 @@
                 <div class="footer-text-group">
                     <p>GRANFO ILLUMINAZIONE S.N.C.</p>
                     <p>P.IVA 01410980237</p>
+                    <p style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.75rem; opacity: 0.8;">
+                        Granfo Luce è il marchio commerciale di Granfo Illuminazione S.N.C., unica sede Via Ponte S. Pancrazio 8, Verona.
+                    </p>
                     <a href="privacy-policy.html" class="privacy-link">Privacy Policy</a>
                 </div>
             </div>
@@ -209,20 +199,7 @@
 
     <script src="nav-behavior.js"></script>
     <script>
-        // 1. SMART NAVBAR
-        let lastScrollTop = 0;
-        const navbar = document.querySelector('.navbar');
-        window.addEventListener('scroll', function() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            if (scrollTop > 50) navbar.classList.add('scrolled');
-            else navbar.classList.remove('scrolled');
-            
-            if (scrollTop > lastScrollTop && scrollTop > navbar.offsetHeight) navbar.classList.add('nav-hidden');
-            else navbar.classList.remove('nav-hidden');
-            lastScrollTop = scrollTop;
-        });
-
-        // 2. ANIMAZIONE REVEAL
+        // ANIMAZIONE REVEAL
         document.addEventListener('DOMContentLoaded', () => {
             const revealElements = document.querySelectorAll('.reveal');
             const revealObserver = new IntersectionObserver((entries) => {
@@ -233,7 +210,7 @@
             revealElements.forEach(el => revealObserver.observe(el));
         });
 
-        // 3. MENU MOBILE
+        // MENU MOBILE
         function toggleMenu() { 
             document.getElementById('mobile-menu').classList.toggle('active'); 
             document.body.classList.toggle('no-scroll'); 
@@ -248,7 +225,7 @@
             }
         }
 
-        // 4. LOGICA MODALE (Ora supporta la descrizione!)
+        // LOGICA MODALE
         function openProjectModal(img, tag, title, desc) {
             document.getElementById('modal-project-image').src = img;
             document.getElementById('modal-project-tag').textContent = tag;
@@ -271,7 +248,6 @@
                     const img = this.querySelector('img').src;
                     const tag = this.querySelector('.card-tag').textContent;
                     const title = this.querySelector('h3').textContent;
-                    // Recupera la descrizione dall'attributo data-desc
                     const desc = this.getAttribute('data-desc');
                     openProjectModal(img, tag, title, desc);
                 });
@@ -302,3 +278,17 @@
     <script src="luxury.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

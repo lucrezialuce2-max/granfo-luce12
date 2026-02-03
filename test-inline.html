@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Inline Editor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 2rem;
+            background: #0B1C18;
+            color: white;
+        }
+        .test-box {
+            background: white;
+            color: black;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        h1 { color: #FF8C1A; }
+    </style>
+</head>
+<body>
+    <h1>Test Editor Inline</h1>
+    <p class="subtitle">Clicca il pulsante arancione per attivare l'editor</p>
+    
+    <div class="test-box">
+        <h2>Box di Test 1</h2>
+        <p>Questo testo può essere modificato</p>
+    </div>
+    
+    <div class="test-box">
+        <h2>Box di Test 2</h2>
+        <p>Anche questo testo è modificabile</p>
+    </div>
+
+    <script>
+        console.log('=== TEST DEBUG START ===');
+        console.log('Hostname:', window.location.hostname);
+        console.log('Protocol:', window.location.protocol);
+        console.log('URL:', window.location.href);
+        
+        // Test semplificato
+        const btn = document.createElement('button');
+        btn.innerHTML = '✏️ EDIT (TEST)';
+        btn.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #FF8C1A, #E67A00);
+            color: white;
+            border: none;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            box-shadow: 0 6px 24px rgba(255, 140, 26, 0.5);
+            z-index: 999999;
+        `;
+        
+        btn.onclick = () => {
+            console.log('Button clicked!');
+            alert('Editor test button works! ✅');
+            
+            // Abilita editing
+            document.querySelectorAll('h1, h2, p').forEach(el => {
+                el.contentEditable = true;
+                el.style.outline = '2px dashed #FF8C1A';
+                el.style.padding = '0.5rem';
+            });
+        };
+        
+        document.body.appendChild(btn);
+        console.log('✅ Test button created');
+        console.log('=== TEST DEBUG END ===');
+    </script>
+</body>
+</html>

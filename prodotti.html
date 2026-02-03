@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collezione Lampadari e Sistemi Luce | Granfo Luce Verona</title>
     <meta name="description" content="Granfo Luce (Granfo Illuminazione S.N.C.) a Verona in Via Ponte S. Pancrazio 8. Esperti in lampadari artigianali, luce architetturale e progetti su misura dal 1970.">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=3.8">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -43,6 +43,10 @@
         #preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
         .preloader-icon { width: 120px; height: auto; animation: breathe 2s infinite ease-in-out; }
         @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.7; } }
+        
+        /* Prevent layout shift */
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', Georgia, serif; }
 
         /* Mobile above-the-fold: header più basso su Prodotti */
         @media (max-width: 768px) {
@@ -58,15 +62,14 @@
     <nav class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo"><img src="./images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 50px;"></a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="aurum.html">Domus</a></li>
-                <li><a href="prodotti.html" class="active">Prodotti</a></li>
-                <li><a href="cataloghi.html">Cataloghi</a></li>
-                <li><a href="progetti.html">Progetti</a></li>
-                <li><a href="chi-siamo.html">Chi Siamo</a></li>
-                <li><a href="contatti.html">Contatti</a></li>
-            </ul>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="prodotti.html" class="active">Prodotti</a>
+                <a href="cataloghi.html">Cataloghi</a>
+                <a href="progetti.html">Progetti</a>
+                <a href="chi-siamo.html">Chi Siamo</a>
+                <a href="contatti.html">Contatti</a>
+            </div>
             <div class="nav-actions">
                 <button class="icon-btn" onclick="toggleSearch()" aria-label="Cerca"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
                 <div class="lang-selector"><a href="#" class="lang-item active">IT</a><a href="en/products.html" class="lang-item">EN</a></div>
@@ -75,7 +78,6 @@
         </div>
         <div id="mobile-menu" class="mobile-menu">
             <a href="index.html">Home</a>
-            <a href="aurum.html">Domus</a>
             <a href="prodotti.html">Prodotti</a>
             <a href="cataloghi.html">Cataloghi</a>
             <a href="progetti.html">Progetti</a>
@@ -156,7 +158,7 @@
             <div class="product-item" data-category="sospensione" data-price="low" data-material="vetro" data-product-id="fungo-black" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Sospensione/fungonero.webp" alt="Lampada Sospensione Fungo" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>LumiNero Sospensione</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -165,7 +167,7 @@
             <div class="product-item" data-category="parete" data-price="medium" data-material="oro" data-product-id="barra-parete" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Parete/barra.webp" alt="Parete Barra" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Barra Parete</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -174,7 +176,7 @@
              <div class="product-item" data-category="sospensione" data-price="high" data-material="vetro" data-product-id="ofelia-sospensione" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Sospensione/sospvetro.webp" alt="OFELIA sospensione in vetro soffiato" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>OFELIA</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -183,7 +185,7 @@
             <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="garden-light-spot" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Sospensione/tubo.webp" alt="Sospensione Tubo" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Spot Sospensione</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -192,7 +194,7 @@
             <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="camilla-sospensione" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Sospensione/sospcoll.webp" alt="Sospensione Collana" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>CAMILLA</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -203,7 +205,7 @@
                     <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                 </button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Sospensione/sospensione-aurum.webp" alt="Sospensione Domus" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>DOMUS</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;">Collezione Domus</p>
                 </div>
@@ -212,7 +214,7 @@
             <div class="product-item" data-category="tavolo" data-price="medium" data-material="metallo" data-product-id="tavolo-cubo" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Tavolo/tavolocubo.webp" alt="Tavolo Cubo" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>BARCELÓ</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -221,7 +223,7 @@
             <div class="product-item" data-category="tavolo" data-price="medium" data-material="metallo" data-line="aurum" data-product-id="barcelo-tavolo"  data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Tavolo/vetri-lastra.webp" alt="Tavolo Lastra" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>BARCELÓ Tavolo</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;">Collezione Domus</p>
                 </div>
@@ -230,7 +232,7 @@
             <div class="product-item" data-category="terra" data-price="medium" data-material="metallo" data-product-id="terra-light" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Terra/terralight.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Terra Light</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -238,7 +240,7 @@
             <div class="product-item" data-category="terra" data-price="medium" data-material="metallo" data-product-id="piantana-bolle" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Terra/piantana-bolle.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Piantana Bolle</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -247,7 +249,7 @@
             <div class="product-item" data-category="parete" data-price="medium" data-material="metallo" data-product-id="ellisse-parete" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Parete/ellisse.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Ellisse</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -255,7 +257,7 @@
             <div class="product-item" data-category="parete" data-price="medium" data-material="metallo" data-product-id="applique-v-parete" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Parete/appliquev.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Applique V</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -264,7 +266,7 @@
             <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="cono-sospensione" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Sospensione/cono.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Cono</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -273,7 +275,7 @@
             <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="gabs-sospensione" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Sospensione/gabs.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Gabs</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -282,7 +284,7 @@
             <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="bolla-sospensione" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Sospensione/bollasospe.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Bolla Sospensione</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -291,7 +293,7 @@
             <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="sospensione-fungo" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Sospensione/sospensione-fungo.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Sospensione Fungo</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -300,7 +302,7 @@
             <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="sospensione-piatto" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Sospensione/sospepiatpal.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Sospensione Piatto</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -309,7 +311,7 @@
             <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="sospensione-tubo" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Sospensione/sospensione tubo.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Sospensione Tubo</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -318,7 +320,7 @@
             <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="vino-sospensione" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Sospensione/vino.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Sospensione Vino</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -327,7 +329,7 @@
             <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="parete" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Sospensione/swarovski.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Sospensione Swarovski</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -336,7 +338,7 @@
             <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="parete" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Sospensione/gabbia.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Gabbia</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -345,7 +347,7 @@
             <div class="product-item" data-category="parete" data-price="medium" data-material="metallo" data-product-id="parete" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Parete/gangs.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Gangs</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -354,7 +356,7 @@
             <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="parete" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Sospensione/barravetro.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Barra Vetro</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -363,7 +365,7 @@
             <div class="product-item" data-category="parete" data-price="medium" data-material="metallo" data-product-id="parete" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Parete/3bt.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>3BT</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -372,7 +374,7 @@
             <div class="product-item" data-category="parete" data-price="medium" data-material="metallo" data-product-id="parete" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Parete/tubogiga.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Tubo Gigante</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -381,7 +383,7 @@
             <div class="product-item" data-category="soffitto" data-price="medium" data-material="metallo" data-product-id="parete" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img src="./images/prodotti/Soffitto/plafonierab.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Plafoniera B</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
@@ -390,7 +392,7 @@
             <div class="product-item" data-category="soffitto" data-price="medium" data-material="metallo" data-product-id="parete" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img src="./images/prodotti/Soffitto/plafonierac.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Plafoniera C</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
                 </div>
@@ -399,7 +401,7 @@
             <div class="product-item" data-category="tavolo" data-price="medium" data-material="metallo" data-product-id="parete" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Tavolo/tavolotubo.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Tavolo Tubo</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
                 </div>
@@ -408,7 +410,7 @@
             <div class="product-item" data-category="tavolo" data-price="medium" data-material="metallo" data-product-id="parete" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Tavolo/fungotavol.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Tavolo Fungo</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
                 </div>
@@ -417,7 +419,7 @@
             <div class="product-item" data-category="parete" data-price="medium" data-material="metallo" data-product-id="parete" data-tags="tecnico" data-note="Nota: Per maggiori informazioni e varianti contattaci.">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
                 <img loading="lazy" decoding="async" src="images/prodotti/Parete/padella.webp" alt="Terra Light" style="cursor: pointer;">
-                <div class="p-3">
+                <div class="card-content">
                     <h3>Padella</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
                 </div>
@@ -437,16 +439,26 @@
     </div>
     <div class="filter-content">
         <div class="filter-group">
-            <h4>Prezzo</h4>
-            <label><input type="checkbox" value="low" onchange="applyAdvancedFilters()"> €0 - €200</label>
-            <label><input type="checkbox" value="medium" onchange="applyAdvancedFilters()"> €200 - €500</label>
-            <label><input type="checkbox" value="high" onchange="applyAdvancedFilters()"> €500+</label>
+            <h4>Categoria</h4>
+            <label><input type="checkbox" value="sospensione" onchange="applyAdvancedFilters()"> Sospensione</label>
+            <label><input type="checkbox" value="tavolo" onchange="applyAdvancedFilters()"> Tavolo</label>
+            <label><input type="checkbox" value="soffitto" onchange="applyAdvancedFilters()"> Soffitto</label>
+            <label><input type="checkbox" value="parete" onchange="applyAdvancedFilters()"> Parete</label>
+            <label><input type="checkbox" value="terra" onchange="applyAdvancedFilters()"> Terra</label>
+            <label><input type="checkbox" value="vasi e oggettistica" onchange="applyAdvancedFilters()"> Vasi e Oggettistica</label>
+            <label><input type="checkbox" value="outdoor" onchange="applyAdvancedFilters()"> Outdoor</label>
         </div>
         <div class="filter-group">
             <h4>Materiale</h4>
             <label><input type="checkbox" value="vetro" onchange="applyAdvancedFilters()"> Vetro Soffiato</label>
             <label><input type="checkbox" value="metallo" onchange="applyAdvancedFilters()"> Metallo</label>
             <label><input type="checkbox" value="oro" onchange="applyAdvancedFilters()"> Finitura Oro</label>
+        </div>
+        <div class="filter-group">
+            <h4>Stile</h4>
+            <label><input type="checkbox" value="moderno" onchange="applyAdvancedFilters()"> Moderno</label>
+            <label><input type="checkbox" value="classico" onchange="applyAdvancedFilters()"> Classico</label>
+            <label><input type="checkbox" value="contemporaneo" onchange="applyAdvancedFilters()"> Contemporaneo</label>
         </div>
     </div>
     <div class="filter-footer">
@@ -514,7 +526,34 @@
 
     <script>
         function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('active'); document.body.classList.toggle('no-scroll'); }
-        function toggleSearch() { const overlay = document.getElementById('search-overlay'); overlay.classList.toggle('active'); const input = overlay.querySelector('input'); if(overlay.classList.contains('active')) { input.value = ''; setTimeout(() => input.focus(), 100); } }
+        function toggleSearch() { 
+            const overlay = document.getElementById('search-overlay');
+            overlay.classList.toggle('active');
+            const input = overlay.querySelector('input');
+            if(overlay.classList.contains('active')) {
+                input.value = '';
+                setTimeout(() => input.focus(), 100);
+            }
+        }
+        
+        // Ricerca: gestisce Enter e Escape
+        (function initSearchHandler(){
+            const overlay = document.getElementById('search-overlay');
+            const input = overlay ? overlay.querySelector('input') : null;
+            if (!input) return;
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const q = input.value.trim();
+                    if (q.length > 0) {
+                        activeSearchQuery = q;
+                        toggleSearch();
+                        applyAdvancedFilters();
+                    }
+                } else if (e.key === 'Escape') {
+                    toggleSearch();
+                }
+            });
+        })();
         
         /* --- LOGICA FILTRI --- */
 let activeCategory = 'all';
@@ -610,7 +649,7 @@ if (document.readyState !== 'loading') {
     document.addEventListener('DOMContentLoaded', applyURLFilters, { once: true });
 }
 
-// Logica combinata (Categoria + Checkbox Prezzo/Materiale)
+// Logica combinata (Categoria + Checkbox Prezzo/Materiale + Filtri prodotto)
 function applyAdvancedFilters() {
     const products = document.querySelectorAll('.product-item');
     let visibleCount = 0;
@@ -625,6 +664,7 @@ function applyAdvancedFilters() {
         const pCat = product.getAttribute('data-category');
         const pPrice = product.getAttribute('data-price');
         const pMat = product.getAttribute('data-material');
+        const productFilters = (product.dataset.filters || '').toLowerCase(); // Leggi i filtri assegnati via editor
         const title = (product.querySelector('h3')?.textContent || '').toLowerCase();
         const alt = (product.querySelector('img')?.getAttribute('alt') || '').toLowerCase();
         const tags = (product.getAttribute('data-tags') || '').toLowerCase();
@@ -633,6 +673,7 @@ function applyAdvancedFilters() {
         // 1. La categoria deve corrispondere (o essere 'all')
         // 2. SE ci sono filtri prezzo, il prodotto deve averne uno selezionato
         // 3. SE ci sono filtri materiale, il prodotto deve averne uno selezionato
+        // 4. Ricerca full-text anche nei filtri assegnati dal editor
         
         const matchCat = (activeCategory === 'all' || activeCategory === pCat);
         const matchPrice = (priceFilters.length === 0 || priceFilters.includes(pPrice));
@@ -641,6 +682,7 @@ function applyAdvancedFilters() {
             title.includes(normalizedQuery) ||
             pCat?.toLowerCase().includes(normalizedQuery) ||
             pMat?.toLowerCase().includes(normalizedQuery) ||
+            productFilters.includes(normalizedQuery) ||
             alt.includes(normalizedQuery) ||
             tags.includes(normalizedQuery)
         );
@@ -993,5 +1035,21 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     </script>
     <script src="luxury.js"></script>
+    <script src="granfo-visual-editor.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

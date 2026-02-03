@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Editor</title>
+    <link rel="stylesheet" href="style.css?v=3.8">
+    <style>
+        body {
+            padding: 2rem;
+        }
+        .products-page-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+        .card {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Test Visual Editor</h1>
+    <p class="subtitle">Questa è una pagina di test per verificare che l'editor funzioni correttamente</p>
+    
+    <div class="products-page-grid">
+        <div class="card granfo-draggable">
+            <img src="images/prodotti/Sospensione/bolla.jpg" alt="Prodotto 1">
+            <h3>Prodotto 1</h3>
+            <p>Descrizione del primo prodotto</p>
+        </div>
+        <div class="card granfo-draggable">
+            <img src="images/prodotti/Sospensione/camilla.jpg" alt="Prodotto 2">
+            <h3>Prodotto 2</h3>
+            <p>Descrizione del secondo prodotto</p>
+        </div>
+        <div class="card granfo-draggable">
+            <img src="images/prodotti/Sospensione/cono.jpg" alt="Prodotto 3">
+            <h3>Prodotto 3</h3>
+            <p>Descrizione del terzo prodotto</p>
+        </div>
+    </div>
+
+    <script>
+        console.log('📄 Test page loaded');
+        console.log('🌐 Hostname:', window.location.hostname);
+        console.log('🔗 Protocol:', window.location.protocol);
+    </script>
+    <script src="granfo-visual-editor.js"></script>
+</body>
+</html>
