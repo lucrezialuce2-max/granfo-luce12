@@ -199,52 +199,73 @@ document.addEventListener('error', function(e) {
     }
 })();
 
-// Mandatory cookie banner (all pages, IT/EN)
+// Remove Domus link from EN navbar (except Domus page)
 (() => {
-    const KEY = 'cookiesAccepted_v2';
+    const path = window.location.pathname || '';
+    const isEnglish = path.includes('/en/');
+    const isDomusPage = /\/domus\.html?$/.test(path);
+    if (!isEnglish || isDomusPage) return;
+
+    const selectors = ['.nav-links a', '#mobile-menu a'];
+    selectors.forEach((selector) => {
+        document.querySelectorAll(selector).forEach((link) => {
+            const href = (link.getAttribute('href') || '').toLowerCase();
+            const text = (link.textContent || '').trim().toLowerCase();
+            if (href.includes('domus.html') || text === 'domus') {
+                link.remove();
+            }
+        });
+    });
+})();
+
+// Iubenda cookie consent (choices + per-purpose)
+(() => {
+    if (window.__iubendaLoaded) return;
+    window.__iubendaLoaded = true;
+
     const isEnglish = window.location.pathname.includes('/en/');
+    const lang = isEnglish ? 'en' : 'it';
+    const policyUrl = 'privacy-policy.html';
 
-    const bannerText = isEnglish
-        ? 'We use cookies to improve your experience.'
-        : 'Utilizziamo i cookie per migliorare la tua esperienza.';
-    const acceptText = isEnglish ? 'Accept' : 'Accetta';
-    const customizeText = isEnglish ? 'Customize' : 'Personalizza';
-    const privacyText = isEnglish ? 'Privacy Policy' : 'Privacy Policy';
-    const privacyHref = isEnglish ? 'privacy-policy.html' : 'privacy-policy.html';
+    // TODO: replace with your real Iubenda IDs
+    const siteId = window.__IUB_SITE_ID || 0;
+    const cookiePolicyId = window.__IUB_COOKIE_POLICY_ID || 0;
 
-    let banner = document.getElementById('cookie-banner');
-    if (!banner) {
-        banner = document.createElement('div');
-        banner.id = 'cookie-banner';
-        banner.className = 'cookie-banner';
-        document.body.appendChild(banner);
-    }
+    window._iub = window._iub || [];
+    window._iub.csConfiguration = {
+        lang,
+        siteId,
+        cookiePolicyId,
+        countryDetection: true,
+        enableGdpr: true,
+        gdprAppliesGlobally: true,
+        enableCcpa: false,
+        enableLgpd: false,
+        perPurposeConsent: true,
+        purposes: '1,2,3,4,5',
+        privacyPolicyUrl: policyUrl,
+        cookiePolicyUrl: policyUrl,
+        banner: {
+            position: 'float-bottom-center',
+            backgroundOverlay: false,
+            acceptButtonDisplay: true,
+            customizeButtonDisplay: true,
+            rejectButtonDisplay: true,
+            closeButtonDisplay: true,
+            listPurposes: true,
+            acceptButtonCaption: isEnglish ? 'Accept' : 'Accetta',
+            customizeButtonCaption: isEnglish ? 'Customize' : 'Personalizza',
+            rejectButtonCaption: isEnglish ? 'Reject' : 'Rifiuta',
+            closeButtonCaption: '×',
+            cookiePolicyLinkCaption: isEnglish ? 'cookie policy' : 'cookie policy'
+        }
+    };
 
-    banner.innerHTML = `
-        <p>${bannerText} <a href="${privacyHref}" style="color: var(--color-accent);">${privacyText}</a>.</p>
-        <div class="cookie-buttons">
-            <button id="acceptCookies" class="btn btn-gold btn-small">${acceptText}</button>
-            <button id="customizeCookies" class="btn-text">${customizeText}</button>
-        </div>
-    `;
-
-    const accepted = localStorage.getItem(KEY) === 'true';
-    banner.style.display = accepted ? 'none' : 'block';
-
-    const acceptBtn = banner.querySelector('#acceptCookies');
-    if (acceptBtn) {
-        acceptBtn.addEventListener('click', () => {
-            localStorage.setItem(KEY, 'true');
-            banner.style.display = 'none';
-        });
-    }
-
-    const customizeBtn = banner.querySelector('#customizeCookies');
-    if (customizeBtn) {
-        customizeBtn.addEventListener('click', () => {
-            window.location.href = privacyHref;
-        });
-    }
+    const script = document.createElement('script');
+    script.src = 'https://cdn.iubenda.com/cs/iubenda_cs.js';
+    script.async = true;
+    script.charset = 'UTF-8';
+    document.head.appendChild(script);
 })();
 
 // Search overlay with typeahead suggestions (IT + EN)
