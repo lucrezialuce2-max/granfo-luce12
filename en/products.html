@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lighting Collections and Systems | Granfo Luce Verona</title>
-    <meta name="description" content="Granfo Luce (Granfo Illuminazione S.N.C.) in Verona, Via Ponte S. Pancrazio 8. Experts in handcrafted lamps, architectural lighting and custom projects since 1970.">
-    <link rel="stylesheet" href="../style.css?v=3.8">
+    <title>Chandeliers and Lighting Systems Collection | Granfo Luce Verona</title>
+    <meta name="description" content="Granfo Luce (Granfo Illuminazione S.N.C.) in Verona, Via Ponte S. Pancrazio 8. Experts in handcrafted chandeliers, architectural lighting, and bespoke projects since 1970.">
+    <link rel="stylesheet" href="../style.css?v=3.9">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -14,7 +14,7 @@
       "legalName": "Granfo Illuminazione S.N.C.",
       "url": "https://granfoluce.com",
       "telephone": "+39 045 528541",
-      "email": "granfoluce@hotmail.it",
+      "Email": "granfoluce@hotmail.it",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Via Ponte S. Pancrazio 8",
@@ -23,7 +23,7 @@
         "addressCountry": "IT"
       },
       "image": "https://granfoluce.com/images/brand/granfoluce-logo.png",
-      "description": "Granfo Luce - Experts in handcrafted lamps, architectural lighting and custom projects since 1970 in Verona",
+      "description": "Granfo Luce - Experts in handcrafted chandeliers, architectural lighting, and bespoke projects since 1970 in Verona",
       "sameAs": [
         "https://www.facebook.com/Granfoluce.lampadari/",
         "https://www.instagram.com/granfoluce/",
@@ -32,17 +32,26 @@
     }
     </script>
     <link rel="icon" type="image/png" href="../images/favicon.png">
-    <meta property="og:description" content="Light artisans since 1970. Discover our Murano glass collections and custom design.">
-    <meta property="og:image" content="https://tuosito.com/images/hero/hero-main-graphic.webp"> <meta property="og:url" content="https://tuosito.com">
-    <meta property="og:type" content="website">
+    <meta property="og:description" content="Artisans of light since 1970. Discover our collections in Murano glass and bespoke design.">
+<meta property="og:image" content="https://tuosito.com/images/hero/hero-main-graphic.webp"> <meta property="og:url" content="https://tuosito.com">
+<meta property="og:type" content="website">
 
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Critical preloader to avoid initial flash */
+        /* Preloader critico per evitare flash iniziale */
         #preloader { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #0e1713; z-index: 99999; opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0.3s ease; }
         #preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
         .preloader-icon { width: 120px; height: auto; animation: breathe 2s infinite ease-in-out; }
         @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.7; } }
+        
+        /* Prevent layout shift */
+        body { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', Georgia, serif; }
+
+        /* Mobile above-the-fold: header più basso su Products */
+        @media (max-width: 768px) {
+            .page-header { height: 32vh; min-height: 200px; padding-top: 64px; }
+        }
     </style>
 </head>
 <body>
@@ -83,321 +92,345 @@
     </div>
 
     <header class="page-header">
-        <div class="page-header-bg"><img loading="lazy" decoding="async" src="../images/prodotti/copertina-prodotti.webp" alt="Granfo Products"></div>
+        <div class="page-header-bg"><img loading="lazy" decoding="async" src="../images/prodotti/copertina-prodotti.webp" alt="Products Granfo Luce"></div>
         <div class="container page-title">
-            <p class="breadcrumb"><a href="index.html">Home</a> / <span>Products</span></p>
-            <h1>The Collections</h1>
+            <p class="breadcrumb" style="text-align: center;"><a href="index.html">Home</a> / <span>Products</span></p>
+            <h1 style="text-align: center;">Collections</h1>
+            <p style="text-align: center; font-size: 0.95rem; color: var(--color-text-muted); margin-top: 0.4rem;">Visit our showroom to discover our full catalog.</p>
+            
+            <div class="filter-wrapper-mobile">
+                <button class="filter-button-mobile" onclick="toggleFilters()">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M7 12h10M11 18h2"/></svg>
+                    Filter e Ordina
+                </button>
+            </div>
+        
+            <div class="filters-bar-desktop">
+                <select class="filter-dropdown" onchange="filterProducts(this.value, null)">
+                    <option value="all">Category</option>
+                    <option value="Suspension">Suspension</option>
+                    <option value="Table">Table</option>
+                    <option value="Ceiling">Ceiling</option>
+                    <option value="Wall">Wall</option>
+                    <option value="Floor">Floor</option>
+                    <option value="Vases & Decor">Oggettistica</option>
+                    <option value="outdoor">Outdoor</option>
+                </select>
+                
+                <select class="filter-dropdown">
+                    <option value="">Material</option>
+                    <option value="vetro">Glass</option>
+                    <option value="Metal">Metal</option>
+                    <option value="Gold">Gold</option>
+                </select>
+                
+                <select class="filter-dropdown">
+                    <option value="">Style</option>
+                    <option value="Modern">Modern</option>
+                    <option value="Classic">Classic</option>
+                    <option value="Contemporary">Contemporary</option>
+                </select>
+            </div>
+        </div>
         </div>
     </header>
 
-    <section class="aurum-banner">
-    <div class="container aurum-banner-content" style="flex-direction: column; align-items: center; text-align: center; gap: 1rem;">
-        <div class="aurum-text">
-            <h2>Domus Collection</h2>
-            <p>A modular system of interlocking Murano glass. Infinite combinations to shape your perfect light.</p>
-        </div>
-        <div style="display: flex; justify-content: center;">
-            <a href="aurum.html" class="btn btn-gold">View Details</a>
-        </div>
-    </div>
-</section>
-
-   <section class="section-padding" id="catalogo" style="padding-top: 2rem;">
+    <section class="section-padding" id="catalogo" style="padding-top: 2rem;">
     <div class="container">
+
         <div style="display:flex; justify-content:center; margin-bottom:0.75rem;">
-            <button id="wishlist-chip" class="chip" style="display:none;" onclick="document.getElementById('wishlist')?.scrollIntoView({ behavior: 'smooth' });">View Wishlist</button>
-        </div>
-        <div class="filters-bar" style="margin-bottom: 1rem;">
-            <div class="scroller-track">
-                <button class="chip active" onclick="filterProducts('all', this)">All</button>
-                <button class="chip" onclick="filterProducts('sospensione', this)">Pendant</button>
-                <button class="chip" onclick="filterProducts('tavolo', this)">Table</button>
-                <button class="chip" onclick="filterProducts('soffitto', this)">Ceiling</button>
-                <button class="chip" onclick="filterProducts('parete', this)">Wall</button>
-                <button class="chip" onclick="filterProducts('terra', this)">Floor</button>
-                <button class="chip" onclick="filterProducts('vasi e oggettistica', this)">Vases & Objects</button>
-                <button class="chip" onclick="filterProducts('outdoor', this)">Outdoor</button>
-            </div>
+            <button id="wishlist-chip" class="chip" style="display:none;" hidden onclick="document.getElementById('wishlist')?.scrollIntoView({ behavior: 'smooth' });">Go to wishlist</button>
         </div>
 
-     
+        <p class="results-count" id="results-count" style="margin-bottom: 1rem;"></p>
 
-        <p class="results-count" id="results-count" style="margin-top: 1rem;"></p>
+        <div class="products-page-grid" id="product-grid">
+            <!-- BANNER DOMUS: Integrato nella griglia, occupa 2 colonne -->
+            <div class="domus-banner-grid">
+                <div class="domus-banner">
+                    <div class="domus-image-side">
+                        <img src="../images/prodotti/domus-copertina.png" alt="Domus Collection">
+                    </div>
+                    <div class="domus-text-side">
+                        <span class="eyebrow">New for 2026</span>
+                        <h2>Domus Collection</h2>
+                        <p>Vetri ad incastro per combinazioni di luce infinite.</p>
+                        <a href="domus.html" class="btn btn-dark">Discover the collection</a>
+                    </div>
+                </div>
+            </div>
 
-        <div class="products-page-grid reveal" id="product-grid">
+            <div class="product-item" data-category="Suspension" data-price="low" data-material="vetro" data-product-id="fungo-black" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/fungonero.webp" alt="Fungo Suspension Lamp" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>LumiNero Suspension</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
+                </div>
+            </div>
+
+            <div class="product-item" data-category="Wall" data-price="medium" data-material="Gold" data-product-id="barra-Wall" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Parete/barra.webp" alt="Wall Barra" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>Barra Wall</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
+                </div>
+            </div>
+
+             <div class="product-item" data-category="Suspension" data-price="high" data-material="vetro" data-product-id="ofelia-Suspension" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/sospvetro.webp" alt="OFELIA Suspension in Blown glass" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>OFELIA</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
+                </div>
+            </div>
+
+            <div class="product-item" data-category="Suspension" data-price="medium" data-material="Metal" data-product-id="garden-light-spot" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/tubo.webp" alt="Tube Suspension" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>Spot Suspension</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
+                </div>
+            </div>
+
+            <div class="product-item" data-category="Suspension" data-price="medium" data-material="Metal" data-product-id="camilla-Suspension" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/sospcoll.webp" alt="Suspension Collana" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>CAMILLA</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
+                </div>
+            </div>
             
-            <div class="product-item" data-category="sospensione" data-price="low" data-material="vetro" data-product-id="fungo-black" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/fungonero.webp" alt="Fungo Black pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Fungo Black</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
-                </div>
-            </div>
-
-            <div class="product-item" data-category="parete" data-price="medium" data-material="oro" data-product-id="luxe-table" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Parete/barra.webp" alt="Barra pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Wall Bar</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
-                </div>
-            </div>
-
-             <div class="product-item" data-category="sospensione" data-price="high" data-material="metallo" data-product-id="applique-modern" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/sospvetro.webp" alt="Glass pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Applique Modern</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
-                </div>
-            </div>
-
-            <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="garden-light-tube" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/tubo.webp" alt="Tube pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Garden Light</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
-                </div>
-            </div>
-
-            <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="garden-light-collar" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/sospcoll.webp" alt="Pendant necklace" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Garden Light</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
-                </div>
-            </div>
-            
-             <div class="product-item" data-category="Novità 2025" data-category="sospensione" data-price="high" data-material="metallo" data-line="aurum" data-product-id="sospensione-aurum" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist" title="Add to Wishlist">
+             <div class="product-item" data-category="Suspension" data-price="high" data-material="Metal" data-line="aurum" data-product-id="domus-Suspension" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist" title="Aggiungi alla Wishlist">
                     <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                 </button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/sospensione-aurum.webp" alt="Domus pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Domus Pendant</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">Murano glass - Crystal</p>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/sospensione-aurum.webp" alt="Suspension Domus" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>DOMUS</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;">Domus Collection</p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="tavolo" data-price="medium" data-material="metallo" data-product-id="garden-light-table" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Tavolo/tavolocubo.webp" alt="Cubo table lamp" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Garden Light</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+            <div class="product-item" data-category="Table" data-price="medium" data-material="Metal" data-product-id="Table-cubo" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Tavolo/tavolocubo.webp" alt="Table Cubo" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>BARCELÓ</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="tavolo" data-price="medium" data-material="metallo" data-line="aurum" data-product-id="tavolo-lastra" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Tavolo/vetri-lastra.webp" alt="Lastra table" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Lastra Table</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+            <div class="product-item" data-category="Table" data-price="medium" data-material="Metal" data-line="aurum" data-product-id="barcelo-Table"  data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Tavolo/vetri-lastra.webp" alt="Table Lastra" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>BARCELÓ Table</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;">Domus Collection</p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="terra" data-price="medium" data-material="metallo" data-product-id="garden-light-floor" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Terra/terralight.webp" alt="Floor lamp" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Garden Light</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+            <div class="product-item" data-category="Floor" data-price="medium" data-material="Metal" data-product-id="Floor-light" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Terra/terralight.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>Floor Light</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
-
-            <!-- Synced items from IT products -->
-            <div class="product-item" data-category="terra" data-price="medium" data-material="metallo" data-product-id="piantana-bolle" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Terra/piantana-bolle.webp" alt="Floor lamp bubbles" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
+            <div class="product-item" data-category="Floor" data-price="medium" data-material="Metal" data-product-id="piantana-bolle" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Terra/piantana-bolle.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
                     <h3>Piantana Bolle</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="parete" data-price="medium" data-material="metallo" data-product-id="ellisse" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Parete/ellisse.webp" alt="Wall lamp Ellisse" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
+            <div class="product-item" data-category="Wall" data-price="medium" data-material="Metal" data-product-id="ellisse-Wall" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Parete/ellisse.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
                     <h3>Ellisse</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
+                </div>
+            </div>
+            <div class="product-item" data-category="Wall" data-price="medium" data-material="Metal" data-product-id="applique-v-Wall" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Parete/appliquev.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>Applique V</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="parete" data-price="medium" data-material="metallo" data-product-id="applique-vetro" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Parete/appliquev.webp" alt="Wall applique" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Applique Vetro</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
-                </div>
-            </div>
-
-            <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="cono" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/cono.webp" alt="Cone pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
+            <div class="product-item" data-category="Suspension" data-price="medium" data-material="Metal" data-product-id="cono-Suspension" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/cono.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
                     <h3>Cono</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="gabs" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/gabs.webp" alt="Gabs pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
+            <div class="product-item" data-category="Suspension" data-price="medium" data-material="Metal" data-product-id="gabs-Suspension" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/gabs.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
                     <h3>Gabs</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="bolla" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/bollasospe.webp" alt="Bubble pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Bolla Sospensione</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+            <div class="product-item" data-category="Suspension" data-price="medium" data-material="Metal" data-product-id="bolla-Suspension" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/bollasospe.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>Bolla Suspension</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="fungo-pendant" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/sospensione-fungo.webp" alt="Fungo pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Sospensione Fungo</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+            <div class="product-item" data-category="Suspension" data-price="medium" data-material="Metal" data-product-id="Suspension-fungo" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/sospensione-fungo.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>Suspension Fungo</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="piatto" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/sospepiatpal.webp" alt="Flat pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Sospensione Piatto</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+            <div class="product-item" data-category="Suspension" data-price="medium" data-material="Metal" data-product-id="Suspension-piatto" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/sospepiatpal.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>Suspension Piatto</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="tubo" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/sospensione tubo.webp" alt="Tube pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Sospensione Tubo</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+            <div class="product-item" data-category="Suspension" data-price="medium" data-material="Metal" data-product-id="Suspension-tubo" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/sospensione tubo.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>Tube Suspension</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="vino" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/vino.webp" alt="Wine pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Sospensione Vino</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+            <div class="product-item" data-category="Suspension" data-price="medium" data-material="Metal" data-product-id="vino-Suspension" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/vino.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>Vino Suspension</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="swarovski" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/swarovski.webp" alt="Swarovski pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Sospensione Swarovski</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+            <div class="product-item" data-category="Suspension" data-price="medium" data-material="Metal" data-product-id="Wall" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/swarovski.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>Suspension Swarovski</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="gabbia" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/gabbia.webp" alt="Cage pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
+            <div class="product-item" data-category="Suspension" data-price="medium" data-material="Metal" data-product-id="Wall" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/gabbia.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
                     <h3>Gabbia</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="parete" data-price="medium" data-material="metallo" data-product-id="gangs" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Parete/gangs.webp" alt="Wall lamp Gangs" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
+            <div class="product-item" data-category="Wall" data-price="medium" data-material="Metal" data-product-id="Wall" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Parete/gangs.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
                     <h3>Gangs</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="sospensione" data-price="medium" data-material="metallo" data-product-id="barra-vetro" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/barravetro.webp" alt="Glass bar pendant" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Barra Vetro</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+            <div class="product-item" data-category="Suspension" data-price="medium" data-material="Metal" data-product-id="Wall" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Sospensione/barravetro.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>Glass Bar</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="parete" data-price="medium" data-material="metallo" data-product-id="3bt" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Parete/3bt.webp" alt="3BT wall" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
+            <div class="product-item" data-category="Wall" data-price="medium" data-material="Metal" data-product-id="Wall" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Parete/3bt.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
                     <h3>3BT</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="parete" data-price="medium" data-material="metallo" data-product-id="tubo-gigante" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Parete/tubogiga.webp" alt="Giant tube" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Tubo Gigante</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+            <div class="product-item" data-category="Wall" data-price="medium" data-material="Metal" data-product-id="Wall" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Parete/tubogiga.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>Giant Tube</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="soffitto" data-price="medium" data-material="metallo" data-product-id="plafoniera-b" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="./images/prodotti/Soffitto/plafonierab.webp" alt="Ceiling light B" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
+            <div class="product-item" data-category="Ceiling" data-price="medium" data-material="Metal" data-product-id="Wall" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="../images/prodotti/Soffitto/plafonierab.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
                     <h3>Plafoniera B</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;"></p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="soffitto" data-price="medium" data-material="metallo" data-product-id="plafoniera-c" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img src="./images/prodotti/Soffitto/plafonierac.webp" alt="Ceiling light C" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
+            <div class="product-item" data-category="Ceiling" data-price="medium" data-material="Metal" data-product-id="Wall" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img src="../images/prodotti/Soffitto/plafonierac.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
                     <h3>Plafoniera C</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="tavolo" data-price="medium" data-material="metallo" data-product-id="tavolo-tubo" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Tavolo/tavolotubo.webp" alt="Tube table lamp" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Tavolo Tubo</h3>
+            <div class="product-item" data-category="Table" data-price="medium" data-material="Metal" data-product-id="Wall" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Tavolo/Tabletubo.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>Table Tubo</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="tavolo" data-price="medium" data-material="metallo" data-product-id="tavolo-fungo" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Tavolo/fungotavol.webp" alt="Fungo table lamp" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
-                    <h3>Tavolo Fungo</h3>
+            <div class="product-item" data-category="Table" data-price="medium" data-material="Metal" data-product-id="Wall" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Tavolo/fungotavol.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
+                    <h3>Table Fungo</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
                 </div>
             </div>
 
-            <div class="product-item" data-category="parete" data-price="medium" data-material="metallo" data-product-id="padella" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
-                <button class="wishlist-btn" aria-label="Add to wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
-                <img loading="lazy" decoding="async" src="../images/prodotti/Parete/padella.webp" alt="Padella wall" onclick="openLightbox(this.src)" style="cursor: pointer;">
-                <div class="p-3">
+            <div class="product-item" data-category="Wall" data-price="medium" data-material="Metal" data-product-id="Wall" data-tags="tecnico" data-note="Note: For more information and variants contact us.">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></button>
+                <img loading="lazy" decoding="async" src="../images/prodotti/Parete/padella.webp" alt="Floor Light" style="cursor: pointer;">
+                <div class="card-content">
                     <h3>Padella</h3>
                     <p style="color:var(--color-text-muted); font-size:0.9rem;">-</p>
                 </div>
             </div>
+
+
 
         </div>
     </div>
@@ -411,20 +444,43 @@
     </div>
     <div class="filter-content">
         <div class="filter-group">
-            <h4>Price</h4>
-            <label><input type="checkbox" value="low" onchange="applyAdvancedFilters()"> €0 - €200</label>
-            <label><input type="checkbox" value="medium" onchange="applyAdvancedFilters()"> €200 - €500</label>
-            <label><input type="checkbox" value="high" onchange="applyAdvancedFilters()"> €500+</label>
+            <div class="filter-group-header">
+                <h4>Category</h4>
+            </div>
+            <div class="filter-chips">
+                <label class="filter-chip"><input type="checkbox" value="Suspension" onchange="applyAdvancedFilters()"><span>Suspension</span></label>
+                <label class="filter-chip"><input type="checkbox" value="Table" onchange="applyAdvancedFilters()"><span>Table</span></label>
+                <label class="filter-chip"><input type="checkbox" value="Ceiling" onchange="applyAdvancedFilters()"><span>Ceiling</span></label>
+                <label class="filter-chip"><input type="checkbox" value="Wall" onchange="applyAdvancedFilters()"><span>Wall</span></label>
+                <label class="filter-chip"><input type="checkbox" value="Floor" onchange="applyAdvancedFilters()"><span>Floor</span></label>
+                <label class="filter-chip"><input type="checkbox" value="Vases & Decor" onchange="applyAdvancedFilters()"><span>Vases & Decor</span></label>
+                <label class="filter-chip"><input type="checkbox" value="outdoor" onchange="applyAdvancedFilters()"><span>Outdoor</span></label>
+            </div>
         </div>
         <div class="filter-group">
-            <h4>Material</h4>
-            <label><input type="checkbox" value="vetro" onchange="applyAdvancedFilters()"> Blown Glass</label>
-            <label><input type="checkbox" value="metallo" onchange="applyAdvancedFilters()"> Metal</label>
-            <label><input type="checkbox" value="oro" onchange="applyAdvancedFilters()"> Gold Finish</label>
+            <div class="filter-group-header">
+                <h4>Material</h4>
+            </div>
+            <div class="filter-chips">
+                <label class="filter-chip"><input type="checkbox" value="vetro" onchange="applyAdvancedFilters()"><span>Blown glass</span></label>
+                <label class="filter-chip"><input type="checkbox" value="Metal" onchange="applyAdvancedFilters()"><span>Metal</span></label>
+                <label class="filter-chip"><input type="checkbox" value="Gold" onchange="applyAdvancedFilters()"><span>Finitura Gold</span></label>
+            </div>
+        </div>
+        <div class="filter-group">
+            <div class="filter-group-header">
+                <h4>Style</h4>
+            </div>
+            <div class="filter-chips">
+                <label class="filter-chip"><input type="checkbox" value="Modern" onchange="applyAdvancedFilters()"><span>Modern</span></label>
+                <label class="filter-chip"><input type="checkbox" value="Classic" onchange="applyAdvancedFilters()"><span>Classic</span></label>
+                <label class="filter-chip"><input type="checkbox" value="Contemporary" onchange="applyAdvancedFilters()"><span>Contemporary</span></label>
+            </div>
         </div>
     </div>
     <div class="filter-footer">
-        <button class="btn btn-gold w-full" onclick="toggleFilters()">See Results</button>
+        <button class="btn btn-gold w-full filter-apply" onclick="applyAdvancedFilters(); toggleFilters()">Apply filters</button>
+        <button class="btn filter-reset" onclick="resetFilters()">Reset</button>
     </div>
 </div>
 
@@ -434,19 +490,20 @@
                 <div><span class="eyebrow">Favorites</span><h2>Your Wishlist</h2></div>
             </div>
             <div class="wishlist-actions" style="display:flex; gap:0.75rem; flex-wrap:wrap; margin-bottom:1rem;">
-                <button class="btn btn-gold" onclick="sendWishlist('whatsapp')" style="padding:0.8rem 1.4rem;">Share on WhatsApp</button>
+                <button class="btn btn-gold" onclick="sendWishlist('whatsapp')" style="padding:0.8rem 1.4rem;">Send via WhatsApp</button>
                 <button class="btn btn-outline" onclick="sendWishlist('mail')" style="padding:0.8rem 1.4rem;">Send via Email</button>
             </div>
-            <div class="products-page-grid reveal" id="wishlist-grid"></div>
+            <div class="products-page-grid" id="wishlist-grid"></div>
             <p class="results-count" id="wishlist-empty" style="margin-top:1rem;">No products in wishlist.</p>
         </div>
     </section>
 
-   <footer class="footer">
+   
+  <footer class="footer">
         <div class="container footer-grid">
             <div class="footer-col brand-col">
                 <a href="index.html" class="footer-logo"><img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 60px;"></a>
-                <p class="copyright">© 2025 GRANFO ILLUMINAZIONE S.N.C.<br>All Rights Reserved.</p>
+                <p class="copyright">&copy; 2025 GRANFO ILLUMINAZIONE S.N.C.<br>All Rights Reserved.</p>
                 <div class="social-icons">
                     <a href="https://www.facebook.com/Granfoluce.lampadari/?locale=it_IT" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
                     <a href="https://www.instagram.com/granfoluce/" aria-label="Instagram"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path></svg></a>
@@ -466,12 +523,15 @@
                 <h4>INFO</h4>
                 <div class="footer-text-group">
                     <p>GRANFO ILLUMINAZIONE S.N.C.</p>
-                    <p>VAT 01410980237</p>
+                    <p>P.IVA 01410980237</p>
+                    <p style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.75rem; opacity: 0.8;">
+                        Granfo Luce is the trade name of Granfo Illuminazione S.N.C., sole location Via Ponte S. Pancrazio 8, Verona.
+                    </p>
                     <a href="privacy-policy.html" class="privacy-link">Privacy Policy</a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>CONTACTS</h4>
+                <h4>Contacts</h4>
                 <div class="contact-rows">
                     <p><span class="label">Email:</span><br><a href="mailto:granfoluce@hotmail.it" class="highlight-link">granfoluce@hotmail.it</a></p>
                     <p><span class="label">Phone:</span><br><a href="tel:+39045528541" class="highlight-link">+39 045 528541</a></p>
@@ -494,7 +554,7 @@
             }
         }
         
-        // Search: handles Enter and Escape
+        // RiSearch: gestisce Enter e Escape
         (function initSearchHandler(){
             const overlay = document.getElementById('search-overlay');
             const input = overlay ? overlay.querySelector('input') : null;
@@ -513,40 +573,49 @@
             });
         })();
         
-        const revealElements = document.querySelectorAll('.reveal');
-        const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); } }); }, { threshold: 0.1 });
-        revealElements.forEach(el => revealObserver.observe(el));
-        /* --- FILTER LOGIC --- */
+        /* --- LOGICA FILTRI --- */
 let activeCategory = 'all';
 let activeSearchQuery = '';
 
 function toggleFilters() {
     const sheet = document.getElementById('filter-sheet');
     const overlay = document.getElementById('filter-overlay');
+    const wasOpen = sheet.classList.contains('active');
     sheet.classList.toggle('active');
     overlay.classList.toggle('active');
-    if(sheet.classList.contains('active')) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = '';
+    if (sheet.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+        if (wasOpen) applyAdvancedFilters();
+    }
 }
 
+// Filtro rapido per Category (bottoni in alto)
 function filterProducts(category, btnElement) {
     activeCategory = category;
+    
+    // Aggiorna Style bottoni
     document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
     if (btnElement) btnElement.classList.add('active');
 
-    applyAdvancedFilters();
+    applyAdvancedFilters(); // Richiama la funzione principale che combina tutto
 }
 
+// Auto-Filter in Base al parametro URL
 function applyURLFilters() {
     const urlParams = new URLSearchParams(window.location.search);
-    let categoria = urlParams.get('categoria');
+    let Category = urlParams.get('Category');
     const q = urlParams.get('q');
+    const Material = urlParams.get('Material');
+    const Style = urlParams.get('Style');
     
-    if (categoria) {
+    if (Category) {
         // Decodifica il parametro se è URL encoded
-        categoria = decodeURIComponent(categoria).toLowerCase().trim();
+        Category = decodeURIComponent(Category).toLowerCase().trim();
+        activeCategory = Category;
         
-        // Trova il bottone della categoria
+        // Trova il bottone della Category
         let btn = null;
         const chips = document.querySelectorAll('.chip');
         
@@ -555,20 +624,22 @@ function applyURLFilters() {
             const onclickAttr = chip.getAttribute('onclick') || '';
             
             // Matching con il testo del bottone (normalizzato)
-            if (chipText === categoria || chipText.includes(categoria) || categoria.includes(chipText)) {
+            if (chipText === Category || chipText.includes(Category) || Category.includes(chipText)) {
                 btn = chip;
                 break;
             }
             
             // Fallback: matching con onclick
-            if (onclickAttr.includes(`'${categoria}'`)) {
+            if (onclickAttr.includes(`'${Category}'`)) {
                 btn = chip;
                 break;
             }
         }
         
         if (btn) {
-            filterProducts(categoria, btn);
+            filterProducts(Category, btn);
+        } else {
+            applyAdvancedFilters();
         }
     }
     if (q) {
@@ -579,6 +650,25 @@ function applyURLFilters() {
         applyAdvancedFilters();
     }
 
+    if (Material) {
+        const values = Material.split(',').map(v => v.trim().toLowerCase()).filter(Boolean);
+        values.forEach(val => {
+            const cb = document.querySelector(`input[type="checkbox"][value="${val}"]`);
+            if (cb) cb.checked = true;
+        });
+        applyAdvancedFilters();
+    }
+
+    if (Style) {
+        const values = Style.split(',').map(v => v.trim().toLowerCase()).filter(Boolean);
+        values.forEach(val => {
+            const cb = document.querySelector(`input[type="checkbox"][value="${val}"]`);
+            if (cb) cb.checked = true;
+        });
+        applyAdvancedFilters();
+    }
+
+    // Se arrivo con un anchor, scrolla al target (preferibilmente catalogo per vedere i filtri)
     const hash = window.location.hash;
     if (hash) {
         setTimeout(() => {
@@ -588,7 +678,7 @@ function applyURLFilters() {
                 target = document.getElementById('catalogo') || document.getElementById('product-grid');
             }
             if (target) {
-                const offset = 90;
+                const offset = 90; // lascia spazio per navbar e chip
                 const top = target.getBoundingClientRect().top + window.scrollY - offset;
                 window.scrollTo({ top, behavior: 'smooth' });
             }
@@ -605,49 +695,132 @@ if (document.readyState !== 'loading') {
     document.addEventListener('DOMContentLoaded', applyURLFilters, { once: true });
 }
 
+// Logica combinata (Category + Checkbox Prezzo/Material + Filtri prodotto)
 function applyAdvancedFilters() {
     const products = document.querySelectorAll('.product-item');
+    const domusBanner = document.querySelector('.domus-banner-grid');
     let visibleCount = 0;
+    let showDomusBanner = false;
 
+    const normalize = (value) => (value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/\p{Diacritic}/gu, '')
+        .replace(/[^a-z0-9\s]/gi, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+    const stopwords = new Set(['il', 'lo', 'la', 'i', 'gli', 'le', 'un', 'una', 'uno', 'di', 'da', 'a', 'e', 'o', 'per', 'con', 'su', 'in']);
+    const genericWords = new Set(['lampada', 'lampade', 'lampadario', 'lampadari', 'luce', 'luci', 'illuminazione']);
+    const tokenize = (value) => normalize(value)
+        .split(' ')
+        .map(t => t.trim())
+        .filter(t => t && !stopwords.has(t) && !genericWords.has(t));
+
+    // Prendi i valori delle checkbox selezionate
     const priceFilters = Array.from(document.querySelectorAll('input[type="checkbox"][value="low"]:checked, input[type="checkbox"][value="medium"]:checked, input[type="checkbox"][value="high"]:checked')).map(cb => cb.value);
-    const materialFilters = Array.from(document.querySelectorAll('input[type="checkbox"][value="vetro"]:checked, input[type="checkbox"][value="metallo"]:checked, input[type="checkbox"][value="oro"]:checked')).map(cb => cb.value);
+    const materialFilters = Array.from(document.querySelectorAll('input[type="checkbox"][value="vetro"]:checked, input[type="checkbox"][value="Metal"]:checked, input[type="checkbox"][value="Gold"]:checked')).map(cb => cb.value);
+    const categoryFilters = Array.from(document.querySelectorAll('input[type="checkbox"][value="Suspension"]:checked, input[type="checkbox"][value="Table"]:checked, input[type="checkbox"][value="Ceiling"]:checked, input[type="checkbox"][value="Wall"]:checked, input[type="checkbox"][value="Floor"]:checked, input[type="checkbox"][value="Vases & Decor"]:checked, input[type="checkbox"][value="outdoor"]:checked')).map(cb => cb.value);
+    const styleFilters = Array.from(document.querySelectorAll('input[type="checkbox"][value="Modern"]:checked, input[type="checkbox"][value="Classic"]:checked, input[type="checkbox"][value="Contemporary"]:checked')).map(cb => cb.value);
 
-    const normalizedQuery = (activeSearchQuery || '').toLowerCase().trim();
+    const normalizedQuery = normalize(activeSearchQuery || '');
+    const searchTokens = tokenize(activeSearchQuery || '');
+    const impliedCategories = new Set();
+
+    if (searchTokens.includes('piantana') || searchTokens.includes('Floor')) impliedCategories.add('Floor');
+    if (searchTokens.includes('Table')) impliedCategories.add('Table');
+    if (searchTokens.includes('Ceiling') || searchTokens.includes('plafoniera')) impliedCategories.add('Ceiling');
+    if (searchTokens.includes('Wall') || searchTokens.includes('applique')) impliedCategories.add('Wall');
+    if (searchTokens.includes('Suspension') || searchTokens.includes('pendente') || searchTokens.includes('lampadario')) impliedCategories.add('Suspension');
+    if (searchTokens.includes('outdoor') || searchTokens.includes('esterno') || searchTokens.includes('giardino')) impliedCategories.add('outdoor');
+    if (searchTokens.includes('vasi') || searchTokens.includes('oggettistica') || searchTokens.includes('oggetti')) impliedCategories.add('Vases & Decor');
 
     products.forEach(product => {
         const pCat = product.getAttribute('data-category');
         const pPrice = product.getAttribute('data-price');
         const pMat = product.getAttribute('data-material');
+        const productId = product.getAttribute('data-product-id');
+        const productFilters = (product.dataset.filters || '').toLowerCase(); // Leggi i filtri assegnati via editor
+        const pStyle = (product.getAttribute('data-style') || '').toLowerCase();
         const title = (product.querySelector('h3')?.textContent || '').toLowerCase();
         const alt = (product.querySelector('img')?.getAttribute('alt') || '').toLowerCase();
         const tags = (product.getAttribute('data-tags') || '').toLowerCase();
+        const line = (product.getAttribute('data-line') || '').toLowerCase();
+        const isDomusLine = (line === 'aurum') || title.includes('domus');
+        const indexedText = (window.productPageTextIndex && productId && window.productPageTextIndex[productId])
+            ? window.productPageTextIndex[productId]
+            : '';
 
-        const matchCat = (activeCategory === 'all' || activeCategory === pCat);
+        // Logica:
+        // 1. La Category deve corrispondere (o essere 'all')
+        // 2. SE ci sono filtri prezzo, il prodotto deve averne uno selezionato
+        // 3. SE ci sono filtri Material, il prodotto deve averne uno selezionato
+        // 4. RiSearch full-text anche nei filtri assegnati dal editor
+        
+        const matchCat = (categoryFilters.length > 0)
+            ? categoryFilters.includes(pCat)
+            : (impliedCategories.size > 0
+                ? impliedCategories.has(pCat)
+                : (activeCategory === 'all' || activeCategory === pCat));
         const matchPrice = (priceFilters.length === 0 || priceFilters.includes(pPrice));
         const matchMat = (materialFilters.length === 0 || materialFilters.includes(pMat));
-        const matchText = (normalizedQuery.length === 0) || (
-            title.includes(normalizedQuery) ||
-            pCat?.toLowerCase().includes(normalizedQuery) ||
-            pMat?.toLowerCase().includes(normalizedQuery) ||
-            alt.includes(normalizedQuery) ||
-            tags.includes(normalizedQuery)
+        const matchStyle = (styleFilters.length === 0) || styleFilters.some((filter) =>
+            productFilters.includes(filter) ||
+            tags.includes(filter) ||
+            pStyle.includes(filter) ||
+            title.includes(filter)
         );
+        const haystack = normalize([
+            title,
+            pCat || '',
+            pMat || '',
+            productFilters || '',
+            alt || '',
+            tags || '',
+            pStyle || '',
+            indexedText || ''
+        ].join(' '));
 
-        if (matchCat && matchPrice && matchMat && matchText) {
-            product.style.display = 'block';
+        const matchText = (searchTokens.length === 0) || searchTokens.every(token => haystack.includes(token));
+
+        if (matchCat && matchPrice && matchMat && matchStyle && matchText) {
+            product.hidden = false;
+            product.style.removeProperty('display');
             visibleCount++;
+            if (isDomusLine) showDomusBanner = true;
+            // Piccola animazione di entrata
             product.style.opacity = '0';
             setTimeout(() => product.style.opacity = '1', 50);
         } else {
-            product.style.display = 'none';
+            product.hidden = true;
+            product.style.setProperty('display', 'none', 'important');
         }
     });
 
+    if (domusBanner) {
+        domusBanner.style.display = showDomusBanner ? 'block' : 'none';
+    }
+
+    // Aggiorna contatore (esclude il banner Domus)
     const countText = document.getElementById('results-count');
-    if (visibleCount === 0) countText.innerText = "No products found.";
-    else countText.innerText = `Showing ${visibleCount} products`;
+    const adjustedCount = showDomusBanner ? Math.max(0, visibleCount - 1) : visibleCount;
+    if (adjustedCount === 0) countText.innerText = "No products found.";
+    else countText.innerText = `Showing ${adjustedCount} Products`;
 }
 
+function resetFilters() {
+    document.querySelectorAll('.filter-sheet input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+    });
+    activeCategory = 'all';
+    activeSearchQuery = '';
+    const overlay = document.getElementById('search-overlay');
+    const input = overlay ? overlay.querySelector('input') : null;
+    if (input) input.value = '';
+    applyAdvancedFilters();
+}
+
+// RiSearch live nella pagina Products
 (function initSearchLive(){
     const overlay = document.getElementById('search-overlay');
     const input = overlay ? overlay.querySelector('input') : null;
@@ -662,7 +835,51 @@ function applyAdvancedFilters() {
 })();
 
 const productTemplateMap = {};
+const usedProductIds = new Set();
 
+function slugify(value) {
+    return (value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/\p{Diacritic}/gu, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .replace(/-+/g, '-');
+}
+
+function normalizeProductId(item) {
+    if (!item) return '';
+    const rawId = item.getAttribute('data-product-id') || '';
+    const normalizedRaw = normalizeProductIdValue(rawId);
+    const normalizedLower = normalizedRaw.toLowerCase();
+    const genericIds = new Set([
+        'Wall', 'Suspension', 'Table', 'Ceiling', 'Floor',
+        'outdoor', 'vasi', 'oggettistica', 'wall', 'table',
+        'floor', 'ceiling', 'suspension'
+    ]);
+
+    let finalId = normalizedRaw || '';
+    const needsNew = !finalId || genericIds.has(normalizedLower) || (usedProductIds.has(finalId) && !normalizedProductPageMap[finalId]);
+    if (needsNew) {
+        const title = item.querySelector('h3')?.textContent || '';
+        const imgSrc = item.querySelector('img')?.getAttribute('src') || '';
+        const fileName = imgSrc.split('/').pop() || '';
+        const Base = slugify([title, fileName.replace(/\.[^.]+$/, '')].filter(Boolean).join('-')) || 'product';
+        finalId = Base;
+    }
+
+    if (usedProductIds.has(finalId)) {
+        let index = 2;
+        while (usedProductIds.has(`${finalId}-${index}`)) index++;
+        finalId = `${finalId}-${index}`;
+    }
+
+    item.setAttribute('data-product-id', finalId);
+    usedProductIds.add(finalId);
+    return finalId;
+}
+
+// Toast Notification
 function showToast(message) {
     const toast = document.createElement('div');
     toast.innerText = message;
@@ -673,7 +890,7 @@ function showToast(message) {
 
 function buildProductTemplateMap() {
     document.querySelectorAll('.product-item').forEach(item => {
-        const id = item.getAttribute('data-product-id');
+        const id = normalizeProductId(item);
         if (id && !productTemplateMap[id]) productTemplateMap[id] = item;
     });
 }
@@ -694,13 +911,13 @@ function wishlistLines() {
 function sendWishlist(channel) {
     const lines = wishlistLines();
     if (!lines) {
-        alert('The wishlist is empty.');
+        alert('La wishlist è vuota.');
         return;
     }
     if (channel === 'whatsapp') {
-        window.open(`https://wa.me/?text=Here%20is%20my%20wishlist%3A%0A${lines}`, '_blank');
+        window.open(`https://wa.me/?text=Ecco%20la%20mia%20wishlist%20Illustro%3A%0A${lines}`, '_blank');
     } else if (channel === 'mail') {
-        window.location.href = `mailto:?subject=Wishlist%20Granfo&body=Here%20is%20my%20wishlist%3A%0A${lines}`;
+        window.location.href = `mailto:?subject=Wishlist%20Illustro&body=Ecco%20la%20mia%20wishlist%20Illustro%3A%0A${lines}`;
     }
 }
 
@@ -720,16 +937,31 @@ function toggleWishlist(productId, btnElement) {
     if (index > -1) {
         wishlist.splice(index, 1);
         btnElement.classList.remove('active');
-        showToast("Removed from Wishlist");
+        showToast("Rimosso dalla Wishlist");
     } else {
         wishlist.push(productId);
         btnElement.classList.add('active');
-        showToast("Added to Wishlist!");
+        showToast("Aggiunto alla Wishlist!");
         if (navigator.vibrate) { navigator.vibrate(50); }
     }
     
     saveWishlist(wishlist);
+    syncWishlistButtons();
     renderWishlist();
+}
+
+function syncWishlistButtons() {
+    const wishlist = getWishlist();
+    document.querySelectorAll('.wishlist-btn').forEach(btn => {
+        const item = btn.closest('.product-item');
+        const id = item?.getAttribute('data-product-id');
+        if (!id) return;
+        if (wishlist.includes(id)) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
 }
 
 function bindWishlistButton(btn) {
@@ -763,17 +995,30 @@ function renderWishlist() {
 
     const wishlistChip = document.getElementById('wishlist-chip');
 
-    if (wishlist.length === 0) {
+    const validWishlist = wishlist.filter(id => productTemplateMap[id]);
+    if (validWishlist.length === 0) {
+        if (wishlist.length) saveWishlist([]);
         section.style.display = 'none';
-        if (wishlistChip) wishlistChip.style.display = 'none';
+        grid.style.display = 'none';
+        empty.style.display = 'none';
+        if (wishlistChip) {
+            wishlistChip.style.display = 'none';
+            wishlistChip.hidden = true;
+        }
         return;
     }
 
     section.style.display = 'block';
+    section.style.paddingTop = '1.25rem';
+    section.style.paddingBottom = '1.5rem';
+    grid.style.display = 'grid';
     empty.style.display = 'none';
-    if (wishlistChip) wishlistChip.style.display = 'inline-block';
+    if (wishlistChip) {
+        wishlistChip.style.display = 'inline-block';
+        wishlistChip.hidden = false;
+    }
 
-    wishlist.forEach(id => {
+    validWishlist.forEach(id => {
         const template = productTemplateMap[id];
         if (!template) return;
         const clone = template.cloneNode(true);
@@ -781,16 +1026,20 @@ function renderWishlist() {
         const btn = clone.querySelector('.wishlist-btn');
         if (btn) {
             btn.classList.add('active');
+            btn.removeAttribute('data-bound');
             bindWishlistButton(btn);
         }
         grid.appendChild(clone);
     });
+    syncWishlistButtons();
 }
 
+// Inizializza wishlist al caricamento
 window.addEventListener('DOMContentLoaded', () => {
     buildProductTemplateMap();
     initWishlist();
     renderWishlist();
+    // Apply filters iniziali anche se presente query di riSearch
     applyAdvancedFilters();
 });
     </script>
@@ -808,15 +1057,31 @@ window.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('error', function(e) {
             if (e.target.tagName && e.target.tagName.toLowerCase() === 'img') {
                 // Se l'immagine che ha dato errore è già il placeholder, fermati per evitare loop
-                if (e.target.src.includes('images/placeholder.png')) {
+                if (e.target.src.includes('../images/placeholder.png')) {
                     e.target.style.display = 'none'; // Nascondi l'immagine rotta
                     return;
                 }
                 e.target.src = '../images/placeholder.png';
-                e.target.alt = 'Image not available';
+                e.target.alt = 'Immagine non disponibile';
             }
         }, true);
 
+        // Native Share API
+        async function shareProduct(title, text, url) {
+            if (navigator.share) {
+                try {
+                    await navigator.share({ title: title, text: text, url: url });
+                    console.log('Condiviso con successo');
+                } catch (err) {
+                    console.log('Condivisione annullata');
+                }
+            } else {
+                navigator.clipboard.writeText(url);
+                showToast("Link copiato negli appunti!");
+            }
+        }
+
+        // Lightbox
         function openLightbox(elOrSrc) {
             const lb = document.getElementById('lightbox');
             const img = document.getElementById('lightbox-img');
@@ -864,22 +1129,129 @@ window.addEventListener('DOMContentLoaded', () => {
             <div class="lightbox-caption" id="lightbox-caption" style="max-width:90%; margin:1rem auto 0; color:#fff; font-size:0.95rem; line-height:1.4; text-align:center;"></div>
             <div id="lightbox-note" class="lightbox-note" style="width:90%; margin:0.5rem auto 0; color:#fff; opacity:0.9; font-size:0.9rem; line-height:1.5; text-align:center; display:none;"></div>
         </div>
-        <span style="position:absolute; top:20px; right:20px; color:white; font-size:2rem; cursor:pointer;" onclick="closeLightbox()">×</span>
-        <span style="position:absolute; bottom:20px; width:100%; text-align:center; color:#888; font-size:0.8rem;">Tap to close</span>
+        <span style="position:absolute; top:20px; right:20px; color:white; font-size:2rem; cursor:pointer;" onclick="closeLightbox()">&times;</span>
+        <span style="position:absolute; bottom:20px; width:100%; text-align:center; color:#888; font-size:0.8rem;">Tocca per chiudere</span>
     </div>
-            
+                <script src="../nav-behavior.js"></script>
+            <script src="../product-search-index.js"></script>
+    <script>
+        // Mapping Products alle lGold pagine singole
+        const productPageMap = {
+            'fungo-black': 'Products-singoli/fungo-black.html',
+            'ofelia-Suspension': 'Products-singoli/ofelia-Suspension.html',
+            'ofelia-applique': 'Products-singoli/ofelia-applique.html',
+            'camilla-Suspension': 'Products-singoli/camilla-Suspension.html',
+            'domus-Suspension': 'Products-singoli/domus-Suspension.html',
+            'garden-light-spot': 'Products-singoli/garden-light-spot.html',
+            'barcelo-Table': 'Products-singoli/barcelo-Table.html',
+            'barra-Wall': 'Products-singoli/barra-Wall.html',
+            'ellisse-Wall': 'Products-singoli/ellisse-Wall.html',
+            'applique-v-Wall': 'Products-singoli/applique-v-Wall.html',
+            'Floor-light': 'Products-singoli/Floor-light.html',
+            'piantana-bolle': 'Products-singoli/piantana-bolle.html',
+            'cono-Suspension': 'Products-singoli/cono-Suspension.html',
+            'gabs-Suspension': 'Products-singoli/gabs-Suspension.html',
+            'bolla-Suspension': 'Products-singoli/bolla-Suspension.html',
+            'Suspension-fungo': 'Products-singoli/Suspension-fungo.html',
+            'Suspension-piatto': 'Products-singoli/Suspension-piatto.html',
+            'Suspension-tubo': 'Products-singoli/Suspension-tubo.html',
+            'vino-Suspension': 'Products-singoli/vino-Suspension.html',
+            'Table-cubo': 'Products-singoli/Table-cubo.html',
+            'prodotto-outdoor': 'Products-singoli/prodotto-outdoor.html'
+        };
 
-            <a href="https://wa.me/393385978768" class="whatsapp-float" aria-label="WhatsApp"><svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
-            <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
-            <div id="cookie-banner" class="cookie-banner">
-                <p>We use cookies to improve your experience.</p>
-                <div class="cookie-buttons">
-                    <button id="acceptCookies" class="btn btn-gold btn-small">Accept</button>
-                    <button onclick="document.getElementById('cookie-banner').style.display='none'" class="btn-text">Close</button>
-                </div>
-            </div>
+        const normalizeProductIdValue = (value) => {
+            if (!value) return '';
+            return value
+                .replace(/Suspension/gi, 'Suspension')
+                .replace(/Table/gi, 'Table')
+                .replace(/Floor/gi, 'Floor')
+                .replace(/Wall/gi, 'Wall')
+                .replace(/Ceiling/gi, 'Ceiling')
+                .replace(/Products-singoli/gi, 'products-single')
+                .replace(/_/g, '-')
+                .trim();
+        };
 
-            <script src="../nav-behavior.js"></script>
+        const normalizeProductPageMap = (map) => {
+            const normalized = {};
+            Object.entries(map).forEach(([key, url]) => {
+                const id = normalizeProductIdValue(key);
+                const cleanUrl = (url || '')
+                    .replace(/Products-singoli/gi, 'products-single')
+                    .replace(/Suspension/gi, 'Suspension')
+                    .replace(/Table/gi, 'Table')
+                    .replace(/Floor/gi, 'Floor')
+                    .replace(/Wall/gi, 'Wall')
+                    .replace(/Ceiling/gi, 'Ceiling');
+                normalized[id] = cleanUrl;
+            });
+            return normalized;
+        };
+
+        const normalizedProductPageMap = normalizeProductPageMap(productPageMap);
+
+        function normalizeSearchText(value) {
+            return (value || '')
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/\p{Diacritic}/gu, '')
+                .replace(/[^a-z0-9\s]/gi, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        async function buildProductPageTextIndex() {
+            if (window.productPageTextIndex) return;
+            window.productPageTextIndex = {};
+
+            const entries = Object.entries(normalizedProductPageMap);
+            const fetches = entries.map(async ([id, url]) => {
+                try {
+                    const res = await fetch(url, { cache: 'force-cache' });
+                    if (!res.ok) return;
+                    const html = await res.text();
+                    const doc = new DOMParser().parseFromString(html, 'text/html');
+                    const text = normalizeSearchText(doc.body?.innerText || doc.documentElement?.innerText || '');
+                    if (text) window.productPageTextIndex[id] = text;
+                } catch (err) {
+                    // ignore fetch failures (offline or file://)
+                }
+            });
+
+            await Promise.all(fetches);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const productItems = document.querySelectorAll('.product-item');
+            productItems.forEach(item => {
+                const productId = item.getAttribute('data-product-id');
+                const normalizedId = normalizeProductIdValue(productId);
+
+                if (normalizedId && normalizedProductPageMap[normalizedId]) {
+                    // Crea un link wrapper
+                    const link = document.createElement('a');
+                    link.href = normalizedProductPageMap[normalizedId];
+                    link.style.textDecoration = 'none';
+                    link.style.color = 'inherit';
+                    link.style.display = 'block';
+                    link.style.cursor = 'pointer';
+                    
+                    // Sposta il contenuto del product-item nel link
+                    while (item.firstChild) {
+                        link.appendChild(item.firstChild);
+                    }
+                    
+                    // Reinserisce il link come unico figlio
+                    item.appendChild(link);
+                }
+            });
+
+            buildProductPageTextIndex().then(() => {
+                if (typeof applyAdvancedFilters === 'function') applyAdvancedFilters();
+            });
+        });
+    </script>
     <script>
     let lastScrollTop = 0;
     const navbar = document.querySelector('.navbar');
@@ -887,23 +1259,54 @@ window.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
+        // 1. LOGICA Color: Se scorri più di 50px, diventa VERDE. Altrimenti TRASPARENTE.
         if (scrollTop > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
 
+        // 2. LOGICA NASCONDI/MOSTRA:
+        // Se scorri GIÙ e non sei in cima -> Nascondi la barra
         if (scrollTop > lastScrollTop && scrollTop > navbar.offsetHeight) {
             navbar.classList.add('nav-hidden');
         } else {
+            // Se scorri SU -> Mostra la barra
             navbar.classList.remove('nav-hidden');
         }
         
         lastScrollTop = scrollTop;
     });
     </script>
+    <script>
+        const hidePreloader = () => {
+            const preloader = document.getElementById('preloader');
+            if (preloader && !preloader.classList.contains('loaded')) {
+                preloader.classList.add('loaded');
+            }
+        };
+        window.addEventListener('load', () => {
+            requestAnimationFrame(() => {
+                setTimeout(hidePreloader, 80);
+            });
+        });
+    </script>
     <script src="../luxury.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

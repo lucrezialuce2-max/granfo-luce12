@@ -1,17 +1,16 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collections & Catalogs | GRANFO</title>
-    <meta name="description" content="Download GRANFO Lighting catalogs. Decorative collections, technical solutions and custom designs for your lighting project.">
+    <meta name="description" content="Download GRANFO catalogs. Decorative and technical collections and bespoke solutions for your lighting project.">
     <link rel="stylesheet" href="../style.css?v=3.8">
     <link rel="icon" type="image/png" href="../images/favicon.png">
     <meta property="og:title" content="GRANFO | Light Design Verona">
-    <meta property="og:description" content="Light artisans since 1970. Discover our Murano glass collections and custom design.">
-    <meta property="og:image" content="https://tuosito.com/images/hero/hero-main-graphic.webp">
-    <meta property="og:url" content="https://tuosito.com">
-    <meta property="og:type" content="website">
+<meta property="og:description" content="Artisans of light since 1970. Discover our collections in Murano glass and bespoke design.">
+<meta property="og:image" content="https://tuosito.com/images/hero/hero-main-graphic.webp"> <meta property="og:url" content="https://tuosito.com">
+<meta property="og:type" content="website">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* Preloader critico per evitare flash iniziale */
@@ -29,15 +28,14 @@
     <nav class="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo"><img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 50px;"></a>
-            <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="aurum.html">Domus</a></li>
-                <li><a href="products.html">Products</a></li>
-                <li><a href="catalogs.html" class="active">Catalogs</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
-            </ul>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="catalogs.html" class="active">Catalogs</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contacts.html">Contacts</a>
+            </div>
             <div class="nav-actions">
                 <button class="icon-btn" onclick="toggleSearch()" aria-label="Search"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
                 <div class="lang-selector"><a href="../cataloghi.html" class="lang-item">IT</a><a href="#" class="lang-item active">EN</a></div>
@@ -46,7 +44,6 @@
         </div>
         <div id="mobile-menu" class="mobile-menu">
             <a href="index.html">Home</a>
-            <a href="aurum.html">Domus</a>
             <a href="products.html">Products</a>
             <a href="catalogs.html">Catalogs</a>
             <a href="projects.html">Projects</a>
@@ -62,63 +59,67 @@
 
     <header class="page-header">
         <div class="page-header-bg">
-            <img src="../images/cataloghi/tubs.webp" alt="Light Design" width="1600" height="600" loading="lazy">
+            <img src="../images/cataloghi/tubs.webp" alt="Lighting Design" width="1600" height="600" loading="lazy">
         </div>
         <div class="container page-title">
             <p class="breadcrumb"><a href="index.html">Home</a> / <span>Catalogs</span></p>
-            <h1>Catalogues & Lookbooks</h1>
+            <h1>Our Catalogs</h1>
             <p class="subtitle" style="margin-top: 1rem; color: #ccc; text-transform: none; letter-spacing: 0.05em; font-family: var(--font-sans);">
-                Immerse yourself in our vision. Download the complete guides to our lighting systems and artisanal creations.
+                Browse our creations and find inspiration for your next project.
             </p>
         </div>
     </header>
 
     <section class="section-padding bg-dark">
-        <div class="container catalog-grid reveal">
-            
-            <div class="catalog-card">
-                <div class="catalog-cover-img">
-                    <img src="../images/cataloghi/furniture-catalogue.webp" alt="General Catalog Cover">
+        <div class="container" style="max-width: 1400px;">
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-bottom: 3rem;" class="catalogs-grid-responsive">
+                
+                <!-- General Collection -->
+                <div class="catalog-card-large reveal">
+                    <img src="../images/cataloghi/furniture-catalogue.webp" alt="General Collection 2025-2026" style="width: 100%; height: 500px; object-fit: cover; border-radius: 12px;">
+                    <div style="padding: 2rem 1rem;">
+                        <h3 style="font-family: var(--font-serif); font-size: 2rem; color: white; margin-bottom: 0.5rem;">General Collection</h3>
+                        <p style="color: var(--color-text-muted); margin-bottom: 1.5rem;">A complete overview of our decorative and technical solutions. The essence of Granfo Luce in a single volume.</p>
+                        <a href="../files/furniture-catalogue-25-26.pdf" class="btn btn-gold" download style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path></svg>
+                            Download catalog
+                        </a>
+                    </div>
                 </div>
-                <div class="catalog-content">
-                    <span class="card-tag">2025-2026</span>
-                    <h3>Master Catalogue 2025-2026</h3>
-                    <p>Our definitive guide. A comprehensive overview of decorative and technical lighting solutions, capturing the essence of Granfo Luce.</p>
-                    <a href="../files/furniture-catalogue-25-26.pdf" class="btn btn-outline" download>Download PDF</a>
-                </div>
-            </div>
 
-            <div class="catalog-card">
-                <div class="catalog-cover-img">
-                    <img src="../images/cataloghi/products-venezia.webp" alt="Venice Catalog Cover">
+                <!-- Venice Collection -->
+                <div class="catalog-card-large reveal">
+                    <img src="../images/cataloghi/products-venezia.webp" alt="Venice Collection" style="width: 100%; height: 500px; object-fit: cover; border-radius: 12px;">
+                    <div style="padding: 2rem 1rem;">
+                        <h3 style="font-family: var(--font-serif); font-size: 2rem; color: white; margin-bottom: 0.5rem;">Venice Collection</h3>
+                        <p style="color: var(--color-text-muted); margin-bottom: 1.5rem;">The elegance of glass and artisan tradition reinterpreted in a modern key. Unique pieces for exclusive spaces.</p>
+                        <a href="../files/products-venezia.pdf" class="btn btn-gold" download style="display: inline-flex; align-items: center; gap: 0.5rem;">
+                            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10"></path></svg>
+                            Download catalog
+                        </a>
+                    </div>
                 </div>
-                <div class="catalog-content">
-                    <span class="card-tag">Special Edition</span>
-                    <h3>Venice Collection</h3>
-                    <p>The elegance of glass and artisan tradition, reimagined for contemporary living. Unique pieces for exclusive spaces.</p>
-                    <a href="../files/products-venezia.pdf" class="btn btn-outline" download>Download PDF</a>
-                </div>
-            </div>
 
+            </div>
         </div>
     </section>
 
     <section class="architects-section section-padding">
         <div class="container center-text">
-            <span class="eyebrow">Architects & Professionals</span>
-            <h2 style="margin-bottom: 1.5rem; color: white; font-family: var(--font-serif); font-size: 2.5rem;">Do you design lighting?</h2>
+            <span class="eyebrow">Professional Area</span>
+            <h2 style="margin-bottom: 1.5rem; color: white; font-family: var(--font-serif); font-size: 2.5rem;">Designing light?</h2>
             <p style="color: var(--color-text-muted); max-width: 600px; margin: 0 auto 2rem auto;">
-                Partner with us on your next project. We support architects and lighting designers with detailed technical drawings, 3D models, and bespoke solutions for both residential and contract needs.
+                We collaborate with architects and lighting designers, providing technical support, 3D files, and bespoke solutions for contract and residential projects.
             </p>
-            <a href="contacts.html" class="btn btn-gold">Request Technical Consultation</a>
+            <a href="contacts.html" class="btn btn-gold">Talk to our technical team</a>
         </div>
     </section>
 
-    <footer class="footer">
+   <footer class="footer">
         <div class="container footer-grid">
             <div class="footer-col brand-col">
                 <a href="index.html" class="footer-logo"><img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 60px;"></a>
-                <p class="copyright">© 2025 GRANFO ILLUMINAZIONE S.N.C.<br>All Rights Reserved.</p>
+                <p class="copyright">&copy; 2025 GRANFO ILLUMINAZIONE S.N.C.<br>All Rights Reserved.</p>
                 <div class="social-icons">
                     <a href="https://www.facebook.com/Granfoluce.lampadari/?locale=it_IT" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
                     <a href="https://www.instagram.com/granfoluce/" aria-label="Instagram"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path></svg></a>
@@ -139,13 +140,16 @@
                 <div class="footer-text-group">
                     <p>GRANFO ILLUMINAZIONE S.N.C.</p>
                     <p>P.IVA 01410980237</p>
+                    <p style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.75rem; opacity: 0.8;">
+                        Granfo Luce is the trade name of Granfo Illuminazione S.N.C., sole location Via Ponte S. Pancrazio 8, Verona.
+                    </p>
                     <a href="privacy-policy.html" class="privacy-link">Privacy Policy</a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>CONTACTS</h4>
+                <h4>Contacts</h4>
                 <div class="contact-rows">
-                    <p><span class="label">Email:</span><br><a href="mailto:info@granfoluce.it" class="highlight-link">info@granfoluce.it</a></p>
+                    <p><span class="label">Email:</span><br><a href="mailto:granfoluce@hotmail.it" class="highlight-link">granfoluce@hotmail.it</a></p>
                     <p><span class="label">Phone:</span><br><a href="tel:+39045528541" class="highlight-link">+39 045 528541</a></p>
                     <p><span class="label">Address:</span><br><a href="https://maps.google.com" target="_blank" class="highlight-link underline">via Ponte S. Pancrazio 8 Verona</a></p>
                 </div>
@@ -161,64 +165,88 @@
         revealElements.forEach(el => revealObserver.observe(el));
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const activeDesktop = document.querySelector('.nav-links a.active');
-            if (!activeDesktop) return;
-            const targetHref = activeDesktop.getAttribute('href');
-            document.querySelectorAll('.mobile-menu a').forEach(link => {
-                if (link.getAttribute('href') === targetHref) link.classList.add('active');
-            });
-        });
-
-        // Image error fallback handler - Previene loop infiniti
-        document.addEventListener('error', function(e) {
-            if (e.target.tagName && e.target.tagName.toLowerCase() === 'img') {
-                // Se l'immagine che ha dato errore è già il placeholder, fermati per evitare loop
-                if (e.target.src.includes('images/placeholder.png')) {
-                    e.target.style.display = 'none'; // Nascondi l'immagine rotta
-                    return;
-                }
-                e.target.src = '../images/placeholder.png';
-                e.target.alt = 'Image not available';
-            }
-        }, true);
-    </script>
-
-    <a href="https://wa.me/393385978768" class="whatsapp-float" aria-label="WhatsApp"><svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
-    <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
-    <div id="cookie-banner" class="cookie-banner">
-        <p>We use cookies to improve your experience.</p>
-        <div class="cookie-buttons">
-            <button id="acceptCookies" class="btn btn-gold btn-small">Accept</button>
-            <button onclick="document.getElementById('cookie-banner').style.display='none'" class="btn-text">Close</button>
-        </div>
-    </div>
-
-    <script src="../nav-behavior.js"></script>
-    <script>
     let lastScrollTop = 0;
     const navbar = document.querySelector('.navbar');
-    
+    const delta = 5; // Piccola tolleranza per evitare flickering
+
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
+        // 1. GESTIONE Color (Trasparente in cima, Verde se scorri)
         if (scrollTop > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
 
+        // 2. GESTIONE VISIBILITÀ (Sparisce giù, Appare su)
+        if (Math.abs(lastScrollTop - scrollTop) <= delta) return;
+
+        // Se scorro giù E non sono in cima -> Nascondi
         if (scrollTop > lastScrollTop && scrollTop > navbar.offsetHeight) {
             navbar.classList.add('nav-hidden');
         } else {
+            // Se scorro su -> Mostra
+            navbar.classList.remove('nav-hidden');
+        }
+
+        lastScrollTop = scrollTop;
+    });
+</script>
+<script>
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('.navbar');
+    
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // 1. LOGICA Color: Se scorri più di 50px, diventa VERDE. Altrimenti TRASPARENTE.
+        if (scrollTop > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        // 2. LOGICA NASCONDI/MOSTRA:
+        // Se scorri GIÙ e non sei in cima -> Nascondi la barra
+        if (scrollTop > lastScrollTop && scrollTop > navbar.offsetHeight) {
+            navbar.classList.add('nav-hidden');
+        } else {
+            // Se scorri SU -> Mostra la barra
             navbar.classList.remove('nav-hidden');
         }
         
         lastScrollTop = scrollTop;
     });
-    </script>
-    <script src="../luxury.js"></script>
+</script>
+<script>
+    const hidePreloader = () => {
+        const preloader = document.getElementById('preloader');
+        if (preloader && !preloader.classList.contains('loaded')) {
+            preloader.classList.add('loaded');
+        }
+    };
+    window.addEventListener('load', () => {
+        requestAnimationFrame(() => {
+            setTimeout(hidePreloader, 80);
+        });
+    });
+</script>
+<script src="../luxury.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

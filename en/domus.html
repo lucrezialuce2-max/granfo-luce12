@@ -1,14 +1,14 @@
-<!DOCTYPE html>
-<html lang="it">
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Domus | GRANFO</title>
-    <meta name="description" content="Domus: la collezione esclusiva GRANFO in vetro di Murano.">
-    <link rel="stylesheet" href="style.css?v=3.8">
-    <link rel="icon" type="image/png" href="images/favicon.png">
+    <meta name="description" content="Domus: la collezione Exclusive GRANFO in Murano glass.">
+    <link rel="stylesheet" href="../style.css?v=3.8">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
     <meta property="og:title" content="GRANFO | Light Design Verona">
-    <meta property="og:description" content="Artigiani della luce dal 1970. Scopri le nostre collezioni in vetro di Murano e design su misura.">
+    <meta property="og:description" content="Artisans of light since 1970. Discover our collections in Murano glass and bespoke design.">
     <meta property="og:image" content="https://tuosito.com/images/hero/hero-main-graphic.webp"> 
     <meta property="og:url" content="https://tuosito.com">
     <meta property="og:type" content="website">
@@ -20,7 +20,7 @@
         .preloader-icon { width: 120px; height: auto; animation: breathe 2s infinite ease-in-out; }
         @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.7; } }
         
-        /* Stile per il filtro attivo */
+        /* Style per il filtro attivo */
         .swatch-item { cursor: pointer; transition: transform 0.2s; }
         .swatch-item:hover { transform: scale(1.05); }
         .swatch-item.active-filter .swatch-img { border: 2px solid var(--color-accent); transform: scale(1.1); }
@@ -42,7 +42,7 @@
 </head>
 <body>
     <div id="preloader">
-        <img src="./images/brand/granfoluce-logo.png" alt="GRANFOLUCE" class="preloader-icon">
+        <img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" class="preloader-icon">
     </div>
     <script>
         const hidePreloader = () => {
@@ -60,156 +60,157 @@
 
     <nav class="navbar">
         <div class="container nav-container">
-            <a href="index.html" class="logo"><img src="./images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 50px;"></a>
+            <a href="index.html" class="logo"><img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 50px;"></a>
             <div class="nav-links">
                 <a href="index.html">Home</a>
-                <a href="prodotti.html">Prodotti</a>
-                <a href="cataloghi.html">Cataloghi</a>
-                <a href="progetti.html">Progetti</a>
-                <a href="chi-siamo.html">Chi Siamo</a>
-                <a href="contatti.html">Contatti</a>
+                <a href="products.html">Products</a>
+                <a href="catalogs.html">Catalogs</a>
+                <a href="projects.html">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contacts.html">Contacts</a>
             </div>
             <div class="nav-actions">
                 <button class="icon-btn" onclick="toggleSearch()"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
-                <div class="lang-selector"><a href="#" class="lang-item active">IT</a><a href="en/aurum.html" class="lang-item">EN</a></div>
+                <div class="lang-selector"><a href="../domus.html" class="lang-item">IT</a><a href="#" class="lang-item active">EN</a></div>
                 <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
             </div>
         </div>
         <div id="mobile-menu" class="mobile-menu">
             <a href="index.html">Home</a>
-            <a href="prodotti.html">Prodotti</a>
-            <a href="cataloghi.html">Cataloghi</a>
-            <a href="progetti.html">Progetti</a>
-            <a href="chi-siamo.html">Chi Siamo</a>
-            <a href="contatti.html">Contatti</a>
+            <a href="products.html">Products</a>
+            <a href="catalogs.html">Catalogs</a>
+            <a href="projects.html">Projects</a>
+            <a href="about.html">About</a>
+            <a href="contacts.html">Contacts</a>
         </div>
     </nav>
 
     <div id="search-overlay" class="search-overlay">
         <button class="close-search" onclick="toggleSearch()">✕</button>
-        <div class="search-container"><input type="text" placeholder="Cerca..."></div>
+        <div class="search-container"><input type="text" placeholder="Search..."></div>
     </div>
 
     <header class="page-header">
-        <div class="page-header-bg"><img src="images/hero/hero-novità.webp" alt="Domus" width="1600" height="600" loading="lazy"></div>
-        <div class="container page-title"><p class="breadcrumb"><a href="index.html">Home</a> / <span>Domus</span></p><h1>Collezione Domus</h1></div>
+        <div class="page-header-bg"><img src="../images/hero/hero-novità.webp" alt="Domus" width="1600" height="600" loading="lazy"></div>
+        <div class="container page-title"><p class="breadcrumb"><a href="index.html">Home</a> / <span>Domus</span></p><h1>Domus Collection</h1></div>
     </header>
 
    <section class="section-padding" id="catalogo">
     <div class="container">
         <div class="section-header">
-            <div><span class="eyebrow">Esclusiva</span><h2>L'eleganza del vetro di Murano</h2></div>
+            <div><span class="eyebrow">Exclusive</span><h2>L'eleganza del Murano glass</h2></div>
         </div>
 
         <div class="description-section reveal" style="margin-bottom: 3rem; max-width: 800px;">
             <p style="line-height: 1.8; color: var(--color-text-muted); font-size: 1rem;">
-                <strong>La luce non è mai stata così materica.</strong> Domus nasce dall'incontro tra l'antica tradizione del vetro cotto e un design contemporaneo basato sull'incastro puro.
+                <strong>Light has never felt so tangible.</strong> Domus is born from the meeting of the ancient tradition of kiln-fired glass and a contemporary design Based on pure interlocking.
             </p>
             <p style="line-height: 1.8; color: var(--color-text-muted); font-size: 1rem; margin-top: 1.25rem;">
-                Ogni lampada è fatta di formelle in vetro artistico, lavorate a mano per esaltare texture e imperfezioni che rendono ogni pezzo unico. La vera magia è la libertà: <strong>le lastre non sono fisse</strong>, puoi comporle e ricomporle per creare volumi e giochi di colore sempre nuovi.
+                Each lamp is made of artistic glass tiles, handcrafted to highlight textures and imperfections that make every piece unique. The real magic is freedom: <strong>the plates are not fixed</strong>, you can compose and recompose them to create ever-new volumes and color plays.
             </p>
         </div>
 
         <div class="products-page-grid-aurum reveal" id="product-grid" style="margin-bottom: 4rem;">
             
-            <div class="product-item" data-category="tavolo" data-colors="arancio,smeraldo" data-price="medium" data-material="metallo" data-line="aurum" data-product-id="tavolo-lastra">
+            <div class="product-item" data-category="Table" data-colors="arancio,smeraldo" data-price="medium" data-material="Metal" data-line="aurum" data-product-id="Table-lastra">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist" title="Aggiungi alla Wishlist">
                     <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                 </button>
-                <img src="images/prodotti/Tavolo/vetri-lastra.webp" alt="Lampada da Tavolo Domus" loading="lazy" width="800" height="1000" onclick="openLightbox(this.src)" style="cursor: pointer;">
+                <img src="../images/prodotti/Tavolo/vetri-lastra.webp" alt="Lampada da Table Domus" loading="lazy" width="800" height="1000" onclick="openLightbox(this.src)" style="cursor: pointer;">
                 <div class="p-3">
-                    <h3>Lampada da Tavolo Domus</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">Vetro di Murano - Arancio e Smeraldo</p>
+                    <h3>Lampada da Table Domus</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;">Murano glass - Arancio e Smeraldo</p>
                 </div>
             </div>
 
-             <div class="product-item" data-category="sospensione" data-colors="cristallo,lapislazzulo" data-price="high" data-material="metallo" data-line="aurum" data-product-id="sospensione-aurum">
+             <div class="product-item" data-category="Suspension" data-colors="cristallo,lapislazzulo" data-price="high" data-material="Metal" data-line="aurum" data-product-id="Suspension-aurum">
                 <button class="wishlist-btn" aria-label="Aggiungi alla wishlist" title="Aggiungi alla Wishlist">
                     <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
                 </button>
-                <img src="images/prodotti/Sospensione/sospensione-aurum.webp" alt="Sospensione Domus" loading="lazy" width="800" height="1000" onclick="openLightbox(this.src)" style="cursor: pointer;">
+                <img src="../images/prodotti/Sospensione/sospensione-aurum.webp" alt="Suspension Domus" loading="lazy" width="800" height="1000" onclick="openLightbox(this.src)" style="cursor: pointer;">
                 <div class="p-3">
-                    <h3>Sospensione Domus</h3>
-                    <p style="color:var(--color-text-muted); font-size:0.9rem;">Vetro di Murano - Cristallo e Lapislazzulo</p>
+                    <h3>Suspension Domus</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;">Murano glass - Cristallo e Lapislazzulo</p>
                 </div>
             </div>
 
         </div>
         
         <div id="no-results" style="display:none; text-align:center; padding: 2rem; color: var(--color-text-muted);">
-            <p>Nessun prodotto trovato con questo colore.</p>
-            <button onclick="filterAurumByColor('All')" style="background:none; border:none; color:var(--color-accent); text-decoration:underline; cursor:pointer;">Mostra tutti</button>
+            <p>No products found with this color.</p>
+            <button onclick="filterAurumByColor('All')" style="background:none; border:none; color:var(--color-accent); text-decoration:underline; cursor:pointer;">Show all</button>
         </div>
 
         <div style="text-align: center; margin: 3rem 0 2rem 0;">
-            <p style="color: var(--color-text-muted); font-size: 1rem;">Clicca su un colore per filtrare i prodotti.</p>
+            <p style="color: var(--color-text-muted); font-size: 1rem;">Clicca su un Color per Filterre i Products.</p>
         </div>
 
         <div class="color-swatches reveal" style="margin-bottom: 3rem;">
             <div class="color-swatches-grid">
                 <div class="swatch-item" id="filter-Cristallo" onclick="filterAurumByColor('Cristallo')">
-                    <div class="swatch-img"><img src="images/colori/cristallo.webp" alt="Cristallo" loading="lazy"></div>
+                    <div class="swatch-img"><img src="../images/colori/cristallo.webp" alt="Cristallo" loading="lazy"></div>
                     <span class="swatch-label">Cristallo</span>
                 </div>
                 <div class="swatch-item" id="filter-Ambra" onclick="filterAurumByColor('Ambra')">
-                    <div class="swatch-img"><img src="images/colori/ambra.webp" alt="Ambra" loading="lazy"></div>
+                    <div class="swatch-img"><img src="../images/colori/ambra.webp" alt="Ambra" loading="lazy"></div>
                     <span class="swatch-label">Ambra</span>
                 </div>
                 <div class="swatch-item" id="filter-Ametista" onclick="filterAurumByColor('Ametista')">
-                    <div class="swatch-img"><img src="images/colori/ametista.webp" alt="Ametista" loading="lazy"></div>
+                    <div class="swatch-img"><img src="../images/colori/ametista.webp" alt="Ametista" loading="lazy"></div>
                     <span class="swatch-label">Ametista</span>
                 </div>
                 <div class="swatch-item" id="filter-Arancio" onclick="filterAurumByColor('Arancio')">
-                    <div class="swatch-img"><img src="images/colori/arancio.webp" alt="Arancio" loading="lazy"></div>
+                    <div class="swatch-img"><img src="../images/colori/arancio.webp" alt="Arancio" loading="lazy"></div>
                     <span class="swatch-label">Arancio</span>
                 </div>
                 <div class="swatch-item" id="filter-Ossidiana" onclick="filterAurumByColor('Ossidiana')">
-                    <div class="swatch-img"><img src="images/colori/ossidiana.webp" alt="Ossidiana" loading="lazy"></div>
+                    <div class="swatch-img"><img src="../images/colori/ossidiana.webp" alt="Ossidiana" loading="lazy"></div>
                     <span class="swatch-label">Ossidiana</span>
                 </div>
                 <div class="swatch-item" id="filter-Smeraldo" onclick="filterAurumByColor('Smeraldo')">
-                    <div class="swatch-img"><img src="images/colori/smeraldo.webp" alt="Smeraldo" loading="lazy"></div>
+                    <div class="swatch-img"><img src="../images/colori/smeraldo.webp" alt="Smeraldo" loading="lazy"></div>
                     <span class="swatch-label">Smeraldo</span>
                 </div>
                 <div class="swatch-item" id="filter-Opaline" onclick="filterAurumByColor('Opaline')">
-                    <div class="swatch-img"><img src="images/colori/opalino.webp" alt="Opaline" loading="lazy"></div>
+                    <div class="swatch-img"><img src="../images/colori/opalino.webp" alt="Opaline" loading="lazy"></div>
                     <span class="swatch-label">Opaline</span>
                 </div>
                 <div class="swatch-item" id="filter-Cioccolato" onclick="filterAurumByColor('Cioccolato')">
-                    <div class="swatch-img"><img src="images/colori/cioccolato.webp" alt="Cioccolato" loading="lazy"></div>
+                    <div class="swatch-img"><img src="../images/colori/cioccolato.webp" alt="Cioccolato" loading="lazy"></div>
                     <span class="swatch-label">Cioccolato</span>
                 </div>
                 <div class="swatch-item" id="filter-Antracite" onclick="filterAurumByColor('Antracite')">
-                    <div class="swatch-img"><img src="images/colori/antracite.webp" alt="Antracite" loading="lazy"></div>
+                    <div class="swatch-img"><img src="../images/colori/antracite.webp" alt="Antracite" loading="lazy"></div>
                     <span class="swatch-label">Antracite</span>
                 </div>
             </div>
-            <button id="reset-filter" class="reset-filter-btn" onclick="filterAurumByColor('All')">Mostra Tutti i Colori</button>
+            <button id="reset-filter" class="reset-filter-btn" onclick="filterAurumByColor('All')">Show all i Colors</button>
         </div>
 
         
 
         <div class="aurum-cta reveal" style="text-align: center; margin-bottom: 4rem; padding: 3rem 1.5rem; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
             <h3 style="font-family: var(--font-serif); font-size: 2rem; color: white; margin-bottom: 1rem;">Vuoi creare la tua combinazione unica?</h3>
-            <p style="color: var(--color-text-muted); margin-bottom: 2rem;">Scegli i colori e le forme per il tuo progetto su misura.</p>
-            <a href="contatti.html" class="btn btn-gold">Parla con il designer</a>
+            <p style="color: var(--color-text-muted); margin-bottom: 2rem;">Scegli i Colors e le forme per il tuo progetto su misura.</p>
+            <a href="contacts.html" class="btn btn-gold">Parla con il designer</a>
         </div>
 
-    
+    </div>
+   </section>
 
     <div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:99999; align-items:center; justify-content:center;" onclick="closeLightbox()">
         <div class="lightbox-inner" style="display:flex; flex-direction:column; align-items:center; max-width:100%;" onclick="event.stopPropagation()">
             <img id="lightbox-img" src="" style="max-width:90%; max-height:80vh; object-fit:contain; border-radius:4px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
             <div id="lightbox-caption" style="margin-top:1rem; color:white; text-align:center; font-family:var(--font-sans);"></div>
         </div>
-        <button style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:2.5rem; cursor:pointer;" onclick="closeLightbox()">×</button>
+        <button style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:2.5rem; cursor:pointer;" onclick="closeLightbox()">&times;</button>
     </div>
 
     <footer class="footer">
         <div class="container footer-grid">
             <div class="footer-col brand-col">
-                <a href="index.html" class="footer-logo"><img src="./images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 60px;"></a>
-                <p class="copyright">© 2026 GRANFO ILLUMINAZIONE S.N.C.<br>All Rights Reserved.</p>
+                <a href="index.html" class="footer-logo"><img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 60px;"></a>
+                <p class="copyright">&copy; 2025 GRANFO ILLUMINAZIONE S.N.C.<br>All Rights Reserved.</p>
                 <div class="social-icons">
                     <a href="https://www.facebook.com/Granfoluce.lampadari/?locale=it_IT" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
                     <a href="https://www.instagram.com/granfoluce/" aria-label="Instagram"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path></svg></a>
@@ -220,9 +221,9 @@
             <div class="footer-col">
                 <h4>MENU</h4>
                 <ul>
-                    <li><a href="chi-siamo.html">Chi Siamo</a></li>
-                    <li><a href="prodotti.html">Prodotti</a></li>
-                    <li><a href="contatti.html">Contattaci</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="contacts.html">Contact Us</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -231,24 +232,24 @@
                     <p>GRANFO ILLUMINAZIONE S.N.C.</p>
                     <p>P.IVA 01410980237</p>
                     <p style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.75rem; opacity: 0.8;">
-                        Granfo Luce è il marchio commerciale di Granfo Illuminazione S.N.C., unica sede Via Ponte S. Pancrazio 8, Verona.
+                        Granfo Luce is the trade name of Granfo Illuminazione S.N.C., sole location Via Ponte S. Pancrazio 8, Verona.
                     </p>
                     <a href="privacy-policy.html" class="privacy-link">Privacy Policy</a>
                 </div>
             </div>
             <div class="footer-col">
-                <h4>CONTATTI</h4>
+                <h4>Contacts</h4>
                 <div class="contact-rows">
                     <p><span class="label">Email:</span><br><a href="mailto:granfoluce@hotmail.it" class="highlight-link">granfoluce@hotmail.it</a></p>
-                    <p><span class="label">Telefono:</span><br><a href="tel:+39045528541" class="highlight-link">+39 045 528541</a></p>
-                    <p><span class="label">Indirizzo:</span><br><a href="https://maps.google.com" target="_blank" class="highlight-link underline">via Ponte S. Pancrazio 8 Verona</a></p>
+                    <p><span class="label">Phone:</span><br><a href="tel:+39045528541" class="highlight-link">+39 045 528541</a></p>
+                    <p><span class="label">Address:</span><br><a href="https://maps.google.com" target="_blank" class="highlight-link underline">via Ponte S. Pancrazio 8 Verona</a></p>
                 </div>
             </div>
         </div>
     </footer>
 
     <script>
-        // --- 1. FUNZIONALITÀ BASE (Navbar, Reveal, Menu) ---
+        // --- 1. FUNZIONALITÀ Base (Navbar, Reveal, Menu) ---
         let lastScrollTop = 0;
         const navbar = document.querySelector('.navbar');
         window.addEventListener('scroll', function() {
@@ -313,7 +314,7 @@
             document.body.style.overflow = '';
         }
 
-        // --- 3. FILTRO COLORI FUNZIONANTE ---
+        // --- 3. FILTRO Colors FUNZIONANTE ---
         function filterAurumByColor(selectedColor) {
             const products = document.querySelectorAll('.product-item');
             const swatches = document.querySelectorAll('.swatch-item');
@@ -335,7 +336,7 @@
             products.forEach(product => {
                 const productColors = product.getAttribute('data-colors') ? product.getAttribute('data-colors').toLowerCase() : '';
                 
-                // Se è "All" o se il colore selezionato è incluso nella lista colori del prodotto
+                // Se è "All" o se il Color selezionato è incluso nella lista Colors del prodotto
                 if (selectedColor === 'All' || productColors.includes(selectedColor.toLowerCase())) {
                     product.style.display = 'block';
                     visibleCount++;
@@ -355,9 +356,11 @@
             document.getElementById('product-grid').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
     </script>
-    <script src="luxury.js"></script>
+    <script src="../nav-behavior.js"></script>
+    <script src="../luxury.js"></script>
 </body>
 </html>
+
 
 
 

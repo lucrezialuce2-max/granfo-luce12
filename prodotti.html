@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collezione Lampadari e Sistemi Luce | Granfo Luce Verona</title>
     <meta name="description" content="Granfo Luce (Granfo Illuminazione S.N.C.) a Verona in Via Ponte S. Pancrazio 8. Esperti in lampadari artigianali, luce architetturale e progetti su misura dal 1970.">
-    <link rel="stylesheet" href="style.css?v=3.8">
+    <link rel="stylesheet" href="style.css?v=3.9">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -96,6 +96,7 @@
         <div class="container page-title">
             <p class="breadcrumb" style="text-align: center;"><a href="index.html">Home</a> / <span>Prodotti</span></p>
             <h1 style="text-align: center;">Le Collezioni</h1>
+            <p style="text-align: center; font-size: 0.95rem; color: var(--color-text-muted); margin-top: 0.4rem;">Vieni a trovarci in showroom per scoprire il nostro catalogo nella sua interezza.</p>
             
             <div class="filter-wrapper-mobile">
                 <button class="filter-button-mobile" onclick="toggleFilters()">
@@ -137,6 +138,10 @@
     <section class="section-padding" id="catalogo" style="padding-top: 2rem;">
     <div class="container">
 
+        <div style="display:flex; justify-content:center; margin-bottom:0.75rem;">
+            <button id="wishlist-chip" class="chip" style="display:none;" hidden onclick="document.getElementById('wishlist')?.scrollIntoView({ behavior: 'smooth' });">Vai alla wishlist</button>
+        </div>
+
         <p class="results-count" id="results-count" style="margin-bottom: 1rem;"></p>
 
         <div class="products-page-grid" id="product-grid">
@@ -150,7 +155,7 @@
                         <span class="eyebrow">Novità 2026</span>
                         <h2>Collezione Domus</h2>
                         <p>Vetri ad incastro per combinazioni di luce infinite.</p>
-                        <a href="aurum.html" class="btn btn-dark">Scopri la Collezione</a>
+                        <a href="domus.html" class="btn btn-dark">Scopri la Collezione</a>
                     </div>
                 </div>
             </div>
@@ -439,30 +444,43 @@
     </div>
     <div class="filter-content">
         <div class="filter-group">
-            <h4>Categoria</h4>
-            <label><input type="checkbox" value="sospensione" onchange="applyAdvancedFilters()"> Sospensione</label>
-            <label><input type="checkbox" value="tavolo" onchange="applyAdvancedFilters()"> Tavolo</label>
-            <label><input type="checkbox" value="soffitto" onchange="applyAdvancedFilters()"> Soffitto</label>
-            <label><input type="checkbox" value="parete" onchange="applyAdvancedFilters()"> Parete</label>
-            <label><input type="checkbox" value="terra" onchange="applyAdvancedFilters()"> Terra</label>
-            <label><input type="checkbox" value="vasi e oggettistica" onchange="applyAdvancedFilters()"> Vasi e Oggettistica</label>
-            <label><input type="checkbox" value="outdoor" onchange="applyAdvancedFilters()"> Outdoor</label>
+            <div class="filter-group-header">
+                <h4>Categoria</h4>
+            </div>
+            <div class="filter-chips">
+                <label class="filter-chip"><input type="checkbox" value="sospensione" onchange="applyAdvancedFilters()"><span>Sospensione</span></label>
+                <label class="filter-chip"><input type="checkbox" value="tavolo" onchange="applyAdvancedFilters()"><span>Tavolo</span></label>
+                <label class="filter-chip"><input type="checkbox" value="soffitto" onchange="applyAdvancedFilters()"><span>Soffitto</span></label>
+                <label class="filter-chip"><input type="checkbox" value="parete" onchange="applyAdvancedFilters()"><span>Parete</span></label>
+                <label class="filter-chip"><input type="checkbox" value="terra" onchange="applyAdvancedFilters()"><span>Terra</span></label>
+                <label class="filter-chip"><input type="checkbox" value="vasi e oggettistica" onchange="applyAdvancedFilters()"><span>Vasi e Oggettistica</span></label>
+                <label class="filter-chip"><input type="checkbox" value="outdoor" onchange="applyAdvancedFilters()"><span>Outdoor</span></label>
+            </div>
         </div>
         <div class="filter-group">
-            <h4>Materiale</h4>
-            <label><input type="checkbox" value="vetro" onchange="applyAdvancedFilters()"> Vetro Soffiato</label>
-            <label><input type="checkbox" value="metallo" onchange="applyAdvancedFilters()"> Metallo</label>
-            <label><input type="checkbox" value="oro" onchange="applyAdvancedFilters()"> Finitura Oro</label>
+            <div class="filter-group-header">
+                <h4>Materiale</h4>
+            </div>
+            <div class="filter-chips">
+                <label class="filter-chip"><input type="checkbox" value="vetro" onchange="applyAdvancedFilters()"><span>Vetro Soffiato</span></label>
+                <label class="filter-chip"><input type="checkbox" value="metallo" onchange="applyAdvancedFilters()"><span>Metallo</span></label>
+                <label class="filter-chip"><input type="checkbox" value="oro" onchange="applyAdvancedFilters()"><span>Finitura Oro</span></label>
+            </div>
         </div>
         <div class="filter-group">
-            <h4>Stile</h4>
-            <label><input type="checkbox" value="moderno" onchange="applyAdvancedFilters()"> Moderno</label>
-            <label><input type="checkbox" value="classico" onchange="applyAdvancedFilters()"> Classico</label>
-            <label><input type="checkbox" value="contemporaneo" onchange="applyAdvancedFilters()"> Contemporaneo</label>
+            <div class="filter-group-header">
+                <h4>Stile</h4>
+            </div>
+            <div class="filter-chips">
+                <label class="filter-chip"><input type="checkbox" value="moderno" onchange="applyAdvancedFilters()"><span>Moderno</span></label>
+                <label class="filter-chip"><input type="checkbox" value="classico" onchange="applyAdvancedFilters()"><span>Classico</span></label>
+                <label class="filter-chip"><input type="checkbox" value="contemporaneo" onchange="applyAdvancedFilters()"><span>Contemporaneo</span></label>
+            </div>
         </div>
     </div>
     <div class="filter-footer">
-        <button class="btn btn-gold w-full" onclick="toggleFilters()">Vedi Risultati</button>
+        <button class="btn btn-gold w-full filter-apply" onclick="applyAdvancedFilters(); toggleFilters()">Applica filtri</button>
+        <button class="btn filter-reset" onclick="resetFilters()">Reset</button>
     </div>
 </div>
 
@@ -562,10 +580,15 @@ let activeSearchQuery = '';
 function toggleFilters() {
     const sheet = document.getElementById('filter-sheet');
     const overlay = document.getElementById('filter-overlay');
+    const wasOpen = sheet.classList.contains('active');
     sheet.classList.toggle('active');
     overlay.classList.toggle('active');
-    if(sheet.classList.contains('active')) document.body.style.overflow = 'hidden';
-    else document.body.style.overflow = '';
+    if (sheet.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+        if (wasOpen) applyAdvancedFilters();
+    }
 }
 
 // Filtro rapido per categoria (bottoni in alto)
@@ -584,10 +607,13 @@ function applyURLFilters() {
     const urlParams = new URLSearchParams(window.location.search);
     let categoria = urlParams.get('categoria');
     const q = urlParams.get('q');
+    const materiale = urlParams.get('materiale');
+    const stile = urlParams.get('stile');
     
     if (categoria) {
         // Decodifica il parametro se è URL encoded
         categoria = decodeURIComponent(categoria).toLowerCase().trim();
+        activeCategory = categoria;
         
         // Trova il bottone della categoria
         let btn = null;
@@ -612,6 +638,8 @@ function applyURLFilters() {
         
         if (btn) {
             filterProducts(categoria, btn);
+        } else {
+            applyAdvancedFilters();
         }
     }
     if (q) {
@@ -619,6 +647,24 @@ function applyURLFilters() {
         const overlay = document.getElementById('search-overlay');
         const input = overlay ? overlay.querySelector('input') : null;
         if (input) input.value = q;
+        applyAdvancedFilters();
+    }
+
+    if (materiale) {
+        const values = materiale.split(',').map(v => v.trim().toLowerCase()).filter(Boolean);
+        values.forEach(val => {
+            const cb = document.querySelector(`input[type="checkbox"][value="${val}"]`);
+            if (cb) cb.checked = true;
+        });
+        applyAdvancedFilters();
+    }
+
+    if (stile) {
+        const values = stile.split(',').map(v => v.trim().toLowerCase()).filter(Boolean);
+        values.forEach(val => {
+            const cb = document.querySelector(`input[type="checkbox"][value="${val}"]`);
+            if (cb) cb.checked = true;
+        });
         applyAdvancedFilters();
     }
 
@@ -652,22 +698,58 @@ if (document.readyState !== 'loading') {
 // Logica combinata (Categoria + Checkbox Prezzo/Materiale + Filtri prodotto)
 function applyAdvancedFilters() {
     const products = document.querySelectorAll('.product-item');
+    const domusBanner = document.querySelector('.domus-banner-grid');
     let visibleCount = 0;
+    let showDomusBanner = false;
+
+    const normalize = (value) => (value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/\p{Diacritic}/gu, '')
+        .replace(/[^a-z0-9\s]/gi, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+
+    const stopwords = new Set(['il', 'lo', 'la', 'i', 'gli', 'le', 'un', 'una', 'uno', 'di', 'da', 'a', 'e', 'o', 'per', 'con', 'su', 'in']);
+    const genericWords = new Set(['lampada', 'lampade', 'lampadario', 'lampadari', 'luce', 'luci', 'illuminazione']);
+    const tokenize = (value) => normalize(value)
+        .split(' ')
+        .map(t => t.trim())
+        .filter(t => t && !stopwords.has(t) && !genericWords.has(t));
 
     // Prendi i valori delle checkbox selezionate
     const priceFilters = Array.from(document.querySelectorAll('input[type="checkbox"][value="low"]:checked, input[type="checkbox"][value="medium"]:checked, input[type="checkbox"][value="high"]:checked')).map(cb => cb.value);
     const materialFilters = Array.from(document.querySelectorAll('input[type="checkbox"][value="vetro"]:checked, input[type="checkbox"][value="metallo"]:checked, input[type="checkbox"][value="oro"]:checked')).map(cb => cb.value);
+    const categoryFilters = Array.from(document.querySelectorAll('input[type="checkbox"][value="sospensione"]:checked, input[type="checkbox"][value="tavolo"]:checked, input[type="checkbox"][value="soffitto"]:checked, input[type="checkbox"][value="parete"]:checked, input[type="checkbox"][value="terra"]:checked, input[type="checkbox"][value="vasi e oggettistica"]:checked, input[type="checkbox"][value="outdoor"]:checked')).map(cb => cb.value);
+    const styleFilters = Array.from(document.querySelectorAll('input[type="checkbox"][value="moderno"]:checked, input[type="checkbox"][value="classico"]:checked, input[type="checkbox"][value="contemporaneo"]:checked')).map(cb => cb.value);
 
-    const normalizedQuery = (activeSearchQuery || '').toLowerCase().trim();
+    const normalizedQuery = normalize(activeSearchQuery || '');
+    const searchTokens = tokenize(activeSearchQuery || '');
+    const impliedCategories = new Set();
+
+    if (searchTokens.includes('piantana') || searchTokens.includes('terra')) impliedCategories.add('terra');
+    if (searchTokens.includes('tavolo')) impliedCategories.add('tavolo');
+    if (searchTokens.includes('soffitto') || searchTokens.includes('plafoniera')) impliedCategories.add('soffitto');
+    if (searchTokens.includes('parete') || searchTokens.includes('applique')) impliedCategories.add('parete');
+    if (searchTokens.includes('sospensione') || searchTokens.includes('pendente') || searchTokens.includes('lampadario')) impliedCategories.add('sospensione');
+    if (searchTokens.includes('outdoor') || searchTokens.includes('esterno') || searchTokens.includes('giardino')) impliedCategories.add('outdoor');
+    if (searchTokens.includes('vasi') || searchTokens.includes('oggettistica') || searchTokens.includes('oggetti')) impliedCategories.add('vasi e oggettistica');
 
     products.forEach(product => {
         const pCat = product.getAttribute('data-category');
         const pPrice = product.getAttribute('data-price');
         const pMat = product.getAttribute('data-material');
+        const productId = product.getAttribute('data-product-id');
         const productFilters = (product.dataset.filters || '').toLowerCase(); // Leggi i filtri assegnati via editor
+        const pStyle = (product.getAttribute('data-style') || '').toLowerCase();
         const title = (product.querySelector('h3')?.textContent || '').toLowerCase();
         const alt = (product.querySelector('img')?.getAttribute('alt') || '').toLowerCase();
         const tags = (product.getAttribute('data-tags') || '').toLowerCase();
+        const line = (product.getAttribute('data-line') || '').toLowerCase();
+        const isDomusLine = (line === 'aurum') || title.includes('domus');
+        const indexedText = (window.productPageTextIndex && productId && window.productPageTextIndex[productId])
+            ? window.productPageTextIndex[productId]
+            : '';
 
         // Logica:
         // 1. La categoria deve corrispondere (o essere 'all')
@@ -675,33 +757,67 @@ function applyAdvancedFilters() {
         // 3. SE ci sono filtri materiale, il prodotto deve averne uno selezionato
         // 4. Ricerca full-text anche nei filtri assegnati dal editor
         
-        const matchCat = (activeCategory === 'all' || activeCategory === pCat);
+        const matchCat = (categoryFilters.length > 0)
+            ? categoryFilters.includes(pCat)
+            : (impliedCategories.size > 0
+                ? impliedCategories.has(pCat)
+                : (activeCategory === 'all' || activeCategory === pCat));
         const matchPrice = (priceFilters.length === 0 || priceFilters.includes(pPrice));
         const matchMat = (materialFilters.length === 0 || materialFilters.includes(pMat));
-        const matchText = (normalizedQuery.length === 0) || (
-            title.includes(normalizedQuery) ||
-            pCat?.toLowerCase().includes(normalizedQuery) ||
-            pMat?.toLowerCase().includes(normalizedQuery) ||
-            productFilters.includes(normalizedQuery) ||
-            alt.includes(normalizedQuery) ||
-            tags.includes(normalizedQuery)
+        const matchStyle = (styleFilters.length === 0) || styleFilters.some((filter) =>
+            productFilters.includes(filter) ||
+            tags.includes(filter) ||
+            pStyle.includes(filter) ||
+            title.includes(filter)
         );
+        const haystack = normalize([
+            title,
+            pCat || '',
+            pMat || '',
+            productFilters || '',
+            alt || '',
+            tags || '',
+            pStyle || '',
+            indexedText || ''
+        ].join(' '));
 
-        if (matchCat && matchPrice && matchMat && matchText) {
-            product.style.display = 'block';
+        const matchText = (searchTokens.length === 0) || searchTokens.every(token => haystack.includes(token));
+
+        if (matchCat && matchPrice && matchMat && matchStyle && matchText) {
+            product.hidden = false;
+            product.style.removeProperty('display');
             visibleCount++;
+            if (isDomusLine) showDomusBanner = true;
             // Piccola animazione di entrata
             product.style.opacity = '0';
             setTimeout(() => product.style.opacity = '1', 50);
         } else {
-            product.style.display = 'none';
+            product.hidden = true;
+            product.style.setProperty('display', 'none', 'important');
         }
     });
 
-    // Aggiorna contatore
+    if (domusBanner) {
+        domusBanner.style.display = showDomusBanner ? 'block' : 'none';
+    }
+
+    // Aggiorna contatore (esclude il banner Domus)
     const countText = document.getElementById('results-count');
-    if (visibleCount === 0) countText.innerText = "Nessun prodotto trovato.";
-    else countText.innerText = `Mostrando ${visibleCount} prodotti`;
+    const adjustedCount = showDomusBanner ? Math.max(0, visibleCount - 1) : visibleCount;
+    if (adjustedCount === 0) countText.innerText = "Nessun prodotto trovato.";
+    else countText.innerText = `Mostrando ${adjustedCount} prodotti`;
+}
+
+function resetFilters() {
+    document.querySelectorAll('.filter-sheet input[type="checkbox"]').forEach(cb => {
+        cb.checked = false;
+    });
+    activeCategory = 'all';
+    activeSearchQuery = '';
+    const overlay = document.getElementById('search-overlay');
+    const input = overlay ? overlay.querySelector('input') : null;
+    if (input) input.value = '';
+    applyAdvancedFilters();
 }
 
 // Ricerca live nella pagina Prodotti
@@ -719,6 +835,49 @@ function applyAdvancedFilters() {
 })();
 
 const productTemplateMap = {};
+const usedProductIds = new Set();
+
+function slugify(value) {
+    return (value || '')
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/\p{Diacritic}/gu, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .replace(/-+/g, '-');
+}
+
+function normalizeProductId(item) {
+    if (!item) return '';
+    const rawId = item.getAttribute('data-product-id') || '';
+    const normalizedRaw = normalizeProductIdValue(rawId);
+    const normalizedLower = normalizedRaw.toLowerCase();
+    const genericIds = new Set([
+        'parete', 'sospensione', 'tavolo', 'soffitto', 'terra',
+        'outdoor', 'vasi', 'oggettistica', 'wall', 'table',
+        'floor', 'ceiling', 'suspension'
+    ]);
+
+    let finalId = normalizedRaw || '';
+    const needsNew = !finalId || genericIds.has(normalizedLower) || (usedProductIds.has(finalId) && !normalizedProductPageMap[finalId]);
+    if (needsNew) {
+        const title = item.querySelector('h3')?.textContent || '';
+        const imgSrc = item.querySelector('img')?.getAttribute('src') || '';
+        const fileName = imgSrc.split('/').pop() || '';
+        const base = slugify([title, fileName.replace(/\.[^.]+$/, '')].filter(Boolean).join('-')) || 'product';
+        finalId = base;
+    }
+
+    if (usedProductIds.has(finalId)) {
+        let index = 2;
+        while (usedProductIds.has(`${finalId}-${index}`)) index++;
+        finalId = `${finalId}-${index}`;
+    }
+
+    item.setAttribute('data-product-id', finalId);
+    usedProductIds.add(finalId);
+    return finalId;
+}
 
 // Toast Notification
 function showToast(message) {
@@ -731,7 +890,7 @@ function showToast(message) {
 
 function buildProductTemplateMap() {
     document.querySelectorAll('.product-item').forEach(item => {
-        const id = item.getAttribute('data-product-id');
+        const id = normalizeProductId(item);
         if (id && !productTemplateMap[id]) productTemplateMap[id] = item;
     });
 }
@@ -787,7 +946,22 @@ function toggleWishlist(productId, btnElement) {
     }
     
     saveWishlist(wishlist);
+    syncWishlistButtons();
     renderWishlist();
+}
+
+function syncWishlistButtons() {
+    const wishlist = getWishlist();
+    document.querySelectorAll('.wishlist-btn').forEach(btn => {
+        const item = btn.closest('.product-item');
+        const id = item?.getAttribute('data-product-id');
+        if (!id) return;
+        if (wishlist.includes(id)) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
 }
 
 function bindWishlistButton(btn) {
@@ -821,17 +995,30 @@ function renderWishlist() {
 
     const wishlistChip = document.getElementById('wishlist-chip');
 
-    if (wishlist.length === 0) {
+    const validWishlist = wishlist.filter(id => productTemplateMap[id]);
+    if (validWishlist.length === 0) {
+        if (wishlist.length) saveWishlist([]);
         section.style.display = 'none';
-        if (wishlistChip) wishlistChip.style.display = 'none';
+        grid.style.display = 'none';
+        empty.style.display = 'none';
+        if (wishlistChip) {
+            wishlistChip.style.display = 'none';
+            wishlistChip.hidden = true;
+        }
         return;
     }
 
     section.style.display = 'block';
+    section.style.paddingTop = '1.25rem';
+    section.style.paddingBottom = '1.5rem';
+    grid.style.display = 'grid';
     empty.style.display = 'none';
-    if (wishlistChip) wishlistChip.style.display = 'inline-block';
+    if (wishlistChip) {
+        wishlistChip.style.display = 'inline-block';
+        wishlistChip.hidden = false;
+    }
 
-    wishlist.forEach(id => {
+    validWishlist.forEach(id => {
         const template = productTemplateMap[id];
         if (!template) return;
         const clone = template.cloneNode(true);
@@ -839,10 +1026,12 @@ function renderWishlist() {
         const btn = clone.querySelector('.wishlist-btn');
         if (btn) {
             btn.classList.add('active');
+            btn.removeAttribute('data-bound');
             bindWishlistButton(btn);
         }
         grid.appendChild(clone);
     });
+    syncWishlistButtons();
 }
 
 // Inizializza wishlist al caricamento
@@ -943,7 +1132,8 @@ window.addEventListener('DOMContentLoaded', () => {
         <span style="position:absolute; top:20px; right:20px; color:white; font-size:2rem; cursor:pointer;" onclick="closeLightbox()">×</span>
         <span style="position:absolute; bottom:20px; width:100%; text-align:center; color:#888; font-size:0.8rem;">Tocca per chiudere</span>
     </div>
-            <script src="nav-behavior.js"></script>
+                <script src="nav-behavior.js"></script>
+            <script src="product-search-index.js"></script>
     <script>
         // Mapping prodotti alle loro pagine singole
         const productPageMap = {
@@ -970,15 +1160,78 @@ window.addEventListener('DOMContentLoaded', () => {
             'prodotto-outdoor': 'prodotti-singoli/prodotto-outdoor.html'
         };
 
+        const normalizeProductIdValue = (value) => {
+            if (!value) return '';
+            return value
+                .replace(/Suspension/gi, 'sospensione')
+                .replace(/Table/gi, 'tavolo')
+                .replace(/Floor/gi, 'terra')
+                .replace(/Wall/gi, 'parete')
+                .replace(/Ceiling/gi, 'soffitto')
+                .replace(/Products-singoli/gi, 'products-single')
+                .replace(/_/g, '-')
+                .trim();
+        };
+
+        const normalizeProductPageMap = (map) => {
+            const normalized = {};
+            Object.entries(map).forEach(([key, url]) => {
+                const id = normalizeProductIdValue(key);
+                const cleanUrl = (url || '')
+                    .replace(/Products-singoli/gi, 'products-single')
+                    .replace(/Suspension/gi, 'sospensione')
+                    .replace(/Table/gi, 'tavolo')
+                    .replace(/Floor/gi, 'terra')
+                    .replace(/Wall/gi, 'parete')
+                    .replace(/Ceiling/gi, 'soffitto');
+                normalized[id] = cleanUrl;
+            });
+            return normalized;
+        };
+
+        const normalizedProductPageMap = normalizeProductPageMap(productPageMap);
+
+        function normalizeSearchText(value) {
+            return (value || '')
+                .toLowerCase()
+                .normalize('NFD')
+                .replace(/\p{Diacritic}/gu, '')
+                .replace(/[^a-z0-9\s]/gi, ' ')
+                .replace(/\s+/g, ' ')
+                .trim();
+        }
+
+        async function buildProductPageTextIndex() {
+            if (window.productPageTextIndex) return;
+            window.productPageTextIndex = {};
+
+            const entries = Object.entries(normalizedProductPageMap);
+            const fetches = entries.map(async ([id, url]) => {
+                try {
+                    const res = await fetch(url, { cache: 'force-cache' });
+                    if (!res.ok) return;
+                    const html = await res.text();
+                    const doc = new DOMParser().parseFromString(html, 'text/html');
+                    const text = normalizeSearchText(doc.body?.innerText || doc.documentElement?.innerText || '');
+                    if (text) window.productPageTextIndex[id] = text;
+                } catch (err) {
+                    // ignore fetch failures (offline or file://)
+                }
+            });
+
+            await Promise.all(fetches);
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const productItems = document.querySelectorAll('.product-item');
             productItems.forEach(item => {
                 const productId = item.getAttribute('data-product-id');
-                
-                if (productPageMap[productId]) {
+                const normalizedId = normalizeProductIdValue(productId);
+
+                if (normalizedId && normalizedProductPageMap[normalizedId]) {
                     // Crea un link wrapper
                     const link = document.createElement('a');
-                    link.href = productPageMap[productId];
+                    link.href = normalizedProductPageMap[normalizedId];
                     link.style.textDecoration = 'none';
                     link.style.color = 'inherit';
                     link.style.display = 'block';
@@ -992,6 +1245,10 @@ window.addEventListener('DOMContentLoaded', () => {
                     // Reinserisce il link come unico figlio
                     item.appendChild(link);
                 }
+            });
+
+            buildProductPageTextIndex().then(() => {
+                if (typeof applyAdvancedFilters === 'function') applyAdvancedFilters();
             });
         });
     </script>
@@ -1035,7 +1292,6 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     </script>
     <script src="luxury.js"></script>
-    <script src="granfo-visual-editor.js"></script>
 </body>
 </html>
 

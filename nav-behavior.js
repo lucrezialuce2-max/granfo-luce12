@@ -1,3 +1,25 @@
+// Global toggles (fallbacks for pages without inline scripts)
+if (typeof window.toggleMenu !== 'function') {
+    window.toggleMenu = function toggleMenu() {
+        const menu = document.getElementById('mobile-menu');
+        if (menu) menu.classList.toggle('active');
+        document.body.classList.toggle('no-scroll');
+    };
+}
+
+if (typeof window.toggleSearch !== 'function') {
+    window.toggleSearch = function toggleSearch() {
+        const overlay = document.getElementById('search-overlay');
+        if (!overlay) return;
+        overlay.classList.toggle('active');
+        const input = overlay.querySelector('input');
+        if (overlay.classList.contains('active') && input) {
+            input.value = '';
+            setTimeout(() => input.focus(), 100);
+        }
+    };
+}
+
 // Navbar behavior: transparent at top, blur below, hide on scroll down, show on scroll up; menu open forces visible
 (() => {
     if (window.__navEnhanced) return;
@@ -91,6 +113,140 @@
     updateNavbar();
 })();
 
+// Image path fallback for EN pages
+document.addEventListener('error', function(e) {
+    const img = e.target;
+    if (!img || !img.tagName || img.tagName.toLowerCase() !== 'img') return;
+    if (img.dataset && img.dataset.pathFallback === '1') return;
+
+    const src = img.getAttribute('src');
+    if (!src || /^https?:/i.test(src) || src.startsWith('data:')) return;
+
+    let nextSrc = null;
+    if (src.includes('../images/')) {
+        nextSrc = src.replace('../images/', 'images/');
+    } else if (src.includes('../../images/')) {
+        nextSrc = src.replace('../../images/', '../images/');
+    } else if (src.startsWith('images/')) {
+        nextSrc = '../' + src;
+    }
+
+    if (nextSrc && nextSrc !== src) {
+        if (img.dataset) img.dataset.pathFallback = '1';
+        img.src = nextSrc;
+    }
+}, true);
+
+// Highlight current page in desktop + mobile menus
+(() => {
+    const normalizePath = (path) => {
+        if (!path) return '';
+        return path.replace(/\/$/, '');
+    };
+
+    const getBasename = (path) => {
+        if (!path) return '';
+        const clean = path.split('?')[0].split('#')[0];
+        const parts = clean.split('/').filter(Boolean);
+        return parts.length ? parts[parts.length - 1] : '';
+    };
+
+    const currentPath = normalizePath(window.location.pathname || '/');
+    const currentBase = getBasename(currentPath) || 'index.html';
+
+    const isSamePath = (linkPath) => {
+        const linkNorm = normalizePath(linkPath);
+        if (linkNorm === currentPath) return true;
+
+        // Handle index.html as folder root
+        if (linkNorm.endsWith('/index.html') && currentPath === normalizePath(linkNorm.replace(/\/index\.html$/, ''))) {
+            return true;
+        }
+        if (currentPath.endsWith('/index.html') && linkNorm === normalizePath(currentPath.replace(/\/index\.html$/, ''))) {
+            return true;
+        }
+
+        // Fallback: match by filename (works for file:// and nested paths)
+        const linkBase = getBasename(linkNorm) || 'index.html';
+        return linkBase === currentBase;
+    };
+
+    const setActiveLinks = (selector) => {
+        const links = document.querySelectorAll(selector);
+        if (!links.length) return;
+        links.forEach(link => link.classList.remove('active'));
+
+        let matched = false;
+        links.forEach(link => {
+            const href = link.getAttribute('href');
+            if (!href || href.startsWith('#')) return;
+            const linkPath = new URL(href, window.location.origin).pathname;
+            if (!matched && isSamePath(linkPath)) {
+                link.classList.add('active');
+                matched = true;
+            }
+        });
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            setActiveLinks('.nav-links a');
+            setActiveLinks('.mobile-menu a');
+        }, { once: true });
+    } else {
+        setActiveLinks('.nav-links a');
+        setActiveLinks('.mobile-menu a');
+    }
+})();
+
+// Mandatory cookie banner (all pages, IT/EN)
+(() => {
+    const KEY = 'cookiesAccepted_v2';
+    const isEnglish = window.location.pathname.includes('/en/');
+
+    const bannerText = isEnglish
+        ? 'We use cookies to improve your experience.'
+        : 'Utilizziamo i cookie per migliorare la tua esperienza.';
+    const acceptText = isEnglish ? 'Accept' : 'Accetta';
+    const customizeText = isEnglish ? 'Customize' : 'Personalizza';
+    const privacyText = isEnglish ? 'Privacy Policy' : 'Privacy Policy';
+    const privacyHref = isEnglish ? 'privacy-policy.html' : 'privacy-policy.html';
+
+    let banner = document.getElementById('cookie-banner');
+    if (!banner) {
+        banner = document.createElement('div');
+        banner.id = 'cookie-banner';
+        banner.className = 'cookie-banner';
+        document.body.appendChild(banner);
+    }
+
+    banner.innerHTML = `
+        <p>${bannerText} <a href="${privacyHref}" style="color: var(--color-accent);">${privacyText}</a>.</p>
+        <div class="cookie-buttons">
+            <button id="acceptCookies" class="btn btn-gold btn-small">${acceptText}</button>
+            <button id="customizeCookies" class="btn-text">${customizeText}</button>
+        </div>
+    `;
+
+    const accepted = localStorage.getItem(KEY) === 'true';
+    banner.style.display = accepted ? 'none' : 'block';
+
+    const acceptBtn = banner.querySelector('#acceptCookies');
+    if (acceptBtn) {
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem(KEY, 'true');
+            banner.style.display = 'none';
+        });
+    }
+
+    const customizeBtn = banner.querySelector('#customizeCookies');
+    if (customizeBtn) {
+        customizeBtn.addEventListener('click', () => {
+            window.location.href = privacyHref;
+        });
+    }
+})();
+
 // Search overlay with typeahead suggestions (IT + EN)
 (() => {
     const initSearch = () => {
@@ -106,7 +262,7 @@
             style.textContent = `
                 .search-suggestions { margin-top: 0.75rem; background: rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 0.25rem; max-height: 260px; overflow-y: auto; box-shadow: 0 10px 30px rgba(0,0,0,0.25); }
                 .search-suggestions a { display: block; padding: 0.65rem 0.85rem; color: white; text-decoration: none; border-radius: 10px; transition: background 0.2s ease; }
-                .search-suggestions a span { display: block; font-size: 0.85rem; color: rgba(255,255,255,0.7); margin-top: 0.15rem; }
+                .search-suggestions a span { display: none; }
                 .search-suggestions a:hover { background: rgba(255,255,255,0.08); }
                 .search-suggestions .empty { padding: 0.65rem 0.85rem; color: rgba(255,255,255,0.7); }
             `;
@@ -125,7 +281,7 @@
         const suggestions = isEnglish ? [
             { title: 'Home', url: 'index.html', tags: 'granfo granfoluce home hero' },
             { title: 'Products', url: 'products.html', tags: 'collections pendant table ceiling wall floor domus aurum' },
-            { title: 'Domus Collection', url: 'aurum.html', tags: 'domus aurum murano glass modular lamp' },
+            { title: 'Domus Collection', url: 'domus.html', tags: 'domus aurum murano glass modular lamp' },
             { title: 'Catalogs', url: 'catalogs.html', tags: 'downloads pdf venice general collection' },
             { title: 'Projects', url: 'projects.html', tags: 'case studies realizations hospitality' },
             { title: 'About', url: 'about.html', tags: 'story heritage murano craftsmanship' },
@@ -141,7 +297,7 @@
         ] : [
             { title: 'Home', url: 'index.html', tags: 'granfo granfoluce home hero' },
             { title: 'Prodotti', url: 'prodotti.html', tags: 'collezioni sospensione tavolo soffitto parete terra domus aurum' },
-            { title: 'Collezione Domus', url: 'aurum.html', tags: 'domus aurum vetro murano lampada modulare' },
+            { title: 'Collezione Domus', url: 'domus.html', tags: 'domus aurum vetro murano lampada modulare' },
             { title: 'Cataloghi', url: 'cataloghi.html', tags: 'download pdf venice general collection' },
             { title: 'Progetti', url: 'progetti.html', tags: 'case study realizzazioni hospitality' },
             { title: 'Chi Siamo', url: 'chi-siamo.html', tags: 'storia heritage murano artigianato' },
@@ -155,16 +311,57 @@
             { title: 'Oggettistica', url: 'prodotti.html?categoria=vasi%20e%20oggettistica', tags: 'vasi objects tableware oggetti' },
         ];
 
+        const normalize = (value) => (value || '')
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/\p{Diacritic}/gu, '')
+            .replace(/[^a-z0-9\s]/gi, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+
+        const stopwords = isEnglish
+            ? new Set(['the', 'a', 'an', 'of', 'for', 'and', 'or', 'to', 'in', 'on', 'with'])
+            : new Set(['il', 'lo', 'la', 'i', 'gli', 'le', 'un', 'una', 'uno', 'di', 'da', 'a', 'e', 'o', 'per', 'con', 'su', 'in']);
+
+        const tokenize = (value) => normalize(value)
+            .split(' ')
+            .map(t => t.trim())
+            .filter(t => t && !stopwords.has(t));
+
+        const genericWords = isEnglish
+            ? new Set(['lamp', 'lamps', 'light', 'lights', 'lighting'])
+            : new Set(['lampada', 'lampade', 'lampadario', 'lampadari', 'luce', 'luci', 'illuminazione']);
+
         const renderSuggestions = (query) => {
-            const q = (query || '').trim().toLowerCase();
+            const q = (query || '').trim();
+            const tokens = tokenize(q);
+            const meaningfulTokens = tokens.filter(t => !genericWords.has(t));
             
             // Only show suggestions if user has typed something
-            if (!q) {
+            if (!meaningfulTokens.length) {
                 suggestionBox.innerHTML = '';
                 return;
             }
 
-            const matches = suggestions.filter(item => `${item.title} ${item.tags}`.toLowerCase().includes(q)).slice(0, 6);
+            const matches = suggestions
+                .map(item => {
+                    const haystack = normalize(`${item.title} ${item.tags}`);
+                    const title = normalize(item.title);
+                    const allTokensMatch = meaningfulTokens.every(t => haystack.includes(t));
+                    if (!allTokensMatch) return null;
+
+                    let score = 0;
+                    meaningfulTokens.forEach(t => {
+                        if (title.startsWith(t)) score += 3;
+                        if (title.includes(t)) score += 2;
+                        if (haystack.includes(t)) score += 1;
+                    });
+                    return { item, score };
+                })
+                .filter(Boolean)
+                .sort((a, b) => b.score - a.score)
+                .slice(0, 6)
+                .map(({ item }) => item);
 
             if (!matches.length) {
                 suggestionBox.innerHTML = `<div class="empty">${isEnglish ? 'No matches. Try another keyword.' : 'Nessun risultato. Prova un\'altra parola chiave.'}</div>`;
@@ -179,15 +376,153 @@
             `).join('');
         };
 
+        const categoryMatchers = isEnglish ? [
+            { category: 'sospensione', keywords: ['pendant', 'suspension', 'hanging'] },
+            { category: 'tavolo', keywords: ['table', 'desk'] },
+            { category: 'soffitto', keywords: ['ceiling', 'flush'] },
+            { category: 'parete', keywords: ['wall', 'sconce'] },
+            { category: 'terra', keywords: ['floor', 'standing'] },
+            { category: 'vasi e oggettistica', keywords: ['objects', 'vases', 'tableware'] },
+            { category: 'outdoor', keywords: ['outdoor', 'garden', 'exterior'] }
+        ] : [
+            { category: 'sospensione', keywords: [
+                'sospensione', 'sospensioni', 'lampada sospensione', 'lampada a sospensione',
+                'lampadario', 'lampadari', 'lampadario pendente', 'lampadario a sospensione',
+                'pendente', 'pendant', 'hanging'
+            ] },
+            { category: 'tavolo', keywords: [
+                'tavolo', 'tavoli', 'lampada da tavolo', 'lampada a tavolo', 'abat jour', 'abat-jour',
+                'table', 'desk'
+            ] },
+            { category: 'soffitto', keywords: [
+                'soffitto', 'plafoniera', 'plafoniere', 'lampada a soffitto', 'ceiling'
+            ] },
+            { category: 'parete', keywords: [
+                'parete', 'applique', 'lampada da parete', 'lampada a parete', 'wall', 'sconce'
+            ] },
+            { category: 'terra', keywords: [
+                'terra', 'piantana', 'piantane', 'lampada da terra', 'lampada a terra',
+                'floor', 'standing'
+            ] },
+            { category: 'vasi e oggettistica', keywords: [
+                'vasi', 'oggettistica', 'oggetti', 'vasi e oggettistica', 'accessori'
+            ] },
+            { category: 'outdoor', keywords: [
+                'outdoor', 'esterno', 'esterni', 'lampada da esterno', 'lampade da esterno',
+                'luce esterna', 'luci esterne', 'giardino'
+            ] }
+        ];
+
+        const materialMatchers = isEnglish ? [
+            { material: 'vetro', keywords: ['glass', 'murano'] },
+            { material: 'metallo', keywords: ['metal', 'steel', 'aluminum', 'brass'] },
+            { material: 'oro', keywords: ['gold', 'golden', 'brass'] }
+        ] : [
+            { material: 'vetro', keywords: ['vetro', 'vetro soffiato', 'murano'] },
+            { material: 'metallo', keywords: ['metallo', 'acciaio', 'alluminio', 'ferro', 'ottone'] },
+            { material: 'oro', keywords: ['oro', 'dorato', 'finitura oro', 'ottone', 'ottone spazzolato'] }
+        ];
+
+        const styleMatchers = isEnglish ? [
+            { style: 'moderno', keywords: ['modern', 'minimal', 'minimalist'] },
+            { style: 'classico', keywords: ['classic'] },
+            { style: 'contemporaneo', keywords: ['contemporary'] }
+        ] : [
+            { style: 'moderno', keywords: ['moderno', 'minimal', 'minimalista'] },
+            { style: 'classico', keywords: ['classico'] },
+            { style: 'contemporaneo', keywords: ['contemporaneo'] }
+        ];
+
+        const resolveSearchTarget = (query) => {
+            const q = (query || '').trim();
+            const tokens = tokenize(q);
+            const normalizedQuery = normalize(q);
+
+            let category = null;
+            for (const item of categoryMatchers) {
+                const keywordHit = item.keywords.some(k => {
+                    const normKey = normalize(k);
+                    return normalizedQuery.includes(normKey) || tokens.includes(normKey);
+                });
+                if (keywordHit) {
+                    category = item.category;
+                    break;
+                }
+            }
+
+            const materials = new Set();
+            materialMatchers.forEach(item => {
+                const hit = item.keywords.some(k => {
+                    const normKey = normalize(k);
+                    return normalizedQuery.includes(normKey) || tokens.includes(normKey);
+                });
+                if (hit) materials.add(item.material);
+            });
+
+            const styles = new Set();
+            styleMatchers.forEach(item => {
+                const hit = item.keywords.some(k => {
+                    const normKey = normalize(k);
+                    return normalizedQuery.includes(normKey) || tokens.includes(normKey);
+                });
+                if (hit) styles.add(item.style);
+            });
+
+            return {
+                type: 'query',
+                query: q,
+                category,
+                materials: Array.from(materials),
+                styles: Array.from(styles)
+            };
+        };
+
         input.addEventListener('input', () => renderSuggestions(input.value));
         input.addEventListener('keydown', (e) => {
             if (e.key === 'Enter') {
-                const first = suggestionBox.querySelector('a');
-                if (first) {
-                    window.location.href = first.getAttribute('href');
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                const rawQuery = input.value || '';
+                const trimmed = rawQuery.trim();
+                if (!trimmed) return;
+
+                const target = resolveSearchTarget(trimmed);
+                const path = window.location.pathname || '';
+                const isProductsPage = isEnglish
+                    ? path.includes('/en/products.html')
+                    : path.includes('prodotti.html');
+
+                if (isProductsPage && typeof window.applyAdvancedFilters === 'function') {
+                    if (target.category) window.activeCategory = target.category;
+                    if (Array.isArray(target.materials)) {
+                        target.materials.forEach(mat => {
+                            const cb = document.querySelector(`input[type="checkbox"][value="${mat}"]`);
+                            if (cb) cb.checked = true;
+                        });
+                    }
+                    if (Array.isArray(target.styles)) {
+                        target.styles.forEach(style => {
+                            const cb = document.querySelector(`input[type="checkbox"][value="${style}"]`);
+                            if (cb) cb.checked = true;
+                        });
+                    }
+                    window.activeSearchQuery = trimmed;
+                    window.applyAdvancedFilters();
+                    if (typeof window.toggleSearch === 'function') window.toggleSearch();
+                    return;
                 }
+
+                const base = isEnglish
+                    ? (path.includes('/en/products-single/') ? '../products.html' : 'en/products.html')
+                    : (path.includes('/prodotti-singoli/') ? '../prodotti.html' : 'prodotti.html');
+                const params = new URLSearchParams();
+                if (target.category) params.set('categoria', target.category);
+                if (target.materials && target.materials.length) params.set('materiale', target.materials.join(','));
+                if (target.styles && target.styles.length) params.set('stile', target.styles.join(','));
+                params.set('q', trimmed);
+                window.location.href = `${base}?${params.toString()}`;
             }
-        });
+        }, true);
     };
 
     if (document.readyState === 'loading') {
