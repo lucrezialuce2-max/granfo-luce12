@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domus | GRANFO</title>
+    <meta name="description" content="Domus: la collezione Exclusive GRANFO in Murano glass.">
+    <link rel="stylesheet" href="../style.css?v=3.8">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <meta property="og:title" content="GRANFO | Light Design Verona">
+    <meta property="og:description" content="Artisans of light since 1970. Discover our collections in Murano glass and bespoke design.">
+    <meta property="og:image" content="https://granfoluce.com/images/hero/hero-main-graphic.webp"> 
+    <meta property="og:url" content="https://granfoluce.com">
+    <meta property="og:type" content="website">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Segoe+UI:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Preloader */
+        #preloader { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; background: #0e1713; z-index: 99999; opacity: 1; visibility: visible; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        #preloader.loaded { opacity: 0; visibility: hidden; pointer-events: none; }
+        .preloader-icon { width: 120px; height: auto; animation: breathe 2s infinite ease-in-out; }
+        @keyframes breathe { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.05); opacity: 0.7; } }
+        
+        /* Style per il filtro attivo */
+        .swatch-item { cursor: pointer; transition: transform 0.2s; }
+        .swatch-item:hover { transform: scale(1.05); }
+        .swatch-item.active-filter .swatch-img { border: 2px solid var(--color-accent); transform: scale(1.1); }
+        
+        /* Bottone reset filtro */
+        .reset-filter-btn {
+            display: none; /* Nascosto di default */
+            margin: 20px auto;
+            background: transparent;
+            border: 1px solid var(--color-text-muted);
+            color: var(--color-text-muted);
+            padding: 8px 16px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .reset-filter-btn:hover { border-color: white; color: white; }
+    </style>
+</head>
+<body>
+    <div id="preloader">
+        <img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" class="preloader-icon">
+    </div>
+    <script>
+        const hidePreloader = () => {
+            document.documentElement.style.visibility = 'visible';
+            const preloader = document.getElementById('preloader');
+            if (preloader && !preloader.classList.contains('loaded')) {
+                preloader.classList.add('loaded');
+            }
+        };
+        window.addEventListener('load', () => {
+            requestAnimationFrame(() => { setTimeout(hidePreloader, 80); });
+        });
+        setTimeout(hidePreloader, 3000);
+    </script>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.php" class="logo"><img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 50px;"></a>
+            <div class="nav-links">
+                <a href="index.php">Home</a>
+                <a href="products.php">Products</a>
+                <a href="catalogs.php">Catalogs</a>
+                <a href="projects.php">Projects</a>
+                <a href="blog.php">Blog</a>
+                <a href="about.php">About</a>
+                <a href="contacts.php">Contacts</a>
+            </div>
+            <div class="nav-actions">
+                <button class="icon-btn" onclick="toggleSearch()" aria-label="Search"><svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                <div class="lang-selector"><a href="../domus.php" class="lang-item">IT</a><a href="#" class="lang-item active">EN</a></div>
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="mobile-menu">
+            <a href="index.php">Home</a>
+            <a href="products.php">Products</a>
+            <a href="catalogs.php">Catalogs</a>
+            <a href="projects.php">Projects</a>
+            <a href="blog.php">Blog</a>
+            <a href="about.php">About</a>
+            <a href="contacts.php">Contacts</a>
+        </div>
+    </nav>
+
+    <div id="search-overlay" class="search-overlay">
+        <button class="close-search" onclick="toggleSearch()" aria-label="Close search">✕</button>
+        <div class="search-container"><input type="text" placeholder="Search..."></div>
+    </div>
+
+    <header class="page-header">
+        <div class="page-header-bg"><img src="../images/hero/hero-novità.webp" alt="Domus" width="1600" height="600" loading="lazy"></div>
+        <div class="container page-title"><p class="breadcrumb"><a href="index.php">Home</a> / <span>Domus</span></p><h1>Domus Collection</h1></div>
+    </header>
+
+   <section class="section-padding" id="catalogo">
+    <div class="container">
+        <div class="section-header">
+            <div><span class="eyebrow">Exclusive</span><h2>L'eleganza del Murano glass</h2></div>
+        </div>
+
+        <div class="description-section reveal" style="margin-bottom: 3rem; max-width: 800px;">
+            <p style="line-height: 1.8; color: var(--color-text-muted); font-size: 1rem;">
+                <strong>Light has never felt so tangible.</strong> Domus is born from the meeting of the ancient tradition of kiln-fired glass and a contemporary design Based on pure interlocking.
+            </p>
+            <p style="line-height: 1.8; color: var(--color-text-muted); font-size: 1rem; margin-top: 1.25rem;">
+                Each lamp is made of artistic glass tiles, handcrafted to highlight textures and imperfections that make every piece unique. The real magic is freedom: <strong>the plates are not fixed</strong>, you can compose and recompose them to create ever-new volumes and color plays.
+            </p>
+        </div>
+
+        <div class="products-page-grid-aurum reveal" id="product-grid" style="margin-bottom: 4rem;">
+            
+            <div class="product-item" data-category="Table" data-colors="arancio,smeraldo" data-price="medium" data-material="Metal" data-line="aurum" data-product-id="Table-lastra">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist" title="Aggiungi alla Wishlist">
+                    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </button>
+                <img src="../images/prodotti/Tavolo/vetri-lastra.webp" alt="Lampada da Table Domus" loading="lazy" width="800" height="1000" onclick="openLightbox(this.src)" style="cursor: pointer;">
+                <div class="p-3">
+                    <h3>Lampada da Table Domus</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;">Murano glass - Arancio e Smeraldo</p>
+                </div>
+            </div>
+
+             <div class="product-item" data-category="Suspension" data-colors="cristallo,lapislazzulo" data-price="high" data-material="Metal" data-line="aurum" data-product-id="Suspension-aurum">
+                <button class="wishlist-btn" aria-label="Aggiungi alla wishlist" title="Aggiungi alla Wishlist">
+                    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                </button>
+                <img src="../images/prodotti/Sospensione/sospensione-aurum.webp" alt="Suspension Domus" loading="lazy" width="800" height="1000" onclick="openLightbox(this.src)" style="cursor: pointer;">
+                <div class="p-3">
+                    <h3>Suspension Domus</h3>
+                    <p style="color:var(--color-text-muted); font-size:0.9rem;">Murano glass - Cristallo e Lapislazzulo</p>
+                </div>
+            </div>
+
+        </div>
+        
+        <div id="no-results" style="display:none; text-align:center; padding: 2rem; color: var(--color-text-muted);">
+            <p>No products found with this color.</p>
+            <button onclick="filterAurumByColor('All')" style="background:none; border:none; color:var(--color-accent); text-decoration:underline; cursor:pointer;">Show all</button>
+        </div>
+
+        <div style="text-align: center; margin: 3rem 0 2rem 0;">
+            <p style="color: var(--color-text-muted); font-size: 1rem;">Clicca su un Color per Filterre i Products.</p>
+        </div>
+
+        <div class="color-swatches reveal" style="margin-bottom: 3rem;">
+            <div class="color-swatches-grid">
+                <div class="swatch-item" id="filter-Cristallo" onclick="filterAurumByColor('Cristallo')">
+                    <div class="swatch-img"><img src="../images/colori/cristallo.webp" alt="Cristallo" loading="lazy"></div>
+                    <span class="swatch-label">Cristallo</span>
+                </div>
+                <div class="swatch-item" id="filter-Ambra" onclick="filterAurumByColor('Ambra')">
+                    <div class="swatch-img"><img src="../images/colori/ambra.webp" alt="Ambra" loading="lazy"></div>
+                    <span class="swatch-label">Ambra</span>
+                </div>
+                <div class="swatch-item" id="filter-Ametista" onclick="filterAurumByColor('Ametista')">
+                    <div class="swatch-img"><img src="../images/colori/ametista.webp" alt="Ametista" loading="lazy"></div>
+                    <span class="swatch-label">Ametista</span>
+                </div>
+                <div class="swatch-item" id="filter-Arancio" onclick="filterAurumByColor('Arancio')">
+                    <div class="swatch-img"><img src="../images/colori/arancio.webp" alt="Arancio" loading="lazy"></div>
+                    <span class="swatch-label">Arancio</span>
+                </div>
+                <div class="swatch-item" id="filter-Ossidiana" onclick="filterAurumByColor('Ossidiana')">
+                    <div class="swatch-img"><img src="../images/colori/ossidiana.webp" alt="Ossidiana" loading="lazy"></div>
+                    <span class="swatch-label">Ossidiana</span>
+                </div>
+                <div class="swatch-item" id="filter-Smeraldo" onclick="filterAurumByColor('Smeraldo')">
+                    <div class="swatch-img"><img src="../images/colori/smeraldo.webp" alt="Smeraldo" loading="lazy"></div>
+                    <span class="swatch-label">Smeraldo</span>
+                </div>
+                <div class="swatch-item" id="filter-Opaline" onclick="filterAurumByColor('Opaline')">
+                    <div class="swatch-img"><img src="../images/colori/opalino.webp" alt="Opaline" loading="lazy"></div>
+                    <span class="swatch-label">Opaline</span>
+                </div>
+                <div class="swatch-item" id="filter-Cioccolato" onclick="filterAurumByColor('Cioccolato')">
+                    <div class="swatch-img"><img src="../images/colori/cioccolato.webp" alt="Cioccolato" loading="lazy"></div>
+                    <span class="swatch-label">Cioccolato</span>
+                </div>
+                <div class="swatch-item" id="filter-Antracite" onclick="filterAurumByColor('Antracite')">
+                    <div class="swatch-img"><img src="../images/colori/antracite.webp" alt="Antracite" loading="lazy"></div>
+                    <span class="swatch-label">Antracite</span>
+                </div>
+            </div>
+            <button id="reset-filter" class="reset-filter-btn" onclick="filterAurumByColor('All')">Show all colors</button>
+        </div>
+
+        
+
+        <div class="aurum-cta reveal" style="text-align: center; margin-bottom: 4rem; padding: 3rem 1.5rem; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+            <h3 style="font-family: var(--font-serif); font-size: 2rem; color: white; margin-bottom: 1rem;">Vuoi creare la tua combinazione unica?</h3>
+            <p style="color: var(--color-text-muted); margin-bottom: 2rem;">Scegli i Colors e le forme per il tuo progetto su misura.</p>
+            <a href="contacts.php" class="btn btn-gold">Parla con il designer</a>
+        </div>
+
+    </div>
+   </section>
+
+    <div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.95); z-index:99999; align-items:center; justify-content:center;" onclick="closeLightbox()">
+        <div class="lightbox-inner" style="display:flex; flex-direction:column; align-items:center; max-width:100%;" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" style="max-width:90%; max-height:80vh; object-fit:contain; border-radius:4px; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+            <div id="lightbox-caption" style="margin-top:1rem; color:white; text-align:center; font-family:var(--font-sans);"></div>
+        </div>
+        <button style="position:absolute; top:20px; right:20px; background:none; border:none; color:white; font-size:2.5rem; cursor:pointer;" onclick="closeLightbox()">&times;</button>
+    </div>
+
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <a href="index.php" class="footer-logo"><img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 60px;"></a>
+                <p class="copyright">&copy; 2025 GRANFO ILLUMINAZIONE S.N.C.<br>All Rights Reserved.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/Granfoluce.lampadari/?locale=it_IT" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
+                    <a href="https://www.instagram.com/granfoluce/" aria-label="Instagram"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path></svg></a>
+                    <a href="https://it.pinterest.com/granfolucefb/" aria-label="Pinterest"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.487-.69-2.435-2.844-2.435-4.576 0-3.719 2.703-7.149 7.808-7.149 4.105 0 7.292 2.925 7.292 6.829 0 4.075-2.57 7.356-6.138 7.356-1.2 0-2.324-.623-2.707-1.36l-.738 2.803c-.266 1.015-.99 2.278-1.477 3.05 1.11.343 2.296.529 3.518.529 6.618 0 11.996-5.383 11.996-12.004C24.013 5.367 18.636 0 12.017 0z"/></svg></a>
+                    <a href="https://www.youtube.com/@granfoluce3774/shorts" aria-label="YouTube"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>MENU</h4>
+                <ul>
+                    <li><a href="about.php">About</a></li>
+                    <li><a href="products.php">Products</a></li>
+                    <li><a href="contacts.php">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>INFO</h4>
+                <div class="footer-text-group">
+                    <p>GRANFO ILLUMINAZIONE S.N.C.</p>
+                    <p>P.IVA 01410980237</p>
+                    <p style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.75rem; opacity: 0.8;">
+                        Granfo Luce is the trade name of Granfo Illuminazione S.N.C., sole location Via Ponte S. Pancrazio 8, Verona.
+                    </p>
+                    <a href="privacy-policy.php" class="privacy-link">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Contacts</h4>
+                <div class="contact-rows">
+                    <p><span class="label">Email:</span><br><a href="mailto:granfoluce@hotmail.it" class="highlight-link">granfoluce@hotmail.it</a></p>
+                    <p><span class="label">Phone:</span><br><a href="tel:+39045528541" class="highlight-link">+39 045 528541</a></p>
+                    <p><span class="label">Address:</span><br><a href="https://maps.google.com" target="_blank" class="highlight-link underline">via Ponte S. Pancrazio 8 Verona</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- 1. FUNZIONALITÀ Base (Navbar, Reveal, Menu) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('active');
+                });
+            }, { threshold: 0.1 });
+            revealElements.forEach(el => revealObserver.observe(el));
+        });
+
+        function toggleMenu() { 
+            document.getElementById('mobile-menu').classList.toggle('active'); 
+            document.body.classList.toggle('no-scroll'); 
+        }
+        function toggleSearch() { 
+            const overlay = document.getElementById('search-overlay'); 
+            overlay.classList.toggle('active');
+            const input = overlay.querySelector('input');
+            if(overlay.classList.contains('active')) {
+                input.value = '';
+                setTimeout(() => input.focus(), 100);
+            }
+        }
+
+        // --- 2. LIGHTBOX (ZOOM) ---
+        function openLightbox(src) {
+            const lb = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+
+            img.src = src;
+
+            // Trova didascalia (Title + Desc)
+            const pageImg = Array.from(document.querySelectorAll('img')).find(i => i.src === src || i.src.includes(src));
+            if (pageImg) {
+                const card = pageImg.closest('.product-item');
+                if (card) {
+                    const title = card.querySelector('h3')?.innerText || '';
+                    const desc = card.querySelector('p')?.innerText || '';
+                    caption.innerHTML = `<strong>${title}</strong><br>${desc}`;
+                }
+            }
+
+            lb.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lb = document.getElementById('lightbox');
+            lb.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        // --- 3. FILTRO Colors FUNZIONANTE ---
+        function filterAurumByColor(selectedColor) {
+            const products = document.querySelectorAll('.product-item');
+            const swatches = document.querySelectorAll('.swatch-item');
+            const resetBtn = document.getElementById('reset-filter');
+            const noResults = document.getElementById('no-results');
+            let visibleCount = 0;
+
+            // 1. Gestione stato visuale swatches (Active border)
+            swatches.forEach(s => s.classList.remove('active-filter'));
+            if (selectedColor !== 'All') {
+                const activeSwatch = document.getElementById('filter-' + selectedColor);
+                if(activeSwatch) activeSwatch.classList.add('active-filter');
+                if(resetBtn) resetBtn.style.display = 'block';
+            } else {
+                if(resetBtn) resetBtn.style.display = 'none';
+            }
+
+            // 2. Filtro logico
+            products.forEach(product => {
+                const productColors = product.getAttribute('data-colors') ? product.getAttribute('data-colors').toLowerCase() : '';
+                
+                // Se è "All" o se il Color selezionato è incluso nella lista Colors del prodotto
+                if (selectedColor === 'All' || productColors.includes(selectedColor.toLowerCase())) {
+                    product.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+
+            // 3. Gestione "Nessun risultato"
+            if (visibleCount === 0) {
+                if(noResults) noResults.style.display = 'block';
+            } else {
+                if(noResults) noResults.style.display = 'none';
+            }
+            
+            // Scroll alla griglia
+            document.getElementById('product-grid').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    </script>
+    <script src="../luxury.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,402 @@
+<?php include 'includes/header-en.php'; ?>
+
+    <header class="hero-slider">
+        <div class="slide active">
+            <div class="slide-bg"><img src="../images/hero/hero-main-graphic.webp" alt="Granfo Luce Design" width="1920" height="1080" loading="lazy"><div class="overlay"></div></div>
+            <div class="hero-content">
+                <p class="subtitle">Design & Lighting</p>
+                <h1> Artisans of light since <br><i>1970</i></h1>
+                <p class="description">We design and craft unique lighting solutions, combining artisanal mastery with contemporary technology.</p>
+                <div class="hero-buttons">
+                    <a href="projects.php" class="btn btn-gold">Scopri i Projects</a>
+                    <a href="about.php" class="btn btn-outline">Visit us</a>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="slide-bg"><img src="../images/hero/fungonero.webp" alt="Projects Custom" width="1920" height="1080" loading="lazy"><div class="overlay"></div></div>
+            <div class="hero-content">
+                <p class="subtitle">Visual Comfort</p>
+                <h1>Architectural <i><br>Light.</i></h1>
+                <p class="description">Integrated systems and minimal solutions. When technology disappears to leave room only for the bUAEty of your space.</p>
+                <div class="hero-buttons"><a href="contacts.php" class="btn btn-gold">Request consultation</a></div>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="slide-bg"><img src="../images/hero/hero-novità.webp" alt="New Collection" width="1920" height="1080" loading="lazy"><div class="overlay"></div></div>
+            <div class="hero-content">
+                <p class="subtitle">New for 2026</p>
+                <h1>Collection <br><i>Domus.</i></h1>
+                <p class="description">Murano glass and contemporary design. Each lamp is a unique piece, as one-of-a-kind as your home.</p>
+                <div class="hero-buttons"><a href="catalogs.php" class="btn btn-gold">Discover the collection</a></div>
+            </div>
+        </div>
+        <!-- Video Slide (wait until end) -->
+        <div class="slide">
+            <div class="slide-bg">
+                <video src="../images/videos/luna.mp4" autoplay muted playsinline></video>
+                <div class="overlay"></div>
+            </div>
+            <div class="hero-content"></div>
+        </div>
+        <button class="slider-btn prev" onclick="changeSlide(-1)">❮</button>
+        <button class="slider-btn next" onclick="changeSlide(1)">❯</button>
+        <div class="slider-dots">
+            <span class="dot active" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+            <span class="dot" onclick="currentSlide(4)"></span>
+        </div>
+    </header>
+
+    <script>
+    // Gestione Transizione Pagina
+    document.addEventListener("DOMContentLoaded", () => {
+        // 1. Fade In all'apertura
+        document.body.classList.add("loaded");
+
+        // 2. Intercetta i click sui link
+        const links = document.querySelectorAll('a[href]');
+        
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                
+                // Se is a link interno e non un'ancora (#) o mailto/tel
+                if (href.startsWith(window.location.origin) || (href.indexOf(':') === -1 && !href.startsWith('#'))) {
+                    e.preventDefault();
+                    document.body.classList.add('fade-out'); // Avvia Fade Out
+                    
+                    // Aspetta la fine dell'animazione poi cambia pagina
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 800); // 800ms deve coincidere con il CSS transition
+                }
+            });
+        });
+    });
+</script>
+
+    <section id="Products" class="section-padding">
+        <div class="container">
+            <div class="section-header">
+                <div><span class="eyebrow">Products</span><h2>Explore Categories</h2></div>
+                <a href="products.php#catalogo" class="link-arrow">View all &rarr;</a>
+            </div>
+            <div class="products-slider reveal">
+                <a href="products.php?Category=Suspension#catalogo" class="product-item"><img src="../images/prodotti/Sospensione/fungonero.webp" alt="Suspension" width="300" height="300" loading="lazy"><div class="card-content"><h3>Suspension</h3></div></a>
+                <a href="products.php?Category=Table#catalogo" class="product-item"><img src="../images/prodotti/Tavolo/tavolocubo.webp" alt="Table" width="300" height="300" loading="lazy"><div class="card-content"><h3>Table</h3></div></a>
+                <a href="products.php?Category=Floor#catalogo" class="product-item"><img src="../images/prodotti/Terra/terralight.webp" alt="Floor" width="300" height="300" loading="lazy"><div class="card-content"><h3>Floor</h3></div></a>
+                <a href="products.php?Category=Wall#catalogo" class="product-item"><img src="../images/prodotti/Parete/appliquev.webp" alt="Wall" width="300" height="300" loading="lazy"><div class="card-content"><h3>Wall</h3></div></a>
+                <a href="products.php?Category=Ceiling#catalogo" class="product-item"><img src="../images/prodotti/Soffitto/plafonierab.webp" alt="Ceiling" width="300" height="300" loading="lazy"><div class="card-content"><h3>Ceiling</h3></div></a>
+                <a href="products.php?Category=outdoor#catalogo" class="product-item"><img src="../images/prodotti/copertina-prodotti.webp" alt="Outdoor" width="300" height="300" loading="lazy"><div class="card-content"><h3>Outdoor</h3></div></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="Projects" class="projects-section">
+        <div class="container">
+            <div class="section-header">
+                <div><span class="eyebrow">Projects</span><h2>Beyond the standard</h2><h5 class="portfolio-lede">A selection of complex projects that show our ability to transform light into sculpture.<br>Proof that, in our workshop, no challenge is impossible.</h5></div>
+                <a href="projects.php" class="link-arrow">View all&rarr;</a>
+            </div>
+            <div class="projects-grid-scroll reveal">
+                <a href="projects.php" class="project-card"><img src="../images/progetti/progetto-2.webp" alt="2" width="400" height="500" loading="lazy"><div class="card-content"><span class="card-tag">Doha • Qatar</span><h3>Private Residence</h3></div></a>
+                <a href="projects.php" class="project-card"><img src="../images/progetti/progetto-3.webp" alt="3" width="400" height="500" loading="lazy"><div class="card-content"><span class="card-tag">Dubai • UAE</span><h3>Penthouse</h3></div></a>
+                <a href="projects.php" class="project-card"><img src="../images/progetti/progetto-4.webp" alt="4" width="400" height="500" loading="lazy"><div class="card-content"><span class="card-tag">Moscow • Russia</span><h3>Private Villa</h3></div></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header center-text">
+                <span class="eyebrow">Workflow</span>
+            </div>
+            <div class="process-grid">
+                <div class="process-step reveal"><div class="step-number">01</div><h3><br>Ascolto e Consulting</h3><p>Non analizziamo solo gli spazi, ascoltiamo le tue idee.</p></div>
+                <div class="process-step reveal"><div class="step-number">02</div><h3>Study & Design</h3><p>We develop technical drawings and precise lighting calculations to define dimensions, materials, and light output before production.</p></div>
+                <div class="process-step reveal"><div class="step-number">03</div><h3><br>Produzione Artigianale</h3><p>Diamo vita al progetto nel nostro laboratorio.</p></div>
+            </div>
+        </div>
+    </section>
+
+   
+
+    <section class="section-padding bg-dark">
+        <div class="container">
+            <div class="section-header"><div><span class="eyebrow">Recensioni</span><h2>Dicono di Noi</h2></div></div>
+            <div class="reviews-grid">
+                <div class="review-card reveal"><div class="stars">★★★★★</div><p class="review-text"><br>"Abbiamo arredato la nostra casa con le lampade di Granfo Luce. Mi sono trovata benissimo. Ricevo moltissimi complimenti per i Products che ho acquistato."</p><h5>Customer</h5></div>
+                <div class="review-card reveal"><div class="stars">★★★★★</div><p class="review-text"><br>"It's a magical place: every chandelier has a story and is a masterpiece!"</p><h5>Customer</h5></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-header center-text"><h2>What You Need to Know</h2></div>
+            <div class="faq-container reveal">
+                <div class="faq-item"><button class="faq-question">Do you make bespoke lamps? <span>+</span></button><div class="faq-answer"><p>Absolutely. We combine artisanal mastery with your needs: we customize every detail, from finish to size, to offer not just a lamp but a unique bespoke design element.</p></div></div>
+                <div class="faq-item"><button class="faq-question">Do you only operate in Verona? <span>+</span></button><div class="faq-answer"><p>Our headquarters are in Verona, but we operate everywhere. We handle projects throughout Italy and abroad, guaranteeing the same care and technical expertise for both private residences and large architectural spaces.</p></div></div>
+                <div class="faq-item"><button class="faq-question">Do you offer lighting consultancy? <span>+</span></button><div class="faq-answer"><p>Certainly. Beyond craftsmanship, we provide a full technical service: lighting calculations and bespoke design to ensure every space has the right, functional, high-performance light.</p></div></div>
+                <div class="faq-item"><button class="faq-question">What type of lighting do you handle? <span>+</span></button><div class="faq-answer"><p>We live by two complementary souls. With us you will find both decorative lighting, made of handcrafted pieces with unique warmth, and technical and architectural lighting, essential and invisible. Our goal is to make these two worlds coexist in your space.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter-section">
+        <div class="container newsletter-content">
+            <h2>We Shape Your Light</h2>
+            <p>Do you have a project in mind or are you looking for a unique piece? We put 50 years of experience at the service of your ideas.</p>
+                <form class="contact-form" action="https://formspree.io/f/mzzyojpq" method="POST" style="background: var(--color-bg-card); padding: 2.5rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                    <div style="margin-bottom: 1.5rem;">
+                        <input type="text" name="name" placeholder="Full Name" required style="width: 100%; padding: 1rem 1.5rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; font-family: var(--font-sans); font-size: 1rem; outline: none; transition: all 0.3s;">
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <input type="Email" name="Email" placeholder="Email" required style="width: 100%; padding: 1rem 1.5rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; font-family: var(--font-sans); font-size: 1rem; outline: none; transition: all 0.3s;">
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <input type="tel" name="phone" placeholder="Phone (Optional)" style="width: 100%; padding: 1rem 1.5rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; font-family: var(--font-sans); font-size: 1rem; outline: none; transition: all 0.3s;">
+                    </div>
+                    <div style="margin-bottom: 1.5rem;">
+                        <input type="text" name="subject" placeholder="What do you need?" required style="width: 100%; padding: 1rem 1.5rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; font-family: var(--font-sans); font-size: 1rem; outline: none; transition: all 0.3s;">
+                    </div>
+                    <div style="margin-bottom: 2rem;">
+                        <textarea name="message" placeholder="Tell us about your idea or describe your space..." rows="6" required style="width: 100%; padding: 1rem 1.5rem; border-radius: 8px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; font-family: var(--font-sans); font-size: 1rem; outline: none; transition: all 0.3s; resize: vertical;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-gold w-full" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                        Send your request
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                    </button>
+                </form>
+            </div>
+    </section>
+
+   <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <a href="index.php" class="footer-logo"><img src="../images/brand/granfoluce-logo.png" alt="GRANFOLUCE" style="height: 60px;"></a>
+                <p class="copyright">&copy; 2026 GRANFO ILLUMINAZIONE S.N.C.<br>All Rights Reserved.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/Granfoluce.lampadari/?locale=it_IT" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg></a>
+                    <a href="https://www.instagram.com/granfoluce/" aria-label="Instagram"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"></path></svg></a>
+                    <a href="https://it.pinterest.com/granfolucefb/" aria-label="Pinterest"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.162-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.399.165-1.487-.69-2.435-2.844-2.435-4.576 0-3.719 2.703-7.149 7.808-7.149 4.105 0 7.292 2.925 7.292 6.829 0 4.075-2.57 7.356-6.138 7.356-1.2 0-2.324-.623-2.707-1.36l-.738 2.803c-.266 1.015-.99 2.278-1.477 3.05 1.11.343 2.296.529 3.518.529 6.618 0 11.996-5.383 11.996-12.004C24.013 5.367 18.636 0 12.017 0z"/></svg></a>
+                    <a href="https://www.youtube.com/@granfoluce3774/shorts" aria-label="YouTube"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>MENU</h4>
+                <ul>
+                    <li><a href="about.php">About</a></li>
+                    <li><a href="products.php">Products</a></li>
+                    <li><a href="contacts.php">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>INFO</h4>
+                <div class="footer-text-group">
+                    <p>GRANFO ILLUMINAZIONE S.N.C.</p>
+                    <p>P.IVA 01410980237</p>
+                    <p style="font-size: 0.75rem; color: var(--color-text-muted); margin-top: 0.75rem; opacity: 0.8;">
+                        Granfo Luce is the trade name of Granfo Illuminazione S.N.C., sole location Via Ponte S. Pancrazio 8, Verona.
+                    </p>
+                    <a href="privacy-policy.php" class="privacy-link">Privacy Policy</a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Contacts</h4>
+                <div class="contact-rows">
+                    <p><span class="label">Email:</span><br><a href="mailto:granfoluce@hotmail.it" class="highlight-link">granfoluce@hotmail.it</a></p>
+                    <p><span class="label">Phone:</span><br><a href="tel:+39045528541" class="highlight-link">+39 045 528541</a></p>
+                    <p><span class="label">Address:</span><br><a href="https://maps.google.com" target="_blank" class="highlight-link underline">via Ponte S. Pancrazio 8 Verona</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/393385978768" class="whatsapp-float"><svg width="32" height="32" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.017-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg></a>
+    <button id="backToTop" class="back-to-top">&uarr;</button>
+
+    <div id="Cookies-banner" class="Cookies-banner">
+        <p>We use cookies to improve your experience.</p>
+        <div class="Cookies-buttons">
+            <button id="acceptCookiess" class="btn btn-gold btn-small">Accept</button>
+            <button onclick="document.getElementById('Cookies-banner').style.display='none'" class="btn-text">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('active'); document.body.classList.toggle('no-scroll'); }
+        function toggleSearch() { 
+            const overlay = document.getElementById('search-overlay');
+            overlay.classList.toggle('active');
+            const input = overlay.querySelector('input');
+            if(overlay.classList.contains('active')) {
+                input.value = '';
+                setTimeout(() => input.focus(), 100);
+            }
+        }
+        // RiSearch: invia alla pagina Products con query
+        (function initSearchRedirect(){
+            const overlay = document.getElementById('search-overlay');
+            const input = overlay ? overlay.querySelector('input') : null;
+            if (!input) return;
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    const q = input.value.trim();
+                    if (q.length > 0) {
+                        window.location.href = 'products.html?q=' + encodeURIComponent(q);
+                    }
+                } else if (e.key === 'Escape') {
+                    toggleSearch();
+                }
+            });
+        })();
+        let slideIndex = 1;
+        let slideTimeout;
+        let activeVideo = null;
+        const DEFAULT_SLIDE_DURATION = 5000;
+        const slides = document.getElementsByClassName("slide");
+        const dots = document.getElementsByClassName("dot");
+        if(slides.length > 0) { showSlides(slideIndex); startAutoSlide(); }
+        function changeSlide(n) { showSlides(slideIndex += n); startAutoSlide(); }
+        function currentSlide(n) { showSlides(slideIndex = n); startAutoSlide(); }
+        function showSlides(n) {
+            if (n > slides.length) slideIndex = 1; if (n < 1) slideIndex = slides.length;
+            for (let i = 0; i < slides.length; i++) { slides[i].classList.remove("active"); dots[i].classList.remove("active"); }
+            slides[slideIndex-1].classList.add("active"); dots[slideIndex-1].classList.add("active");
+        }
+        function startAutoSlide() {
+            clearTimeout(slideTimeout);
+            if (activeVideo) { activeVideo.onended = null; }
+            const current = slides[slideIndex - 1];
+            const video = current.querySelector('video');
+            if (video) {
+                activeVideo = video;
+                const goNext = () => { clearTimeout(slideTimeout); showSlides(slideIndex += 1); startAutoSlide(); };
+                const schedule = () => {
+                    const durationMs = (!isNaN(video.duration) && video.duration > 0) ? video.duration * 1000 : DEFAULT_SLIDE_DURATION;
+                    slideTimeout = setTimeout(goNext, durationMs);
+                };
+                video.currentTime = 0;
+                video.play().catch(() => {});
+                if (video.readyState >= 1 && !isNaN(video.duration)) schedule();
+                else video.addEventListener('loadedmetadata', schedule, { once: true });
+                video.onended = goNext;
+            } else {
+                activeVideo = null;
+                slideTimeout = setTimeout(() => { showSlides(slideIndex += 1); startAutoSlide(); }, DEFAULT_SLIDE_DURATION);
+            }
+        }
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); revealObserver.unobserve(entry.target); } });
+        }, { threshold: 0.1 });
+        revealElements.forEach(el => revealObserver.observe(el));
+        // Force animations to start on initial load
+        window.addEventListener('DOMContentLoaded', () => {
+            revealElements.forEach((el, i) => setTimeout(() => el.classList.add('active'), i * 60));
+        });        
+        // SWIPE GESTURE per Hero Slider
+        const heroSlider = document.querySelector('.hero-slider');
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        if (heroSlider) {
+            heroSlider.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, false);
+            
+            heroSlider.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, false);
+        }
+        
+        function handleSwipe() {
+            const swipeThreshold = 50; // minimo movimento per considerarlo swipe
+            const diff = touchStartX - touchEndX;
+            
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swipe sinistro -> slide successivo
+                    changeSlide(1);
+                } else {
+                    // Swipe destro -> slide precedente
+                    changeSlide(-1);
+                }
+            }
+        }
+                const backToTopBtn = document.getElementById("backToTop");
+        window.addEventListener("scroll", () => { if (window.scrollY > 500) backToTopBtn.classList.add("show"); else backToTopBtn.classList.remove("show"); });
+        backToTopBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+        if (!localStorage.getItem('CookiessAccepted')) setTimeout(() => document.getElementById('Cookies-banner').style.display = 'block', 2000);
+        document.getElementById('acceptCookiess').addEventListener('click', () => { localStorage.setItem('CookiessAccepted', 'true'); document.getElementById('Cookies-banner').style.display = 'none'; });
+        document.querySelectorAll('.faq-question').forEach(btn => { btn.addEventListener('click', () => btn.parentElement.classList.toggle('active')); });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const activeDesktop = document.querySelector('.nav-links a.active');
+            if (!activeDesktop) return;
+            const targetHref = activeDesktop.getAttribute('href');
+            document.querySelectorAll('.mobile-menu a').forEach(link => {
+                if (link.getAttribute('href') === targetHref) link.classList.add('active');
+            });
+        });
+
+    </script>
+    
+    <script>
+    let lastScrollTop = 0;
+    const navbar = document.querySelector('.navbar');
+    
+    window.addEventListener('scroll', function() {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // 1. LOGICA Color: Se scorri più di 50px, diventa VERDE. Altrimenti TRASPARENTE.
+        if (scrollTop > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        // 2. LOGICA NASCONDI/MOSTRA:
+        // Se scorri GIÙ e non sei in cima -> Nascondi la barra
+        if (scrollTop > lastScrollTop && scrollTop > navbar.offsetHeight) {
+            navbar.classList.add('nav-hidden');
+        } else {
+            // Se scorri SU -> Mostra la barra
+            navbar.classList.remove('nav-hidden');
+        }
+        
+        lastScrollTop = scrollTop;
+    });
+    </script>
+    <script>
+    // Funzione per lo slider Prima/Dopo
+    function updateSlider(val) {
+        const fg = document.getElementById('img-foreground');
+        const handle = document.getElementById('slider-handle');
+        if (fg) fg.style.width = val + '%';
+        if (handle) handle.style.left = val + '%';
+    }
+   </script>
+    <script src="../luxury.js"></script>
+<?php include 'includes/footer-en.php'; ?>
+
+
+
+
+
+
+
+
+
+
+
+
+

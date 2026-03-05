@@ -20,6 +20,25 @@ if (typeof window.toggleSearch !== 'function') {
     };
 }
 
+// Global search submit: redirect to products page (skip products page itself)
+(() => {
+    const overlay = document.getElementById('search-overlay');
+    const input = overlay ? overlay.querySelector('input') : null;
+    if (!input) return;
+
+    const path = window.location.pathname || '';
+    const isProductsPage = /\/prodotti\.php$|\/products\.php$/i.test(path);
+    const targetBase = path.includes('/en/') ? 'products.php' : 'prodotti.php';
+
+    input.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter') return;
+        const query = input.value.trim();
+        if (!query || isProductsPage) return;
+        const nextUrl = `${targetBase}?q=${encodeURIComponent(query)}`;
+        window.location.href = nextUrl;
+    });
+})();
+
 // Navbar behavior: transparent at top, blur below, hide on scroll down, show on scroll up; menu open forces visible
 (() => {
     if (window.__navEnhanced) return;
@@ -28,7 +47,9 @@ if (typeof window.toggleSearch !== 'function') {
     const nav = document.querySelector('.navbar');
     if (!nav) return;
 
-    const header = document.querySelector('.hero-slider') || document.querySelector('.page-header');
+    const header = document.querySelector('.hero-slider')
+        || document.querySelector('.blog-hero-slider')
+        || document.querySelector('.blog-article-hero');
     let lastScroll = window.scrollY || 0;
 
     // Stato iniziale: trasparente e senza blur
@@ -56,9 +77,10 @@ if (typeof window.toggleSearch !== 'function') {
         const menuOpen = document.body.classList.contains('no-scroll');
         const headerHeight = header ? header.offsetHeight || 0 : 0;
         const inHeaderZone = header ? y < Math.max(headerHeight - 140, 0) : false;
-        const atTop = y < 50; // trasparente in cima a qualsiasi pagina
+        const atTop = y < 50;
+        const keepTransparent = atTop || inHeaderZone;
 
-        if (!menuOpen && (atTop || inHeaderZone)) {
+        if (!menuOpen && keepTransparent) {
             nav.classList.remove('nav-blur');
             nav.classList.remove('nav-hidden');
             nav.classList.add('nav-transparent');
@@ -113,29 +135,50 @@ if (typeof window.toggleSearch !== 'function') {
     updateNavbar();
 })();
 
-// Image path fallback for EN pages
-document.addEventListener('error', function(e) {
-    const img = e.target;
-    if (!img || !img.tagName || img.tagName.toLowerCase() !== 'img') return;
-    if (img.dataset && img.dataset.pathFallback === '1') return;
+// Inject Blog link into EN navs if missing
+(() => {
+    const path = window.location.pathname || '';
+    if (!path.includes('/en/')) return;
 
-    const src = img.getAttribute('src');
-    if (!src || /^https?:/i.test(src) || src.startsWith('data:')) return;
+    const isProductSingle = path.includes('/en/products-single/');
+    const blogHref = isProductSingle ? '../blog.php' : 'blog.php';
 
-    let nextSrc = null;
-    if (src.includes('../images/')) {
-        nextSrc = src.replace('../images/', 'images/');
-    } else if (src.includes('../../images/')) {
-        nextSrc = src.replace('../../images/', '../images/');
-    } else if (src.startsWith('images/')) {
-        nextSrc = '../' + src;
-    }
+    const hasBlogLink = (container) => {
+        if (!container) return false;
+        const links = container.querySelectorAll('a[href]');
+        return Array.from(links).some(link => {
+            const href = link.getAttribute('href') || '';
+            return href.toLowerCase().includes('blog.php');
+        });
+    };
 
-    if (nextSrc && nextSrc !== src) {
-        if (img.dataset) img.dataset.pathFallback = '1';
-        img.src = nextSrc;
-    }
-}, true);
+    const addBlogLink = (container) => {
+        if (!container || hasBlogLink(container)) return;
+
+        const isList = container.tagName.toLowerCase() === 'ul';
+        const link = document.createElement('a');
+        link.href = blogHref;
+        link.textContent = 'Blog';
+
+        const linkWrapper = isList ? (() => {
+            const item = document.createElement('li');
+            item.appendChild(link);
+            return item;
+        })() : link;
+
+        const aboutLink = container.querySelector('a[href="about.php"], a[href="../about.php"]');
+        if (aboutLink) {
+            const refNode = isList ? aboutLink.parentElement : aboutLink;
+            container.insertBefore(linkWrapper, refNode);
+            return;
+        }
+
+        container.appendChild(linkWrapper);
+    };
+
+    addBlogLink(document.querySelector('.nav-links'));
+    addBlogLink(document.querySelector('.mobile-menu'));
+})();
 
 // Highlight current page in desktop + mobile menus
 (() => {
@@ -152,22 +195,22 @@ document.addEventListener('error', function(e) {
     };
 
     const currentPath = normalizePath(window.location.pathname || '/');
-    const currentBase = getBasename(currentPath) || 'index.html';
+    const currentBase = getBasename(currentPath) || 'index.php';
 
     const isSamePath = (linkPath) => {
         const linkNorm = normalizePath(linkPath);
         if (linkNorm === currentPath) return true;
 
         // Handle index.html as folder root
-        if (linkNorm.endsWith('/index.html') && currentPath === normalizePath(linkNorm.replace(/\/index\.html$/, ''))) {
+        if (linkNorm.endsWith('/index.php') && currentPath === normalizePath(linkNorm.replace(/\/index\.php$/, ''))) {
             return true;
         }
-        if (currentPath.endsWith('/index.html') && linkNorm === normalizePath(currentPath.replace(/\/index\.html$/, ''))) {
+        if (currentPath.endsWith('/index.php') && linkNorm === normalizePath(currentPath.replace(/\/index\.php$/, ''))) {
             return true;
         }
 
         // Fallback: match by filename (works for file:// and nested paths)
-        const linkBase = getBasename(linkNorm) || 'index.html';
+        const linkBase = getBasename(linkNorm) || 'index.php';
         return linkBase === currentBase;
     };
 
@@ -203,7 +246,7 @@ document.addEventListener('error', function(e) {
 (() => {
     const path = window.location.pathname || '';
     const isEnglish = path.includes('/en/');
-    const isDomusPage = /\/domus\.html?$/.test(path);
+    const isDomusPage = /\/domus\.php?$/.test(path);
     if (!isEnglish || isDomusPage) return;
 
     const selectors = ['.nav-links a', '#mobile-menu a'];
@@ -211,7 +254,7 @@ document.addEventListener('error', function(e) {
         document.querySelectorAll(selector).forEach((link) => {
             const href = (link.getAttribute('href') || '').toLowerCase();
             const text = (link.textContent || '').trim().toLowerCase();
-            if (href.includes('domus.html') || text === 'domus') {
+            if (href.includes('domus.php') || text === 'domus') {
                 link.remove();
             }
         });
@@ -225,7 +268,7 @@ document.addEventListener('error', function(e) {
 
     const isEnglish = window.location.pathname.includes('/en/');
     const lang = isEnglish ? 'en' : 'it';
-    const policyUrl = 'privacy-policy.html';
+    const policyUrl = 'privacy-policy.php';
 
     // TODO: replace with your real Iubenda IDs
     const siteId = window.__IUB_SITE_ID || 0;
@@ -300,36 +343,36 @@ document.addEventListener('error', function(e) {
 
         const isEnglish = window.location.pathname.includes('/en/');
         const suggestions = isEnglish ? [
-            { title: 'Home', url: 'index.html', tags: 'granfo granfoluce home hero' },
-            { title: 'Products', url: 'products.html', tags: 'collections pendant table ceiling wall floor domus aurum' },
-            { title: 'Domus Collection', url: 'domus.html', tags: 'domus aurum murano glass modular lamp' },
-            { title: 'Catalogs', url: 'catalogs.html', tags: 'downloads pdf venice general collection' },
-            { title: 'Projects', url: 'projects.html', tags: 'case studies realizations hospitality' },
-            { title: 'About', url: 'about.html', tags: 'story heritage murano craftsmanship' },
-            { title: 'Contacts', url: 'contacts.html', tags: 'verona showroom email phone' },
-            { title: 'Privacy Policy', url: 'privacy-policy.html', tags: 'privacy cookies data policy' },
-            { title: 'Pendant', url: 'products.html?categoria=sospensione', tags: 'pendant suspension hanging' },
-            { title: 'Table', url: 'products.html?categoria=tavolo', tags: 'table lamp desk' },
-            { title: 'Ceiling', url: 'products.html?categoria=soffitto', tags: 'ceiling flush mount' },
-            { title: 'Wall', url: 'products.html?categoria=parete', tags: 'wall sconce' },
-            { title: 'Floor', url: 'products.html?categoria=terra', tags: 'floor standing' },
-            { title: 'Objects', url: 'products.html?categoria=vasi%20e%20oggettistica', tags: 'vases objects tableware' },
-            { title: 'Outdoor', url: 'products.html?categoria=outdoor', tags: 'outdoor garden exterior' }
+            { title: 'Home', url: 'index.php', tags: 'granfo granfoluce home hero' },
+            { title: 'Products', url: 'products.php', tags: 'collections pendant table ceiling wall floor domus aurum' },
+            { title: 'Domus Collection', url: 'domus.php', tags: 'domus aurum murano glass modular lamp' },
+            { title: 'Catalogs', url: 'catalogs.php', tags: 'downloads pdf venice general collection' },
+            { title: 'Projects', url: 'projects.php', tags: 'case studies realizations hospitality' },
+            { title: 'About', url: 'about.php', tags: 'story heritage murano craftsmanship' },
+            { title: 'Contacts', url: 'contacts.php', tags: 'verona showroom email phone' },
+            { title: 'Privacy Policy', url: 'privacy-policy.php', tags: 'privacy cookies data policy' },
+            { title: 'Pendant', url: 'products.php?categoria=sospensione', tags: 'pendant suspension hanging' },
+            { title: 'Table', url: 'products.php?categoria=tavolo', tags: 'table lamp desk' },
+            { title: 'Ceiling', url: 'products.php?categoria=soffitto', tags: 'ceiling flush mount' },
+            { title: 'Wall', url: 'products.php?categoria=parete', tags: 'wall sconce' },
+            { title: 'Floor', url: 'products.php?categoria=terra', tags: 'floor standing' },
+            { title: 'Objects', url: 'products.php?categoria=vasi%20e%20oggettistica', tags: 'vases objects tableware' },
+            { title: 'Outdoor', url: 'products.php?categoria=outdoor', tags: 'outdoor garden exterior' }
         ] : [
-            { title: 'Home', url: 'index.html', tags: 'granfo granfoluce home hero' },
-            { title: 'Prodotti', url: 'prodotti.html', tags: 'collezioni sospensione tavolo soffitto parete terra domus aurum' },
-            { title: 'Collezione Domus', url: 'domus.html', tags: 'domus aurum vetro murano lampada modulare' },
-            { title: 'Cataloghi', url: 'cataloghi.html', tags: 'download pdf venice general collection' },
-            { title: 'Progetti', url: 'progetti.html', tags: 'case study realizzazioni hospitality' },
-            { title: 'Chi Siamo', url: 'chi-siamo.html', tags: 'storia heritage murano artigianato' },
-            { title: 'Contatti', url: 'contatti.html', tags: 'verona showroom email telefono' },
-            { title: 'Privacy Policy', url: 'privacy-policy.html', tags: 'privacy cookies dati policy' },
-            { title: 'Sospensione', url: 'prodotti.html?categoria=sospensione', tags: 'pendant sospensione hanging lampada' },
-            { title: 'Tavolo', url: 'prodotti.html?categoria=tavolo', tags: 'table tavolo lamp desk lampada' },
-            { title: 'Soffitto', url: 'prodotti.html?categoria=soffitto', tags: 'ceiling soffitto flush mount lampada' },
-            { title: 'Parete', url: 'prodotti.html?categoria=parete', tags: 'wall parete sconce lampada' },
-            { title: 'Terra', url: 'prodotti.html?categoria=terra', tags: 'floor terra standing lampada' },
-            { title: 'Oggettistica', url: 'prodotti.html?categoria=vasi%20e%20oggettistica', tags: 'vasi objects tableware oggetti' },
+            { title: 'Home', url: 'index.php', tags: 'granfo granfoluce home hero' },
+            { title: 'Prodotti', url: 'prodotti.php', tags: 'collezioni sospensione tavolo soffitto parete terra domus aurum' },
+            { title: 'Collezione Domus', url: 'domus.php', tags: 'domus aurum vetro murano lampada modulare' },
+            { title: 'Cataloghi', url: 'cataloghi.php', tags: 'download pdf venice general collection' },
+            { title: 'Progetti', url: 'progetti.php', tags: 'case study realizzazioni hospitality' },
+            { title: 'Chi Siamo', url: 'chi-siamo.php', tags: 'storia heritage murano artigianato' },
+            { title: 'Contatti', url: 'contatti.php', tags: 'verona showroom email telefono' },
+            { title: 'Privacy Policy', url: 'privacy-policy.php', tags: 'privacy cookies dati policy' },
+            { title: 'Sospensione', url: 'prodotti.php?categoria=sospensione', tags: 'pendant sospensione hanging lampada' },
+            { title: 'Tavolo', url: 'prodotti.php?categoria=tavolo', tags: 'table tavolo lamp desk lampada' },
+            { title: 'Soffitto', url: 'prodotti.php?categoria=soffitto', tags: 'ceiling soffitto flush mount lampada' },
+            { title: 'Parete', url: 'prodotti.php?categoria=parete', tags: 'wall parete sconce lampada' },
+            { title: 'Terra', url: 'prodotti.php?categoria=terra', tags: 'floor terra standing lampada' },
+            { title: 'Oggettistica', url: 'prodotti.php?categoria=vasi%20e%20oggettistica', tags: 'vasi objects tableware oggetti' },
         ];
 
         const normalize = (value) => (value || '')
@@ -510,8 +553,8 @@ document.addEventListener('error', function(e) {
                 const target = resolveSearchTarget(trimmed);
                 const path = window.location.pathname || '';
                 const isProductsPage = isEnglish
-                    ? path.includes('/en/products.html')
-                    : path.includes('prodotti.html');
+                    ? path.includes('/en/products.php')
+                    : path.includes('prodotti.php');
 
                 if (isProductsPage && typeof window.applyAdvancedFilters === 'function') {
                     if (target.category) window.activeCategory = target.category;
@@ -534,8 +577,8 @@ document.addEventListener('error', function(e) {
                 }
 
                 const base = isEnglish
-                    ? (path.includes('/en/products-single/') ? '../products.html' : 'en/products.html')
-                    : (path.includes('/prodotti-singoli/') ? '../prodotti.html' : 'prodotti.html');
+                    ? (path.includes('/en/products-single/') ? '../products.php' : 'en/products.php')
+                    : (path.includes('/prodotti-singoli/') ? '../prodotti.php' : 'prodotti.php');
                 const params = new URLSearchParams();
                 if (target.category) params.set('categoria', target.category);
                 if (target.materials && target.materials.length) params.set('materiale', target.materials.join(','));
